@@ -27,7 +27,7 @@ $apps = @(
     'Microsoft.ZuneVideo'
 
     # Threshold 2 apps
-    'Microsoft.CommsPhone'
+    #'Microsoft.CommsPhone'
     'Microsoft.ConnectivityStore'
     'Microsoft.GetHelp'
     'Microsoft.Getstarted'
@@ -50,7 +50,7 @@ $apps = @(
     'Microsoft.MixedReality.Portal'
     'Microsoft.ScreenSketch'
     'Microsoft.XboxGamingOverlay'
-    'Microsoft.YourPhone'
+    #'Microsoft.YourPhone'
 
     # non-Microsoft
     'E046963F.AIMeetingManager'
@@ -148,7 +148,7 @@ Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\CloudContent' 
 
 
 Start-Process 'C:\Program Files (x86)\Hewlett-Packard\HP Support Framework\UninstallHPSA.exe' -ArgumentList '/S' -NoNewWindow -Wait
-#Start-Sleep -Seconds 60
+Start-Sleep -Seconds 60
 $HPSupportFramework_CHECK = Get-WmiObject win32_product | Where-Object Name -Like 'HP Support Solutions*'
 $HPSupportFramework_CHECK.Uninstall()
 
