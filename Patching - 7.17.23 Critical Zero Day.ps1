@@ -128,6 +128,20 @@ Import-Module -Name 'C:\Utils\PSWindowsUpdate\PSWindowsUpdate-main\PSWindowsUpda
 Get-WindowsUpdate -Install -AcceptAll -IgnoreReboot
 
 # Install WinGET and update all apps
-Invoke-WebRequest -UseBasicParsing 'https://raw.githubusercontent.com/w159/_Package-Management-Apps-/main/Install-WinGet.ps1?token=GHSAT0AAAAAACE5OTKXV2D575HRK2JV5T7KZFVM47A' | Invoke-Expression
-winget install --silent --force --accept-package-agreements --accept-source-agreements --accept-language-match --override '--silent --force --accept-package-agreements --accept-source-agreements --accept-language-match' --all
+[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
+Install-PackageProvider -Name NuGet -Force
+Install-Module -Name PSWindowsUpdate -Force
+$ProgressPreference = 'SilentlyContinue'
+Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
+Install-Script -Name winget-install -Force
+winget-install
+$WingetLocation = Get-ChildItem -Recurse -Path "C:\$Env:Programfiles\WindowsApps\Microsoft.DesktopAppInstaller*" | Where-Object Name -Like 'winget.exe' | Sort-Object LastWriteTime -Descending | Select-Object -Last 1
+$WingetCLI = $WingetLocation.FullName
+Set-Alias -Name winget -Value $WingetCLI
+winget upgrade --all --silent
+$namespaceName = 'root\cimv2\mdm\dmmap'
+$className = 'MDM_EnterpriseModernAppManagement_AppManagement01'
+$wmiObj = Get-WmiObject -Namespace $namespaceName -Class $className
+$result = $wmiObj.UpdateScanMethod()
+$result
 
