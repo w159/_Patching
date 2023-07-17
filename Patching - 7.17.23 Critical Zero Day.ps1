@@ -150,6 +150,7 @@ winget-install
 $WingetLocation = Get-ChildItem -Recurse -Path "C:\$Env:Programfiles\WindowsApps\Microsoft.DesktopAppInstaller*" | Where-Object Name -Like 'winget.exe' | Sort-Object LastWriteTime -Descending | Select-Object -Last 1
 $WingetCLI = $WingetLocation.FullName
 Set-Alias -Name winget -Value $WingetCLI
+winget settings --enable InstallerHashOverride
 winget upgrade --all --silent --ignore-security-hash
 $namespaceName = 'root\cimv2\mdm\dmmap'
 $className = 'MDM_EnterpriseModernAppManagement_AppManagement01'
