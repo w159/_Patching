@@ -24,7 +24,7 @@ This script checks for the Zero Day CVE-2023-36884 - Office and Windows HTML Rem
 .EXAMPLE
 Import and/or run this script as is, or use it as a reference to create your own script.
 
-irm -UseBasicParsing 'https://raw.githubusercontent.com/w159/_Patching/main/Patching%20-%207.17.23%20Critical%20Zero%20Day.ps1' | iex
+IRM -UseBasicParsing 'https://raw.githubusercontent.com/w159/_Patching/main/Patching%20-%207.17.23%20Critical%20Zero%20Day.ps1' | IEX
 
 #>
 
