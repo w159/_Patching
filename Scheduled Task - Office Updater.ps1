@@ -1,6 +1,6 @@
 
 
-New-Item -Path "C:\Windows" -Name Utils -ItemType Directory -Force -ErrorAction SilentlyContinue
+New-Item -Path 'C:\Windows' -Name Utils -ItemType Directory -Force -ErrorAction SilentlyContinue
 
 $OfficeUpdatesScript = @"
 `$OfficeX64Path = "C:\Program Files\Common Files\Microsoft Shared\ClickToRun\OfficeC2RClient.exe"
@@ -24,15 +24,15 @@ If (`$OfficeX64Test -eq `$true){
 `$result
 "@
 
-New-Item -Path "C:\Windows\Utils" -Name OfficeUpdates.ps1 -ItemType File -Value $OfficeUpdatesScript -Force
+New-Item -Path 'C:\Windows\Utils' -Name OfficeUpdates.ps1 -ItemType File -Value $OfficeUpdatesScript -Force
 
 $Hours = 1, 2, 3, 4, 5, 6, 21, 22, 23 | Get-Random -Count 1
 $Minutes = Get-Random -Minimum 00 -Maximum 59
 $Time = Get-Date -Hour $Hours -Minute $Minutes -UFormat %r
 $Trigger = (New-ScheduledTaskTrigger -Daily -At $Time)
-$User = "NT AUTHORITY\SYSTEM"
-$Action = (New-ScheduledTaskAction -Execute "POWERSHELL" -Argument '-ExecutionPolicy Bypass -File "C:\Windows\Utils\OfficeUpdates.ps1"')
+$User = 'NT AUTHORITY\SYSTEM'
+$Action = (New-ScheduledTaskAction -Execute 'POWERSHELL' -Argument '-ExecutionPolicy Bypass -File "C:\Windows\Utils\OfficeUpdates.ps1"')
 $Settings = New-ScheduledTaskSettingsSet -RunOnlyIfNetworkAvailable -WakeToRun -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries
 
-Register-ScheduledTask -TaskName "S5 - Office Updater" -Trigger $Trigger -User $User -Action $Action -Settings $Settings -RunLevel Highest -Force -Description "This task should update x32 and x64 versions of Microsoft Office apps. Created by JM Last updated 5-9-23"
+Register-ScheduledTask -TaskName 'S5 - Office Updater' -Trigger $Trigger -User $User -Action $Action -Settings $Settings -RunLevel Highest -Force -Description 'This task should update x32 and x64 versions of Microsoft Office apps. Created by JM Last updated 7-17-23'
 
