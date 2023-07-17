@@ -24,7 +24,7 @@ This script checks for the Zero Day CVE-2023-36884 - Office and Windows HTML Rem
 .EXAMPLE
 Import and/or run this script as is, or use it as a reference to create your own script.
 
-irm -UseBasicParsing 'https://raw.githubusercontent.com/w159/_Patching/main/Patching%20-%20CVE-2023-36884.ps1' | iex
+irm -UseBasicParsing 'https://raw.githubusercontent.com/w159/_Patching/main/Patching%20-%207.17.23%20Critical%20Zero%20Day.ps1' | iex
 
 #>
 
@@ -96,6 +96,10 @@ If ($WindowsVersion -Like '*10*')
           expand 'C:\Utils\Windows10.0-KB5027215-x64.cab' /f:'Windows10.0-KB5027215-x64.cab' 'C:\Utils\Windows10.0-KB5027215-x64'
           DISM /Online /Add-Package /PackagePath:'C:\Utils\Windows10.0-KB5027215-x64\Windows10.0-KB5027215-x64.cab' /NoRestart
      }
+     else
+     {
+          Write-Host 'KB5027215 is already installed' -ForegroundColor Green
+     }
 
      if ($KB5026361)
      {
@@ -106,6 +110,10 @@ If ($WindowsVersion -Like '*10*')
           New-Item 'C:\Utils\Windows10.0-KB5026361-x64' -ItemType Directory -Force
           expand 'C:\Utils\Windows10.0-KB5026361-x64.msu' /f:'Windows10.0-KB5026361-x64.cab' 'C:\Utils\Windows10.0-KB5026361-x64'
           DISM /Online /Add-Package /PackagePath:'C:\Utils\Windows10.0-KB5026361-x64\Windows10.0-KB5026361-x64.cab' /NoRestart
+     }
+     else
+     {
+          Write-Host 'KB5026361 is already installed' -ForegroundColor Green
      }
 
      if ($KB5028166)
@@ -118,6 +126,10 @@ If ($WindowsVersion -Like '*10*')
           expand 'C:\Utils\Windows10.0-KB5028166-x64.msu' /f:'Windows10.0-KB5028166-x64.cab' 'C:\Utils\Windows10.0-KB5028166-x64'
           DISM /Online /Add-Package /PackagePath:'C:\Utils\Windows10.0-KB5028166-x64\Windows10.0-KB5028166-x64.cab' /NoRestart
 
+     }
+     else
+     {
+          Write-Host 'KB5028166 is already installed' -ForegroundColor Green
      }
 }
 
