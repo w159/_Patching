@@ -30,9 +30,10 @@ $Hours = 1, 2, 3, 4, 5, 6, 21, 22, 23 | Get-Random -Count 1
 $Minutes = Get-Random -Minimum 00 -Maximum 59
 $Time = Get-Date -Hour $Hours -Minute $Minutes -UFormat %r
 $Trigger = (New-ScheduledTaskTrigger -Daily -At $Time)
+$TriggerLogon = (New-ScheduledTaskTrigger -AtLogOn)
 $User = 'NT AUTHORITY\SYSTEM'
 $Action = (New-ScheduledTaskAction -Execute 'POWERSHELL' -Argument '-ExecutionPolicy Bypass -File "C:\Windows\Utils\OfficeUpdates.ps1"')
 $Settings = New-ScheduledTaskSettingsSet -RunOnlyIfNetworkAvailable -WakeToRun -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries
 
-Register-ScheduledTask -TaskName 'S5 - Office Updater' -Trigger $Trigger -User $User -Action $Action -Settings $Settings -RunLevel Highest -Force -Description 'This task should update x32 and x64 versions of Microsoft Office apps. Created by JM Last updated 7-17-23'
+Register-ScheduledTask -TaskName 'S5 - Office Updater' -Trigger $Trigger, $TriggerLogon -User $User -Action $Action -Settings $Settings -RunLevel Highest -Force -Description 'This task should update x32 and x64 versions of Microsoft Office apps. Created by JM Last updated 7-17-23'
 
