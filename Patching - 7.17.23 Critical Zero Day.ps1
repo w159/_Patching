@@ -64,7 +64,7 @@ else
 # Check for vulnerable Office versions
 $Office_CHECK = (Get-CimInstance win32_product | Where-Object { $_.Name -like '*Office*' } | Where-Object Version -Like '16.0.*').Version
 $OfficeUpdateClient = (Get-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Office\ClickToRun\Updates' -Name 'UpdateClientPath').UpdateClientPath
-$UpdateCommand = '/update user displaylevel=false updatepromptuser=false forceappshutdown=true'
+$UpdateCommand = '/update user displaylevel=true updatepromptuser=true'
 If ($Office_CHECK -notlike '*16529.20182')
 {
      # Check for and install the latest Office update
