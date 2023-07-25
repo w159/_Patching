@@ -7,24 +7,25 @@ The NVIDIA download site is used to compare the current and latest versions
 
 #>
 
-Get-ScheduledTask | Where-Object TaskName -EQ "Nvidia-Updater" | Unregister-ScheduledTask -Confirm:$false -ErrorAction SilentlyContinue
-Get-ScheduledTask | Where-Object TaskName -EQ "S5 - NVIDIA Updater" | Unregister-ScheduledTask -Confirm:$false -ErrorAction SilentlyContinue
+Get-ScheduledTask | Where-Object TaskName -EQ 'Nvidia-Updater' | Unregister-ScheduledTask -Confirm:$false -ErrorAction SilentlyContinue
+Get-ScheduledTask | Where-Object TaskName -EQ 'S5 - NVIDIA Updater' | Unregister-ScheduledTask -Confirm:$false -ErrorAction SilentlyContinue
 
-$VideoController = (Get-WmiObject -ClassName Win32_VideoController | Where-Object Name -match "NVIDIA").VideoProcessor
+$VideoController = (Get-WmiObject -ClassName Win32_VideoController | Where-Object Name -Match 'NVIDIA').VideoProcessor
 
-if ($VideoController -notcontains "NVIDIA"){
+if ($VideoController -notcontains 'NVIDIA')
+{
 
-Write-Host "IS NVIDIA - Building script to verify up to date"
+    Write-Host 'IS NVIDIA - Building script to verify up to date'
 
 
-[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
-$ProgressPreference = 'SilentlyContinue'
-New-Item -Path C:\ -Name Utils -ItemType Directory -Force -ErrorAction SilentlyContinue
-New-Item -Path C:\Windows -Name Utils -ItemType Directory -Force -ErrorAction SilentlyContinue
+    [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
+    $ProgressPreference = 'SilentlyContinue'
+    New-Item -Path C:\ -Name Utils -ItemType Directory -Force -ErrorAction SilentlyContinue
+    New-Item -Path C:\Windows -Name Utils -ItemType Directory -Force -ErrorAction SilentlyContinue
 
-Get-ScheduledTask | Where-Object TaskName -EQ "Nvidia-Updater" | Unregister-ScheduledTask -Confirm:$false -ErrorAction SilentlyContinue
+    Get-ScheduledTask | Where-Object TaskName -EQ 'Nvidia-Updater' | Unregister-ScheduledTask -Confirm:$false -ErrorAction SilentlyContinue
 
-$NVIDIAUpdatesScript = @"
+    $NVIDIAUpdatesScript = @"
 `$TestWingetLocation = Get-ChildItem -Recurse -Path "C:\`$Env:Programfiles\WindowsApps\Microsoft.DesktopAppInstaller*" | Where-Object Name -Like "winget.exe"
 `$nvidiaTempFolder = "`$folder\NVIDIA"
 if (`$TestWingetLocation.Name -ne "winget.exe") {
@@ -44,6 +45,7 @@ else {
 }
 
 winget upgrade --id Nvidia.GeForceExperience --silent --accept-source-agreements --accept-package-agreements
+winget upgrade --name "NVIDIA Control Panel" --silent --accept-source-agreements --accept-package-agreements
 # Installer options
 `$folder = "C:\Utils"   # Downloads and extracts the driver here
 
@@ -53,19 +55,19 @@ winget upgrade --id Nvidia.GeForceExperience --silent --accept-source-agreements
 
 # Checking if 7zip or WinRAR are installed
 # Check 7zip install path on registry
-`$7zipinstalled = `$false 
+`$7zipinstalled = `$false
 if ((Test-path HKLM:\SOFTWARE\7-Zip\) -eq `$true) {
     `$7zpath = Get-ItemProperty -path  HKLM:\SOFTWARE\7-Zip\ -Name Path
     `$7zpath = `$7zpath.Path
     `$7zpathexe = `$7zpath + "7z.exe"
     if ((Test-Path `$7zpathexe) -eq `$true) {
         `$archiverProgram = `$7zpathexe
-        `$7zipinstalled = `$true 
-    }    
+        `$7zipinstalled = `$true
+    }
 }
 if (`$7zipinstalled -eq `$false) {
     if ((Test-path HKLM:\SOFTWARE\WinRAR) -eq `$true) {
-        `$winrarpath = Get-ItemProperty -Path HKLM:\SOFTWARE\WinRAR -Name exe64 
+        `$winrarpath = Get-ItemProperty -Path HKLM:\SOFTWARE\WinRAR -Name exe64
         `$winrarpath = `$winrarpath.exe64
         if ((Test-Path `$winrarpath) -eq `$true) {
             `$archiverProgram = `$winrarpath
@@ -88,12 +90,12 @@ if ((Test-path HKLM:\SOFTWARE\7-Zip\) -eq `$true) {
     `$7zpathexe = `$7zpath + "7z.exe"
     if ((Test-Path `$7zpathexe) -eq `$true) {
         `$archiverProgram = `$7zpathexe
-        `$7zipinstalled = `$true 
-    }    
+        `$7zipinstalled = `$true
+    }
 }
 if (`$7zipinstalled -eq `$false) {
     if ((Test-path HKLM:\SOFTWARE\WinRAR) -eq `$true) {
-        `$winrarpath = Get-ItemProperty -Path HKLM:\SOFTWARE\WinRAR -Name exe64 
+        `$winrarpath = Get-ItemProperty -Path HKLM:\SOFTWARE\WinRAR -Name exe64
         `$winrarpath = `$winrarpath.exe64
         if ((Test-Path `$winrarpath) -eq `$true) {
             `$archiverProgram = `$winrarpath
@@ -197,20 +199,20 @@ else {
 Remove-Item `$nvidiaTempFolder -Recurse -Force -ErrorAction SilentlyContinue
 "@
 
-New-Item -Path "C:\Windows\Utils" -Name NVIDIAUpdater.ps1 -ItemType File -Value $NVIDIAUpdatesScript -Force -ErrorAction SilentlyContinue
-    
-$Hours = 1, 2, 3, 4, 5, 5, 21, 22, 23 | Get-Random -Count 1
-$Minutes = Get-Random -Minimum 00 -Maximum 59
-$Time = Get-Date -Hour $Hours -Minute $Minutes -UFormat %r
-$Trigger = (New-ScheduledTaskTrigger -Daily -At $Time)
-$User = "NT AUTHORITY\SYSTEM"
+    New-Item -Path 'C:\Windows\Utils' -Name NVIDIAUpdater.ps1 -ItemType File -Value $NVIDIAUpdatesScript -Force -ErrorAction SilentlyContinue
 
-$Action = (New-ScheduledTaskAction -Execute "POWERSHELL" -Argument '-ExecutionPolicy Bypass -File "C:\Windows\Utils\NVIDIAUpdater.ps1"')
+    $Hours = 1, 2, 3, 4, 5, 5, 21, 22, 23 | Get-Random -Count 1
+    $Minutes = Get-Random -Minimum 00 -Maximum 59
+    $Time = Get-Date -Hour $Hours -Minute $Minutes -UFormat %r
+    $Trigger = (New-ScheduledTaskTrigger -Daily -At $Time)
+    $User = 'NT AUTHORITY\SYSTEM'
 
-$Settings = New-ScheduledTaskSettingsSet -RunOnlyIfNetworkAvailable -WakeToRun -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -StartWhenAvailable
+    $Action = (New-ScheduledTaskAction -Execute 'POWERSHELL' -Argument '-ExecutionPolicy Bypass -File "C:\Windows\Utils\NVIDIAUpdater.ps1"')
 
-Register-ScheduledTask -TaskName "S5 - NVIDIA Driver Updater" -Trigger $Trigger -User $User -Action $Action -Settings $Settings -RunLevel Highest -Force -Description "This task updates the Nvidia Geforce software and drivers if installed. S5-JM last updated 5-3-23"
+    $Settings = New-ScheduledTaskSettingsSet -RunOnlyIfNetworkAvailable -WakeToRun -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -StartWhenAvailable
+
+    Register-ScheduledTask -TaskName 'S5 - NVIDIA Driver Updater' -Trigger $Trigger -User $User -Action $Action -Settings $Settings -RunLevel Highest -Force -Description 'This task updates the Nvidia Geforce software and drivers if installed. S5-JM last updated 5-3-23'
 
 }
 
-else {"NOT NVIDIA - No actions taken"}
+else { 'NOT NVIDIA - No actions taken' }
