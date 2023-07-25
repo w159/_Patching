@@ -14,16 +14,12 @@ $VideoController = (Get-WmiObject -ClassName Win32_VideoController | Where-Objec
 
 if ($VideoController -notcontains 'NVIDIA')
 {
-
     Write-Host 'IS NVIDIA - Building script to verify up to date'
-
 
     [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
     $ProgressPreference = 'SilentlyContinue'
     New-Item -Path C:\ -Name Utils -ItemType Directory -Force -ErrorAction SilentlyContinue
     New-Item -Path C:\Windows -Name Utils -ItemType Directory -Force -ErrorAction SilentlyContinue
-
-    Get-ScheduledTask | Where-Object TaskName -EQ 'Nvidia-Updater' | Unregister-ScheduledTask -Confirm:$false -ErrorAction SilentlyContinue
 
     $NVIDIAUpdatesScript = @"
 `$TestWingetLocation = Get-ChildItem -Recurse -Path "C:\`$Env:Programfiles\WindowsApps\Microsoft.DesktopAppInstaller*" | Where-Object Name -Like "winget.exe"
