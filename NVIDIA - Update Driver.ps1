@@ -3,8 +3,6 @@
 This script should check for the current NVIDIA driver installed and update as needed
 The NVIDIA download site is used to compare the current and latest versions
 
-
-
 #>
 
 Get-ScheduledTask | Where-Object TaskName -EQ 'Nvidia-Updater' | Unregister-ScheduledTask -Confirm:$false -ErrorAction SilentlyContinue
