@@ -63,7 +63,7 @@ $AppXPackages = @(
 foreach ($package in $AppXPackages)
 {
     Write-Host 'Removing package:' $package
-    Get-AppxPackage -AllUsers $package | Remove-AppxPackage
+    Get-AppxPackage -AllUsers $package | Remove-AppxPackage -AllUsers
 }
 
 $AppCProvisionedPackages = @(
