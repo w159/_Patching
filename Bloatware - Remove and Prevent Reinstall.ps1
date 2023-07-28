@@ -131,6 +131,11 @@ $cdm = @(
     'SubscribedContentEnabled'
     'SystemPaneSuggestionsEnabled'
 )
+New-Item -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager' -Force -ErrorAction SilentlyContinue
+foreach ($key in $cdm)
+{
+    Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager' $key 0 -Force -ErrorAction SilentlyContinue
+}
 
 Write-Output 'Disabling Cortana...'
 If (!(Test-Path 'HKCU:\Software\Microsoft\Personalization\Settings'))
