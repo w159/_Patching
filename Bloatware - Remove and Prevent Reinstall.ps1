@@ -57,7 +57,8 @@ $AppXPackages = @(
     '*PicsArt*',
     '*Twitter*',
     '*Wunderlist*',
-    '*Phone*'
+    '*Phone*',
+    '*HPPrinterControl*'
 )
 
 foreach ($package in $AppXPackages)
@@ -107,7 +108,8 @@ $AppCProvisionedPackages = @(
     '*bingsports*',
     '*sports*',
     '*sway*',
-    '*Wifi*'
+    '*Wifi*',
+    '*HPPrinterControl*'
 )
 
 Get-AppxProvisionedPackage -Online | Where-Object { $AppCProvisionedPackages -contains $_.PackageName } | ForEach-Object {
