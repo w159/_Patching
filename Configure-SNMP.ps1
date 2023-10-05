@@ -1,4 +1,9 @@
 function Configure-SNMP {
+
+    <#
+    EX - Configure-SNMP -h localhost -communityName public -snmpType 4 -permittedHost DeviceName
+    #>
+
     param (
         [string]$h, [string]$f, [string]$username, [string]$pass, [string]$onlyConfigure, [string]$communityName, [int]   $snmpType, [string]$permittedHost, [string]$debug
     )
