@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.Threading.Tasks.Extensions</name>
+  </assembly>
+  <members>
+    <member name="T:System.Runtime.CompilerServices.ValueTaskAwaiter`1">
+      <typeparam name="TResult">
+      </typeparam>
+    </member>
+    <member name="M:System.Runtime.CompilerServices.ValueTaskAwaiter`1.GetResult">
+      <returns>
+      </returns>
+    </member>
+    <member name="P:System.Runtime.CompilerServices.ValueTaskAwaiter`1.IsCompleted">
+      <returns>
+      </returns>
+    </member>
+    <member name="M:System.Runtime.CompilerServices.ValueTaskAwaiter`1.OnCompleted(System.Action)">
+      <param name="continuation">
+      </param>
+    </member>
+    <member name="M:System.Runtime.CompilerServices.ValueTaskAwaiter`1.UnsafeOnCompleted(System.Action)">
+      <param name="continuation">
+      </param>
+    </member>
+    <member name="T:System.Threading.Tasks.ValueTask`1">
+      <summary>Provides a value type that wraps a <see cref="Task{TResult}"></see> and a <typeparamref name="TResult">TResult</typeparamref>, only one of which is used.</summary>
+      <typeparam name="TResult">The result.</typeparam>
+    </member>
+    <member name="M:System.Threading.Tasks.ValueTask`1.#ctor(System.Threading.Tasks.Task{`0})">
+      <summary>Initializes a new instance of the <see cref="ValueTask{TResult}"></see> class using the supplied task that represents the operation.</summary>
+      <param name="task">The task.</param>
+      <exception cref="T:System.ArgumentNullException">The <paramref name="task">task</paramref> argument is null.</exception>
+    </member>
+    <member name="M:System.Threading.Tasks.ValueTask`1.#ctor(`0)">
+      <summary>Initializes a new instance of the <see cref="ValueTask{TResult}"></see> class using the supplied result of a successful operation.</summary>
+      <param name="result">The result.</param>
+    </member>
+    <member name="M:System.Threading.Tasks.ValueTask`1.AsTask">
+      <summary>Retrieves a <see cref="Task{TResult}"></see> object that represents this <see cref="ValueTask{TResult}"></see>.</summary>
+      <returns>The <see cref="Task{TResult}"></see> object that is wrapped in this <see cref="ValueTask{TResult}"></see> if one exists, or a new <see cref="Task{TResult}"></see> object that represents the result.</returns>
+    </member>
+    <member name="M:System.Threading.Tasks.ValueTask`1.ConfigureAwait(System.Boolean)">
+      <summary>Configures an awaiter for this value.</summary>
+      <param name="continueOnCapturedContext">true to attempt to marshal the continuation back to the captured context; otherwise, false.</param>
+      <returns>The configured awaiter.</returns>
+    </member>
+    <member name="M:System.Threading.Tasks.ValueTask`1.CreateAsyncMethodBuilder">
+      <summary>Creates a method builder for use with an async method.</summary>
+      <returns>The created builder.</returns>
+    </member>
+    <member name="M:System.Threading.Tasks.ValueTask`1.Equals(System.Object)">
+      <summary>Determines whether the specified object is equal to the current object.</summary>
+      <param name="obj">The object to compare with the current object.</param>
+      <returns>true if the specified object is equal to the current object; otherwise, false.</returns>
+    </member>
+    <member name="M:System.Threading.Tasks.ValueTask`1.Equals(System.Threading.Tasks.ValueTask{`0})">
+      <summary>Determines whether the specified <see cref="ValueTask{TResult}"></see> object is equal to the current <see cref="ValueTask{TResult}"></see> object.</summary>
+      <param name="other">The object to compare with the current object.</param>
+      <returns>true if the specified object is equal to the current object; otherwise, false.</returns>
+    </member>
+    <member name="M:System.Threading.Tasks.ValueTask`1.GetAwaiter">
+      <summary>Creates an awaiter for this value.</summary>
+      <returns>The awaiter.</returns>
+    </member>
+    <member name="M:System.Threading.Tasks.ValueTask`1.GetHashCode">
+      <summary>Returns the hash code for this instance.</summary>
+      <returns>The hash code for the current object.</returns>
+    </member>
+    <member name="P:System.Threading.Tasks.ValueTask`1.IsCanceled">
+      <summary>Gets a value that indicates whether this object represents a canceled operation.</summary>
+      <returns>true if this object represents a canceled operation; otherwise, false.</returns>
+    </member>
+    <member name="P:System.Threading.Tasks.ValueTask`1.IsCompleted">
+      <summary>Gets a value that indicates whether this object represents a completed operation.</summary>
+      <returns>true if this object represents a completed operation; otherwise, false.</returns>
+    </member>
+    <member name="P:System.Threading.Tasks.ValueTask`1.IsCompletedSuccessfully">
+      <summary>Gets a value that indicates whether this object represents a successfully completed operation.</summary>
+      <returns>true if this object represents a successfully completed operation; otherwise, false.</returns>
+    </member>
+    <member name="P:System.Threading.Tasks.ValueTask`1.IsFaulted">
+      <summary>Gets a value that indicates whether this object represents a failed operation.</summary>
+      <returns>true if this object represents a failed operation; otherwise, false.</returns>
+    </member>
+    <member name="M:System.Threading.Tasks.ValueTask`1.op_Equality(System.Threading.Tasks.ValueTask{`0},System.Threading.Tasks.ValueTask{`0})">
+      <summary>Compares two values for equality.</summary>
+      <param name="left">The first value to compare.</param>
+      <param name="right">The second value to compare.</param>
+      <returns>true if the two <see cref="ValueTask{TResult}"></see> values are equal; otherwise, false.</returns>
+    </member>
+    <member name="M:System.Threading.Tasks.ValueTask`1.op_Inequality(System.Threading.Tasks.ValueTask{`0},System.Threading.Tasks.ValueTask{`0})">
+      <summary>Determines whether two <see cref="ValueTask{TResult}"></see> values are unequal.</summary>
+      <param name="left">The first value to compare.</param>
+      <param name="right">The seconed value to compare.</param>
+      <returns>true if the two <see cref="ValueTask{TResult}"></see> values are not equal; otherwise, false.</returns>
+    </member>
+    <member name="P:System.Threading.Tasks.ValueTask`1.Result">
+      <summary>Gets the result.</summary>
+      <returns>The result.</returns>
+    </member>
+    <member name="M:System.Threading.Tasks.ValueTask`1.ToString">
+      <summary>Returns a string that represents the current object.</summary>
+      <returns>A string that represents the current object.</returns>
+    </member>
+    <member name="T:System.Runtime.CompilerServices.AsyncMethodBuilderAttribute">
+    </member>
+    <member name="M:System.Runtime.CompilerServices.AsyncMethodBuilderAttribute.#ctor(System.Type)">
+      <param name="builderType">
+      </param>
+    </member>
+    <member name="P:System.Runtime.CompilerServices.AsyncMethodBuilderAttribute.BuilderType">
+      <returns>
+      </returns>
+    </member>
+    <member name="T:System.Runtime.CompilerServices.AsyncValueTaskMethodBuilder`1">
+      <typeparam name="TResult">
+      </typeparam>
+    </member>
+    <member name="M:System.Runtime.CompilerServices.AsyncValueTaskMethodBuilder`1.AwaitOnCompleted``2(``0@,``1@)">
+      <param name="awaiter">
+      </param>
+      <param name="stateMachine">
+      </param>
+      <typeparam name="TAwaiter">
+      </typeparam>
+      <typeparam name="TStateMachine">
+      </typeparam>
+    </member>
+    <member name="M:System.Runtime.CompilerServices.AsyncValueTaskMethodBuilder`1.AwaitUnsafeOnCompleted``2(``0@,``1@)">
+      <param name="awaiter">
+      </param>
+      <param name="stateMachine">
+      </param>
+      <typeparam name="TAwaiter">
+      </typeparam>
+      <typeparam name="TStateMachine">
+      </typeparam>
+    </member>
+    <member name="M:System.Runtime.CompilerServices.AsyncValueTaskMethodBuilder`1.Create">
+      <returns>
+      </returns>
+    </member>
+    <member name="M:System.Runtime.CompilerServices.AsyncValueTaskMethodBuilder`1.SetException(System.Exception)">
+      <param name="exception">
+      </param>
+    </member>
+    <member name="M:System.Runtime.CompilerServices.AsyncValueTaskMethodBuilder`1.SetResult(`0)">
+      <param name="result">
+      </param>
+    </member>
+    <member name="M:System.Runtime.CompilerServices.AsyncValueTaskMethodBuilder`1.SetStateMachine(System.Runtime.CompilerServices.IAsyncStateMachine)">
+      <param name="stateMachine">
+      </param>
+    </member>
+    <member name="M:System.Runtime.CompilerServices.AsyncValueTaskMethodBuilder`1.Start``1(``0@)">
+      <param name="stateMachine">
+      </param>
+      <typeparam name="TStateMachine">
+      </typeparam>
+    </member>
+    <member name="P:System.Runtime.CompilerServices.AsyncValueTaskMethodBuilder`1.Task">
+      <returns>
+      </returns>
+    </member>
+    <member name="T:System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable`1.ConfiguredValueTaskAwaiter">
+      <typeparam name="TResult">
+      </typeparam>
+    </member>
+    <member name="M:System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable`1.ConfiguredValueTaskAwaiter.GetResult">
+      <returns>
+      </returns>
+    </member>
+    <member name="P:System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable`1.ConfiguredValueTaskAwaiter.IsCompleted">
+      <returns>
+      </returns>
+    </member>
+    <member name="M:System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable`1.ConfiguredValueTaskAwaiter.OnCompleted(System.Action)">
+      <param name="continuation">
+      </param>
+    </member>
+    <member name="M:System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable`1.ConfiguredValueTaskAwaiter.UnsafeOnCompleted(System.Action)">
+      <param name="continuation">
+      </param>
+    </member>
+    <member name="T:System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable`1">
+      <typeparam name="TResult">
+      </typeparam>
+    </member>
+    <member name="M:System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable`1.GetAwaiter">
+      <returns>
+      </returns>
+    </member>
+  </members>
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>1oPpDOcyaK6X3szg/IkE31LP+vg=</DigestValue></Reference></SignedInfo><SignatureValue>VY+l3dJu5/mXTpFleZlJY17NRng4WMzxFrlofjvvI99sfL18ZwM9jSzI1hx84pf0rMQ5UcIRSrWgahOf5jM5HLpPv+t9c4NsgER4ftXS4N2q1scQ4isaGsa48Zi/89AO5ULqRyc4M5gu7JMU3X7Uex5dJZfqfrIQlcbUovevW3pVTU+3cL0l5NJXRe0BwVWlnTZUW+xCvpLcaGgysoId+hIh+5cnpmQtUQQp8gKdbDXrOz+kWXAbSuzdt4ObmlJ6w82Pmb/FE5Y8KptmlfFg4Nz73N2A3/iVHoROLWOHM1x9R7r8Aa6i5dUKRycQ2u0Qs6crBZKiAU4fo2tJ76CwBA==</SignatureValue><KeyInfo><X509Data><X509Certificate>MIIE9jCCA96gAwIBAgIQVxYYDbfUmJ3EoXCD3Pp1ZzANBgkqhkiG9w0BAQsFADB/MQswCQYDVQQGEwJVUzEdMBsGA1UEChMUU3ltYW50ZWMgQ29ycG9yYXRpb24xHzAdBgNVBAsTFlN5bWFudGVjIFRydXN0IE5ldHdvcmsxMDAuBgNVBAMTJ1N5bWFudGVjIENsYXNzIDMgU0hBMjU2IENvZGUgU2lnbmluZyBDQTAeFw0xNTAxMTMwMDAwMDBaFw0xODAxMTIyMzU5NTlaMF4xCzAJBgNVBAYTAlVTMRcwFQYDVQQIEw5Ob3J0aCBDYXJvbGluYTEUMBIGA1UEBxMLTW9ycmlzdmlsbGUxDzANBgNVBAoUBkxFTk9WTzEPMA0GA1UEAxQGTEVOT1ZPMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtwVWMufFrSa68v9h+qMIEPTNZrZcxPzdiOoDfdTuX4A51yhSpbcySu9MbeXsu4Zg8f29nQMYnYsxSVfAUpaed3Sjjnff2k6/WHpSfoGzf5oDWrzY3Nss64VrE2/C3FZ0XVlp/xRAOO51MyRQ14Pz0KVOggw4LXgjQ8Tyy379Fi9CiDdBLmSFBt2rDoGVPfiiu0XPg6H6r/jw4U3sQ2iw1eyFWXa+tKqHm4uJKvWzWZWd5Wsls4iWx5RhHgT7+O3fLRc1FPf8oXl5QdVer/1UHGHN4wRbEJDDJWKhCUCbpzLxCkd1FIxMPQgojbiz9TkBBLi35zYzhHeRABHm1DX/BQIDAQABo4IBjTCCAYkwCQYDVR0TBAIwADAOBgNVHQ8BAf8EBAMCB4AwKwYDVR0fBCQwIjAgoB6gHIYaaHR0cDovL3N2LnN5bWNiLmNvbS9zdi5jcmwwZgYDVR0gBF8wXTBbBgtghkgBhvhFAQcXAzBMMCMGCCsGAQUFBwIBFhdodHRwczovL2Quc3ltY2IuY29tL2NwczAlBggrBgEFBQcCAjAZDBdodHRwczovL2Quc3ltY2IuY29tL3JwYTATBgNVHSUEDDAKBggrBgEFBQcDAzBXBggrBgEFBQcBAQRLMEkwHwYIKwYBBQUHMAGGE2h0dHA6Ly9zdi5zeW1jZC5jb20wJgYIKwYBBQUHMAKGGmh0dHA6Ly9zdi5zeW1jYi5jb20vc3YuY3J0MB8GA1UdIwQYMBaAFJY7U/B5M5evfYPvLivMyreGHnJmMB0GA1UdDgQWBBRSMmHtmvK1hUveuxeoJ/Jwj5J18jARBglghkgBhvhCAQEEBAMCBBAwFgYKKwYBBAGCNwIBGwQIMAYBAQABAf8wDQYJKoZIhvcNAQELBQADggEBAHW49q6GgSXkLVnqgvw2Zpsz7mqr3TOb9OXM4KOnGQWUpfYnT/HaJbHOpH46LlgOwBd9hVyOI5ON6S0JSe6gcp49NZ2aoYvyIqq+k6xsr0QxVqHzPD0gOotwWBXKhg0+CMyxIuKYAjXNxvnzBqeAmyRbZoGvFdPeqbGpm+kvS+MeMTdy8gmXMZCj9f2KhDNjm2gYjKAVEeyodrs/LqrYsAMB4+ie099pA5++gBM892Z4DEREh14Y1Ydv/sLsAtOrkNeGlRgnoTklzFVqaHHm55T/c6VzHjKabNHb/t8Wt3psevQUnN4KqxyHrk1oQp8V3wzJNNum4tA4+Dc5w9uUgRc=</X509Certificate></X509Data></KeyInfo></Signature></doc>

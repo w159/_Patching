@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Addin name="MultimediaAddin" version="1.1.1.17" runas="user" interactive="false">
+  <Contracts>
+    <Contract name="SystemManagement.Audio"/>
+    <Contract name="SystemManagement.Camera"/>
+    <Contract name="SystemManagement.AudioProfile"/>
+    <Contract name="SystemManagement.AppScenario"/>
+  </Contracts>
+  <EventSubscriptions>
+    <EventSubscription event="AppxDeploymentEvent">
+      <SubscriptionArgsJson><![CDATA[
+            {"Apps":[
+                {"FriendlyName":"VantageUWP","AppxPfn":"E046963F.LenovoCompanion_k1h2ywk1493x8","Triggers":["Install","Uninstall"]},
+                {"FriendlyName":"VantageBetaUWP","AppxPfn":"E046963F.LenovoCompanionBeta_k1h2ywk1493x8","Triggers":["Install","Uninstall"]},
+	              {"FriendlyName":"CommercialVantageUWP","AppxPfn":"E046963F.LenovoSettingsforEnterprise_k1h2ywk1493x8","Triggers":["Install","Uninstall"]},
+            ]}
+          ]]></SubscriptionArgsJson>
+    </EventSubscription>
+    <EventSubscription event="SessionChangeEvent">
+      <SubscriptionArgsJson><![CDATA[
+            {"Triggers":[
+                "SessionLogon"
+            ]}
+          ]]></SubscriptionArgsJson>
+    </EventSubscription>
+  </EventSubscriptions>
+  <Settings>
+    <Setting key="AppScenario"><![CDATA[{"ProcessInfo":[
+                {"Category":"Music","Process":[{"AppType":"Desktop","Name":["KwMusic","KwSing","KuGou","KuGooRadio","QQMusic","foobar2000","BaiduMusic","虾米音乐","MediaMonkey","AIMP","JetAudio","MusicBee","Spotify","cloudmusic","TTPlayer","WeSing","MvBoxPlayer","audacity","Djbox","kugou_hifi","蓝蚁音效32","DuomiDJ","KuPlayer","CXMusic","winamp","Media Center 24","XDeskCover","Goma","Mirro-Player","Winyl","tting","SogouMusicBox","AIRPLAY_Selected","MoFunMusic","djccmusic","AudioPlayer","ting","cometplayer"]},
+                                            {"AppType":"Metro","Name":["Microsoft.ZuneMusic","AppleInc.iTunes","076424C1.Beta","B5504E89.UWP","903DB504.QQWP","Resolute.foobar2000","BaiduMusic.13872B549AB1A","BaiduMusic.BaiduFM","BaiduMusic.TTPlayer","03DDDFF0.FMforWin8","PlanetaRedSL.RedKaraoke","49573Spotlite.Spotlite-ListentoSpotify","50072StevenMayall.MusicBee","SpotifyAB.SpotifyMusic","1F8B0F94.122165AE053F","1FCC9F46.25053F7D1F659"]}]},
+                {"Category":"Movie","Process":[{"AppType":"Desktop","Name":["wmplayer","StormPlayer","PowerDVD10","QyClient","QyPlayer","GeePlayer","BaiduPlayer","QQPlayer","QuickTimePlayer","LenovoYoga3Pro","vlc","KMPlayer","ALLPlayer","bsplayer","mpc-hc64","mpc-hc","Funshion","SHPlayer","GOM","realplay","LeTVLoader","XMP","QQLive","PotPlayerMini64","PPLive","CBox","YoukuDesktop","JJPlayer","xfplay","PIPIPlayer","smplayer","PowerDVD","Adobe Media Player","JJPlayer","VideoPlayer","VDPlayer","mgtv","sinaplayer","splayer","YKPlayer","xgportal","MiGuApp","tvp","iDeer Blu-ray Player","Easy DVD Player","SopCast","fenglei","iTudou","FabPlayer","Splash","MpcStar","VMP","WSPlayer","FilmEveryday","TDLive","KulePlayer","leidian"]},
+                                            {"AppType":"Metro","Name":["Microsoft.ZuneVideo","D3B29ACD.11297046292B","D3B29ACD.3642828EFC4B","0C72C7CD.Beta","0C72C7CD.217379CB4AE6F","FilmOnLiveTVFree.OmniverseTV","FilmOnLiveTVFree.FilmOn","4DF9E0F8.Netflix","518B6F23.22397EDDD7953","VideoLAN.VLC","B498FF8C.VRPro","11610ShaoSMpet.345866962541E","DailymotionSA.Dailymotion","6663.31243D98C4B52","PPTV.PPTVHD","16903ArthurVY.YouTubeforWindows8","19120CensoredUser.HyperforYouTube","2409youku.34494C66F8B7","B498FF8C.HD"]}]},
+                {"Category":"Games","Process":[{"AppType":"Desktop","Name":["Wow","Wow-64","pes2014","cstrike","crossfire","League of Legends","TKLobby","DNF","shootergame","witcher3","toukidenkiwami_en","toukidenkiwami_ja","loader","fs4sploader","wargame-g4wlive","hawx","hawx2","wuxia","wayofthesamurai","pla6","batmanak","akibauu","bladestorm nightmare\"launch","bladestorm nightmare\"launch_jp","bladestorm nightmare\"launch_en","launch_ea","f1_2015","60seconds","deadspace2","clos","sacred3","childoflight","defensegrid2_release","guiwuzhe","vt4","avp","prototype2","nfs13","darksiderspc","clos2?","sniperghostwarrior2","game","rerev2","accgame-win32-shipping","gujian","dungeon siege iii","masseffect2","mo7","ssfiv","dirt2_game",
+                                                                        "dirt2","ac3sp","ac3lhd_32","ed_zero","prototype","resident evil 4","biohazard 4","bio4","orcsmustdie2","conviction_game","cnc3","ninja","wargame-g4wlive","darksouls","data","gonehome32","ut4","ut3","ut2014","halospartanassaul","dead space","lanoire","pop","grimrock2","bmlauncher","shippingpc-bmgame","rocketleague","deadspace2","bastion","xr_3da","f.e.a.r.2","doom3:bfg edition","doom3","battleblocktheater","bioshock","runblack","splintercell3","ftlgame","rayman origins","madden05","madden nfl 2005","brokenage","the walking dead","the escapists - the walking dead","masseffect2","splintercell2","homeworld2","steamworlddig","childoflight","thewolfamongus",
+                                                                        "theswapper","f.e.a.r","bioshock2","daorigins","legomarvel ","wic","crysis","crysis64","crysis warhead","streetfighteriv","ssfiv","shogun2","deathwatchgame-win32-shipping","prototype","re5dx9","re5dx10","trine2_32bit","empire","farcry2","supermeatboy","诛仙世界\"elementclient","dunhuang","client","完美世界国际版\"elementclient","elementclient","xyclient","client","asta","eve","exefile","mo","maupdat","chunryong","fh2","tgame","battlefieldonline","bfoclient","boonline","dragon","client","qqxy","sungame","warofzombie","entry","asktao","asktao.mod","wdwz.mod","tyj","cabal","cabal onlinecabal","avp","cabalmain","sword","qqmicrogamebox","gameapp","swmain.dll",
+                                                                        "使命召唤online\"client","asktao.mod","game.bin","syclient","kartrider","cgate","cg_item_6000","tw2","cstrike-online","csolauncher","maplestory","game.bin","gacrunner.dll","xy2","wuhun.dll","freestyle2","zhengtu2","jx3client","ui_launch_dx_bak","x52","game","client","dp","sdclient","aion.bin","aion","playnclauncher","神鬼世界\"game","plagame-win32-shipping","sunwardpkg","spitfiredashboard","tornadoforce","element\"elementclient","xxzshell","nycsclient","rt","gacrunner.dll","x2","game","nba2k16","mmh7game-win64-shipping","sw4ii","pes2016","witcher3","transformersdevastation","minecraftstorymode","mgsvtpp","fifa16","oppw3","wrc5","wl2","gamecorpdx","themagiccircle",
+                                                                        "prison architect","prison architect_cn","starwarsbattlefront","madmax","pillarsofeternity","revision","civilizationbe_mantle","civilizationbe_dx11","ffv_game","ffv_launcher","ff4a","ff4a_launcher","grandagesmedieval","soma","cities","dead in bermuda","ravenmark","big pharma","cms2015","survivors beta","survivors","paintersguild","pixelpiracy","sd2","railworks","actofaggression","fftype0hd","fftype0hdlauncher","zombi","partyhardgame","nobu14pk","noubu14","nobu14launchercn","evoland2","armello","dragonageinquisition","blackops3","sorcererking","fairyfencer","hpaws","galciv3","neptuniarebirth2","offworld","cactus","affgame","acc","bos_sc","kbdarkside","hsl","hsl2",
+                                                                        "guildll","game","war3","nfs14","nfs14_x86","torchlight2","ra3uprising","ra3","shin.sangokumusou.6","sm5_win","sg7","dmc-devilmaycry","ts3","san11","fruitninjahd","pvz","torchlight","san12","kofxiii","watch_dogs","metal gear rising revengeance","nba2k15","sniperelite3","farcry4","nsunsr","acu","dragonageinquisition","nba2k14","nsunsr","nfs18","nfs18_x86","bh6","crysis3","pes2014","ac4bfmp","ac4bfsp","dontstarvewzb","dontstarve_steam","dbxv","acc","darksoulsii","attila","left4dead2","moh_breakthrough","crysis2","lostplanetgame","mb_warband","sporeapp","bf4","devilmaycry4specialedition","mk10","stranded_deep_x64","heroes3","heroes3hd","s1_sp64_ship","s1_mp64_ship",
+                                                                        "evilwithin","ffxiiiimg","civilizationbe_mantle","civilizationbe_dx11","pes2015","shadowofmordor","deadrising3","mgsgroundzeroes","tesv","tru","pal5q","fifa14","fallout3","borderlands","diablo iii","Diablo III64","gtaiv","launchgtaiv","tombraider","tropico5steam","bfbc2game","bfbc2betagame","terraria","codsp_s","t6sp","t6mp","t6zm","hd-frontend ","farcry3","minecraft","metro2033","dayz","grid","gridautosport","gridautosport_avx","dirt3","dirt3_game","batmanorigins","maxpayne3","bioshockinfinite","game","borderlands2","orochi_z","lolclient","crossfire","dnf","tensafe","qqdl","txplatform","mhtab","mhmain","game","wow","wow-64","wuxia_client","wuxia","client","tgame",
+                                                                        "client","dota2","hearthstone","jx3clientx64","jx3client","jx3client","worldoftanks","soul","accountbind","fxgame","fxres","xclient","lwclient","mir","asura","gacrunner","ffxiv-arr-bench-world","ffxiv","ffxivbenchmarklauncher","au","au_girl","auclient","binaries","tps","dragonnest","kritika_client","tera","omgportal","omgportalchk","patch_omgportal","preloadrappelzomg","xajh","dungeonstriker","xxsj","sdclient","cstrike-online","csolauncher","knightclient","reliccoh-online","ava","worldofwarplanes","monsterhunter","meteor","odin","ca","aces","moon","bubblefighter","fronline","client.dat","xcb.dat","wlzzclient","tianyu","herosofthestorm_x64","gw2","heroes","malauncher",
+                                                                        "tuclient","ldjgame","ldj","client","mljhonline","bio4","hl2","braid","daorigins","starcraftii","starcraft ii","SC2_x64","acc","codwaw","codwawmp","eu4","fifa12","planetside2","planetside2_x64","planetside2_x86","farcry3","half-life","hl","portal2","iw6mp","iw6sp","gta5","ts4","nfs6","war3","civ4beyondword","masseffect3","nba2k13","grid2","grid2_avx","acbsp","reliccoh","wog","worldofgoo","witcher2","bmgame","batman-arkham-city","astronautsgame-win64-shipping","ra2","homeworldrm","nfs11","maxpayne2","civilizationv","starcraft","oblivion","obse","blacklist_dx11_game","gta_sa","simcity","heroes3","pes2015","cities","iw4sp","iw4mp","dxhr","dx3_content","dx3_win32_final",
+                                                                        "dx3_win32_gm","dx3_win32_release","anno2205 ","acs","darksiders2","disneyinfinity3","eocapp","chaosrebornwin64","mn9game","howtosurvice2","evil defenders","nobu6hd_jp","planetbase","ysc","isaac","launcher","fallout4","thrones","grandagesmedieval","hardwest","lifeisstrange","mordheim","streetfightervbeta-win64-shipping","streetfightervbeta","streetfighterv-win64-shipping","streetfighterv","swordcoast","tales of zestiria","vanhelsing_x64","vanhelsing","mugensouls","slw","everquest?","everquest2","freerealms","swgclient_r ","wow","wow-64","aion.bin","gameapp","ui_launch_dx_bak ?","kartrider","cstrike-online ?","300","300","7fgame","ace combat_ah","fxlaunch","pecangame",
+                                                                        "ava","archeage","arma2","arma2demo","arma2free","arma2server","arma3demo","arma3","arma3int_e3_protected","ac3sp","ac3mp","ac4bfmp","ac4bfsp","ac3lhd_32","acu","acusp","acump","scimitar_engine_win64_r","scimitar_engine_win64_f","audition","azera","bmgame","batman-arkham-city","batmanac","batmanorigins","batmanoriginsonline","batman0","bfbc2game","bfbc2betagame","bf3","bf4","bioshockinfinite","blackdesert32","blackgold\"fxlaunch","bin\"fxgame","willowgame","borderlands2","cabal2","c2launcher","cabal2main","berkelium","s1_sp64_ship","s1_mp64_ship","codsp_s","t6sp","t6mp","t6zm","iw6sp64_ship","iw6mp64_ship","iw4mp","iw4sp","iw4mp","iw4sp","iw5sp","iw5mp","iw5mp_server",
+                                                                        "iw6mp","iw6sp","coj4game_x86_rd","cojgunslinger","cities","civilizationv","civilizationv d3d11","civilizationv_dx11","civilizationv_dx11","civilizationv_dx9","reliccoh","reliccoh2","counter-strike\"hl","csgo","cstrike-online","csolauncher","counter-strike source\"hl2","csnz\"cstrike-online","qqlogin","crossfire","launchcrossfire","cfselworld","crysis2","crysis2demo","crysis2demolauncher","crysis2launcher","activation","crysis2","crysis3","crysis 3 mp alpha","cypherslauncher","darksouls2","frpg2","darksoulsii","release\"dtws","release\"gacrunner.dll","daylightlauncher","daylight","dayz","deadislandgame_x86_rd","deadislandgame_x86_rwdi","deadrising3","deadspace_q","deadspace3",
+                                                                        "dx3_content","dxhr","dx3_win32_final","dx3_win32_gm","dx3_win32_release","diablo iii","diablo iii launcher","dirt3","drt","showdown","rp6","dishonoredgame","shippingpc-dishonoredgame","eocapp","devilgame-win32-shipping","dmc-devilmaycry","devilgame","dnf","neoplelauncher","neopleins","dontstarve_steam","dontstarve_steam","dota","asura","dragonageinquisition","dbolauncher","dbo","dnlauncher","dragonnest","dragonnest_trial","梦三国","msango.bin","playtest\"gameclient","neverwinter","dungeonstrikerlauncher","dynasty warriors 8\"config","tesv","skyrimlauncher","edlaunch","elevate","edlaunch","elitedangerous32","eos","eurotrucks2","evolve","f1_2012_game","f1_2012","game_unity_win_r",
+                                                                        "f1_2013","f1_2014","fable3","f3secu","fable 3\"fablelauncher","fallout3nv","falloutnv","falloutnvbeta","falloutnvlauncher","fallout3","fallout3ng","falloutlauncher","mhtab","mhmain","farcry3_p","farcry3_r","farcry3_rt","farcry3","editor_r","ingamesettings","farcry3_orig","farcry3_d3d11","farcry3_p_d3d11","farcry3_r_d3d11","farcry3_rt_d3d11","fc3_blooddragon","fc3_blooddragon_d3d11","fc3_blooddragon_rt","fc3_blooddragon_rt_d3d11","farcry4","farcry4_r64","farcry4_rt64","farcry4_p64","ge_wpf64","ge_wpf64_rt64","farmingsimulator2015","farmingsimulator2015game","fifa12","fifa13_demo","fifa13","fifa14","fifa15","fifazf","fifalauncher","ffxiv-arr-bench-world","ffxiv","ffxivbenchmarklauncher",
+                                                                        "firefallclient","fm","fm","physics\"ball_physics_v1394.bin","football manager 2015\"fm","fsbox","freestyle","apolloguardian","freestyle2","freestyle2","gauntlet","plalauncher","gtaiv","launchgtaiv","gta-vc","gta_sa","grid2_avx","grid2","gridautosport","gridautosport_avx","gujian2","gw2dev","gw2","half-life\"hl","half-life 2\"hl2","half-life 2 episode one\"hl2","half-life 2 episode two\"hl2","hawken","win32\"hawkengame-win32-shipping","hearthstone beta launcher","hearthstone","hon","heroes of the storm","yxsggame_ship","hma","engine","hitman5dll.dll","hmaunprotected","homeworldrm","infinitecrisis","injustice","injusticelauncher","gameupdater","justcause2","jcmplauncher","ksp","killingfloor",
+                                                                        "kuf2launcher","kuf2","kritika_client","league of legends","lol.launcher","lolclient","ollauncher","left4dead","lineageii","lordsofthefallen","lostplanetgame","ldjgame","ldj\"launch.bin","bin\"tconfig","magicka","maplestory","marvelheroes2015","masseffect3","masseffect3demo","maxpayne3","payne_win32_bankrelease","payne_win32_beta","payne_win32_release","mwoclient","mechwarrioronline","mohw","mohwd","mohw.main_win32_release_dll","mgsgroundzeroes","metal gear rising revengeance","metro2033","metro2033benchmark","metroll","firebird_f","firebird_s","shadowofmordor","mkke","mk10","mb_warband","mb_wfas","mb_warband","魔域-末日亡灵\"play","魔域-末日亡灵\"soul","nascar14","nba2k13","nba2k15","nba2konline",
+                                                                        "nba2konline","nfs11","nfs13","nfs14","nfs14_x86","shift","xy3launch","pathofexile","payday2_win32_release","pillarsofeternity","planetside2","planetside2_x64","launchpad","planetside2_x86","pvz.main_win64_retail","pvzgw","portal 2\"hl2","portal2","portal2\"hl2","pes2013","pes2014","pes2015","pcars","pcars64","pcars64gld","pcarsgld","release\"gacrunner","win32\"tps","ui_launch_dx_bak","qqdance","qqx51_game","tencentdl","qqx51_game","qq炫舞2\"x52","qqsg","qq音速\"qqr2","qqspeedlauncher","releasephysx27\"gameapp","malauncher","redorchestra","rememberme","re6","rerev","rift","riftpatchalpha","selfpatchaplha","rust","saintsrowthethird_dx11","saintsrowthethird","sr3_dx11","sr3",
+                                                                        "saints row the third\"game_launcher","saintsrowiv","sre4","sre4_pc_debug_packfiles_dx11","sre4_pc_release_packfiles_dx11","shogun2","shovelknight","sdclient","武神","shift2u","simcity","hkship","smite","gameskeleton.dll","sniperghostwarrior2","south park - the stick of truth","blacklist","blacklist_dx11r","blacklist_game","blacklist_dx11","st","st.x64","swtor","swtorlaunch.dll","starcraftii","starcraft ii","sc2","sc2_rp","starcraft ii","sc2editor","sc2switcher","team fortress 2\"hl2","tera","omgportal","omgportalchk","patch_omgportal","preloadrappelzomg","terraria","isaac-ng","thebureau","thecrew","eso","evilwithin","expendabros","thesecretworld","thesecretworlddx11","sims3","ts3","sims3launcher",
+                                                                        "ts4","simsmedievallauncher","smlauncher","tsm","witcher2","shipping-thiefgame","tlbbdownload","tconfig","bin\"tlbbdownload","titanfall","ghostreconphantoms","pdc-live\"ghostreconphantoms","tras_win32_final","tras","tombraider","torchlight2","attila","rome2","vbs3","warcraft iii","frozen throne","war3","war3demo","warcraft iii demo","world editor","ocevogyv.dll","warframe.x64","warframe","wargame2","aces","build\"wl2","watch_dogs","startasktao","wildstar","wildstar64","houston64","windbourne","windbournelauncher","worldoftanks","worldoftanks","wotlauncher","wow","wow-64","worldofwarplanes","xcomgame","patcher","xrebirth","寻仙\"patcher","release\"tty3d","xclient","patchupdate","patchupdate","ddda",
+                                                                        "darkest","witness_d3d11","witness64_d3d11","re0hd","desertsofkharak64","legomarvelavengers","legomarvelavengers_dx11","rwby-ge","dqh","accgame-win32-shipping","thedivision","fm","rebelgalaxysteam","attila","justcause3","rainbowsix","ts","geminiheroesreborn","swordcoast","hellgate","ssss","kfp","tales of zestiria","clothers","wildstar","smite","nsloader","gshx","tjgame","san13","san14","dundefgame","grim dawn","ig2_AddOn","kingdom rush frontiers","tokitori2","clientx86","SM6","TslGame","AndroidEmulator","Overwatch","destiny2","fifa4zf","LOSTARK","FarmingSimulator2019Game","SkyrimSE","HeroesOfTheStorm_x64","NemuPlayer","FalloutShelter","DarkSoulsIII","Europa_Client","Minecraft.Windows","Warhammer2",
+                                                                        "MTGA","BlackOps4","NeedForSpeedPayback","Asphalt9_w10_x86_rtl","steamtours","theHunterCotW_F","ffxiv_dx11","LeagueClientUxRender","Lumion","Battle.net","Fallout Shelter","FIFA18","NBA2KOL2","Anno2205","CivilizationVI","MonsterHunterWorld","PathOfExile_x64","Home2-Win64-Shipping","Nox","hoi4","ACOdyssey","ACOrigins","Fallout76","PES2019","Prepar3D","SoTGame","TS4_x64","XCom2","3DViewer","Trove","wotblitz","bf1","CK2game","PES2018","starwarsbattlefrontii","Napoleon","TheForest","AoK HD","AssassinsCreedIIGame","DOOMx64","FutureWar_W8.Windows","NFSOL","Oasis-Win64-Shipping","StateOfDecay2-UWP64-Shipping","Asphalt8","AVGame-Win64-Shipping","DarkSoulsRemastered","eso64","ffxv_s","mhf","Steam",
+                                                                        "WolfNewOrder_x64","Beat Saber","BlackOps","CoD2SP_s","DQXGame","FarCry5","FSeFootball","HWR","Incredible_Dracula_Vargosi_Returns","PaintStudio.View","PCM64","RF_Online.bin","rs2client","s2_sp64_ship","WatchDogs2","X-Plane","bfv","blockpost","DyingLightGame","FIFA19_demo","ForzaHorizon4","ForzaHorizon4Demo","GolfIt-Win64-Shipping","Gw2-64","NieRAutomata","SniperElite4_DX11","SOTTR","TekkenGame-Win64-Shipping","Video.UI","Warhammer 40","AoEDE","AWayOut","BeamNG.drive.x64","BlackDesert64","dlpc","FFX","FIFA19","J2","nfsw","Nino2","ori","stritz","suddenattack","SWSanada","VRChat","WizardGraphicalClient","WorldOfWarships","amtrucks","Cuphead","Darksiders3-Win64-Shipping","EXCEL.EXE","GameCapture",
+                                                                        "GameClient","HITMAN2","Injustice2","Koikatu","mowas_2","Omsi","PathOfExile_x64Steam","stellaris","TheyAreBillions","Unity","AssassinsCreed_Dx10","CamtasiaStudio","dcg","Deceit","F1_2018","FIFA17","forza_x64_release_final","HITMAN","LdBoxHeadless","MassEffectAndromeda","Photoshop","PonyIsland","rakdos","Sky","The Universim","theblu","TMNT-OotS","UE4Editor","WWE2K19_x64","AvP_DX11","BattleTech","Brawlhalla","BusinessTour","candycrushsaga","CharaStudio","Circle Empires","codespells","DeadIslandGame","FarmingSimulator2017Game","fgfs","forzamotorsport7","Fracture","FSD-Win64-Shipping","fsx","GettingOverIt","GlimpseGame","GOP3","GRW","Heaven","Human","Impero-Win64-Shipping","iw7_ship","Jewels","JJBoom",
+                                                                        "KSP_x64","LEGO DC Super-villains_DX11","MurderousPursuits","Never_Alone","NewColossus_x64vk","NMS","Ori And The Blind Forest Definitive Edition","OTWD-Win64-Shipping","OWW-Win64-Shipping","payday2_win32_release_vr","PlagueIncEvolved","PXStudioRuntimeMMO","ravenfield","SCPSL","SE3D_Core","sfm","SlayTheSpire","Solitaire","SpaceEngineers","SuperSeducer","The Elder Scrolls Legends","The Lost Labyrinth_","WWE2K17_x64","ZoneUE4-Win64-Shipping","ZwiftApp","Anc-Win64-Shipping","AVAMain","BioshockHD","Dauntless-Win64-Shipping","DeadAndBuried","Dishonored","DriftTuner2019","Dungeons2","FCPrimal","forzamotorsportapex","GemsOfWar","Granny","Gujian3","Guns","HD-Frontend","HitmanBloodMoney","Holdfast NaW",
+                                                                        "Kaori After Story","KarnageVR-Win64-Shipping","kenshi_x64","ktane","LEGOMARVEL2_DX11","Mafia3","MagicTable","MandysRoom","MapleStory2","mc5","ModernCombatVersus_W10","MWizard","NBA2K17","NBA2K19","NFSC","Northgard","obs64","Oculus_SourceVRPlayer","oXXL2Game","OxygenNotIncluded","Pal6","PlanetCoaster","PointBlank","qnyh","Rhino","ride3-Win64-Shipping","ROTTR","RPO-Win64-Shipping","s2_mp64_ship","sacred2","ShadowOfWar","shakesandfidget","ShoppingClutter1_TheBestPlayground","Skyforge","SkypeApp","Smash","SoulcaliburVI","SoulWorker","SteelDivision","steep","TheForestVR","thief","TouchNUX-Win64-Shipping","Toybox-Win64-Shipping","TropicalEscape-Win32-Shipping","TS3W","witcher","xgameFinal","ZAT",
+                                                                        "_MOE_W8","AfterFX","age3x","Amnesia","ARCHICAD","ArcMap","arma3_x64","AshesEscalation_DX11","Astro-Win64-Shipping","Axis Football 2018","BattleBrothers","Bioshock2HD","Blockland","Bloody Boobs","Bridge_Constructor_Portal","Buildbox","Cadria","call_to_arms","ChiTuBox","Client_tos","CoDSP","CW.EXE","Darwin-Win64-Shipping","dekaron","DiaVR","disgaea5","Dishonored_DO","Dungeons3Bin","Eagle","EscapeFromTarkov","Evalina","FEZ","FilmoraExportEngine","Firestorm-Releasex64","flashinglights","ForestVillage","Future Soldier DX11","Gladius","GoaT","GoldRushTheGame","GOnline","HD-Player","Hentai And Your Life","Hentai Case Opening","HentaiGirlBetty","HotlineMiami2","HouseFlipper","Ipos","KFGame","LightBearers",
+                                                                        "loveroom_nonvr","Lucky Mark ALPHA 11.0 WIN","Mafia2","ManiaPlanet","MarsSteam","MATLABWindow","Meadow","MEmuHeadless","Microsoft.Photos","Monopoly","Night with Natalie PC","NS3FB1","NSUNS4","OculusMedium","OPU3","Overcooked","Overcooked2","PA","PCBS","Photo","PillarsOfEternityII","PixelWorlds","Polynomial2_64","PotPlayer64","Project_Win8","QuakeChampions","Quern","Rage","RCT3plus","RescueTeam8_CE","RimWorldWin64","Rise of Liberty","rise","RoboRecall-Win64-Shipping","ROGame","RP1-Win64-Shipping","SexBotQA_Assets-Win64-Shipping","ShadowWarrior2","ShellShockLive","Sins of a Solar Empire Rebellion","SketchUp","Slap City","SlimeRancher","SpecOpsTheLine","Stardew Valley","StarWarsG","StickFight",
+                                                                        "Stranded_Deep","SU_2.1.9","Substance Painter","T42","TheLezbianPrison","TheSecretSociety","TransportFever","Tumblebugs","Unturned","Urban Empire","Valley","vegas140","Volcanoids","WarGame3","Warhammer","WRC7","WW1 Game Series","XSplit.Core","YandereSimulator","Yoku","YXS","ZooTycoon"]},
+                                           {"AppType":"Metro","Name":["ArtifexMundi.NightmaresfromtheDeepTheCursedHeart","Disney.WheresMyWater2","RuiLueSoftware.PigRun","GAMELOFTSA.DespicableMeMinionRush","31232Villaxin.1626791740123","ArtifexMundi.ClockworkTalesOfGlassAndInk","GAMELOFTSA.Asphalt8Airborne","GAMELOFTSA.Six-Guns","JJWorldBeijingNetworkTech.JJforLenovo","Microsoft.AgeCastles","Microsoft.MicrosoftSolitaireCollection","XIMADINC.MagicPuzzles","ZeptoLabUKLimited.CutTheRope","GAMELOFTSA.GTRacing2TheRealCarExperience","828B5831.VirtualCity2ParadiseResort","A278AB0D.IceAgeAdventures","RuiLueSoftware.5333EC7C5889","king.com.CandyCrushSodaSaga"]}]},
+            ]}]]></Setting>
+  </Settings><Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+	<SignedInfo xmlns="http://www.w3.org/2000/09/xmldsig#">
+		<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+		<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+		<Reference URI="">
+			<Transforms>
+				<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+			</Transforms>
+			<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+			<DigestValue>cFMLNQtRf3AjSIW5Dm/chz9EkQuBSYAJ4+/IX3O+RqU=</DigestValue>
+		</Reference>
+	</SignedInfo>
+	<SignatureValue>
+iJo8n/42ZMEuRLJufDYJJvkRYrbapNeBlezSTNnuxFWko2vZF/d6+Xbmq4DWkyeN
+eT1hRvbHDRK+/FTZAYu+QvPRL2+zASRcKkcbOypeeMXyqe4ETq0Sad6CxH3W5Zkc
+DInkMPTDl7J+Ya1RYskVyGhV/yAfJmq6QETPhqwUZV+NS1JOWhqp3JfgjEd3yKUp
+3YWO0zsH/G32tL06+buDE3c/PAr9QhPu+2bQEhcDvgml9+IfM36KEQfX+VAX4w+U
+zLjlH2UawyOvDn2g51F+4sN3FPvsQfONJd750+HMjxZH36u2mVPAvsGdb3EiFSsy
+2VKcGCJNhb4zIdbxRNe/M0V9okMvXlWx2mIgQaMnobYKUwTDVPZyq2Pil5vR3jwk
+CB6814egOk31nqOX5T1P8Fa4FdAlr2IkqEOxbPhdDAqvR5ZpiGAuMBs7jBBr/oBB
+nCi4ceWniEcodNG1o4uqLiVXVlmX0VzzZVuSTVhNbjLFxuwwdwIPoStRLobCLb2B
+KuAa2Fo8VeoSLhlIZWmduMaEr/EdskofQ4h5ZC/b+UgQJSq7oBPHCHHox47/fYzy
+07w1Np6IPK+D1zG+KNDGhPE+5Wpok8QDIpgsW/EevESNpC5GhHXBvWW3LIGkLe41
+F+9DEZs0Hq5zPMPSu0D2q+AbfTeM7GKHDxQ0tecMmoU=
+	</SignatureValue>
+	<KeyInfo>
+		<KeyValue>
+			<RSAKeyValue>
+				<Modulus>
+wh+fVk/xCA7OxavhBAXyThzGbX2np+er2HLgqo4PkhAzT4rwen8KcFVgIdD2/SOr
+n3yBEtbIH+Jx5AkJ+0qP5Rub9bZU5AGo+dTogCDJy769qxu/HfqxoJRoVVwZj45N
+GXZENBMT1PqnZ1kWZfWOUXz+SMISHF1dO+sGP+kWKlHFtXXIxwEPrOwIrKGM7uv/
+HOk6nrMDzK+/iznfdUbC/Zv2wM0hsQEhumxSFmpvk5VyjvbMZtfeIU6PMaFFM22Q
+MyKL/KMS8o1dnNjLM9aJrunSppSMQxcHA9IyALbx6owG7VZ6DqCDibgbGkkWxaH3
+Rz6KFaGPpBOfLoZXKyi9rhBwPqOhspksGuLiucC/fltHb2GaTRnuiWUeDaoAZqx7
+2cliKcMb+tvLw19jClo/0PxhQgQ0HvyqidBihmArHdctIvJTrxe+olafDwwf0o5X
+DOFTLYqyyknPVqXOkYefzpVqu+DwnQqqUteYodhEu+TDBjhXXrHW8Q/xWlXkII34
+F53LI4TnCnCqalYduynFfWEepHhsulnvqxGCYr0lKF/oyEHSZlIfskZUbL/zwiqe
+0J1We95cONSV+Pi+qcLuQrkIv/r0J69VDoaalRZvLU1KreN1uXoheu/OPbqCV54l
+d0qlhQvlz3Q0fAjmuRYjJaHqV7+EYyijgSKj6zizrKU=
+				</Modulus>
+				<Exponent>AQAB</Exponent>
+			</RSAKeyValue>
+		</KeyValue>
+		<X509Data>
+			<X509IssuerSerial>
+				<X509IssuerName>CN=DigiCert Trusted G4 Code Signing RSA4096 SHA384 2021 CA1, O=DigiCert\, Inc., C=US</X509IssuerName>
+				<X509SerialNumber>14706073888503137188103110362569110662</X509SerialNumber>
+			</X509IssuerSerial>
+			<X509SubjectName>CN=Lenovo, OU=G08, O=Lenovo, L=Morrisville, ST=North Carolina, C=US</X509SubjectName>
+			<X509Certificate>
+MIIHZzCCBU+gAwIBAgIQCxBJbCiuHFJkq5OTfaf0hjANBgkqhkiG9w0BAQsFADBp
+MQswCQYDVQQGEwJVUzEXMBUGA1UEChMORGlnaUNlcnQsIEluYy4xQTA/BgNVBAMT
+OERpZ2lDZXJ0IFRydXN0ZWQgRzQgQ29kZSBTaWduaW5nIFJTQTQwOTYgU0hBMzg0
+IDIwMjEgQ0ExMB4XDTIyMDYyOTAwMDAwMFoXDTIzMDkxNDIzNTk1OVowbDELMAkG
+A1UEBhMCVVMxFzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQHEwtNb3Jy
+aXN2aWxsZTEPMA0GA1UEChMGTGVub3ZvMQwwCgYDVQQLEwNHMDgxDzANBgNVBAMT
+Bkxlbm92bzCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBAMIfn1ZP8QgO
+zsWr4QQF8k4cxm19p6fnq9hy4KqOD5IQM0+K8Hp/CnBVYCHQ9v0jq598gRLWyB/i
+ceQJCftKj+Ubm/W2VOQBqPnU6IAgycu+vasbvx36saCUaFVcGY+OTRl2RDQTE9T6
+p2dZFmX1jlF8/kjCEhxdXTvrBj/pFipRxbV1yMcBD6zsCKyhjO7r/xzpOp6zA8yv
+v4s533VGwv2b9sDNIbEBIbpsUhZqb5OVco72zGbX3iFOjzGhRTNtkDMii/yjEvKN
+XZzYyzPWia7p0qaUjEMXBwPSMgC28eqMBu1Weg6gg4m4GxpJFsWh90c+ihWhj6QT
+ny6GVysova4QcD6jobKZLBri4rnAv35bR29hmk0Z7ollHg2qAGase9nJYinDG/rb
+y8NfYwpaP9D8YUIENB78qonQYoZgKx3XLSLyU68XvqJWnw8MH9KOVwzhUy2KsspJ
+z1alzpGHn86Varvg8J0KqlLXmKHYRLvkwwY4V16x1vEP8VpV5CCN+BedyyOE5wpw
+qmpWHbspxX1hHqR4bLpZ76sRgmK9JShf6MhB0mZSH7JGVGy/88IqntCdVnveXDjU
+lfj4vqnC7kK5CL/69CevVQ6GmpUWby1NSq3jdbl6IXrvzj26gleeJXdKpYUL5c90
+NHwI5rkWIyWh6le/hGMoo4Eio+s4s6ylAgMBAAGjggIGMIICAjAfBgNVHSMEGDAW
+gBRoN+Drtjv4XxGG+/5hewiIZfROQjAdBgNVHQ4EFgQUPuopdNU5jXiVDqjn/I4b
+5uf7kHMwDgYDVR0PAQH/BAQDAgeAMBMGA1UdJQQMMAoGCCsGAQUFBwMDMIG1BgNV
+HR8Ega0wgaowU6BRoE+GTWh0dHA6Ly9jcmwzLmRpZ2ljZXJ0LmNvbS9EaWdpQ2Vy
+dFRydXN0ZWRHNENvZGVTaWduaW5nUlNBNDA5NlNIQTM4NDIwMjFDQTEuY3JsMFOg
+UaBPhk1odHRwOi8vY3JsNC5kaWdpY2VydC5jb20vRGlnaUNlcnRUcnVzdGVkRzRD
+b2RlU2lnbmluZ1JTQTQwOTZTSEEzODQyMDIxQ0ExLmNybDA+BgNVHSAENzA1MDMG
+BmeBDAEEATApMCcGCCsGAQUFBwIBFhtodHRwOi8vd3d3LmRpZ2ljZXJ0LmNvbS9D
+UFMwgZQGCCsGAQUFBwEBBIGHMIGEMCQGCCsGAQUFBzABhhhodHRwOi8vb2NzcC5k
+aWdpY2VydC5jb20wXAYIKwYBBQUHMAKGUGh0dHA6Ly9jYWNlcnRzLmRpZ2ljZXJ0
+LmNvbS9EaWdpQ2VydFRydXN0ZWRHNENvZGVTaWduaW5nUlNBNDA5NlNIQTM4NDIw
+MjFDQTEuY3J0MAwGA1UdEwEB/wQCMAAwDQYJKoZIhvcNAQELBQADggIBAHA/dZKS
+zfrU6TgfuRZ2mni++fQRJ5LpcS/6/idgIcsSgOIQF1ork9RX7mMKexh0plVdBxr+
+ZgYa4M5kcBoB5LNq8Ymi4Vvy0A1NvBaGBzoJDF5X+aRkOJIbqnfYN35BdUxl4JlP
+1KkatpxFJP8NpwbCSmHrD0sXXcvdeqMss1iW/vU/aie2DxQOyLxZ2xL3CEP7u3Sa
+9DyvcwmVE1RtQG2vKNzODvYczugrZqrKhcdzVjyAXj+zt/n04FGDb58Xh7ePhea1
+kChVhMrrOZg20oLTKihXXH0rnaiHP8oenkjfHHTY6N3pXhGwTVW8s9Lpzu1lRm3I
+2hAsV7+KdITuNqnG243SAZS+RAvyoNa40eoz3aP/K48Toz8JL/bSgXlU+bevZraY
+/9wCSFRQsiM+NclnUc1VwlTAwoCcUXvKTSTqaXwQE1YGKk3ENAyXhO1tNLJwRhRz
+dTb3wL46uW+NJaFBog6YWiuftwy5HKfvNkp+OCBd9kqVfsJ6uCNWNb8IHTQ5VjtC
+I7qYZvJBxiONUMa8jtQzsAfAAKiKNaguUwZ1VhtDVs9w45bzIusZ2scVplyQch5i
+qcZzrDK5xNce+ZILmCkJw0Ya9bca6cYbpdJao2oeSwSMxWAcEoIaVzioATetaXPg
+iAOGzsbv49uJ4tR9qPcO56w10IBS0Lh2uawi
+			</X509Certificate>
+		</X509Data>
+	</KeyInfo>
+	<Object>
+		<SignatureProperties>
+			<SignatureProperty Target="#"><issuerCertificate xmlns="namespaceURI">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</issuerCertificate>
+			</SignatureProperty>
+		</SignatureProperties>
+	</Object>
+</Signature>
+</Addin>

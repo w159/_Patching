@@ -1,0 +1,3 @@
+Lenovo Inventory Agent
+(c) Copyright 2012 Lenovo
+Version 1.01.0000.1

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns:tns="namespaceURI"
+        targetNamespace="namespaceURI"
+        elementFormDefault="qualified"
+        attributeFormDefault="unqualified">
+  <xs:element name="issuerCertificate" type="xs:string" />
+</schema>

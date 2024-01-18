@@ -1,0 +1,647 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Addin name="LenovoCompanionAppAddin" version="1.0.0.12" runas="user" interactive="false">
+  <Contracts>
+    <Contract name="SystemInformation.SupportDocuments"/>
+  </Contracts>
+  <EventSubscriptions>
+    <EventSubscription event="ScheduleEvent">
+      <SubscriptionArgsJson><![CDATA[
+            {"Schedules": [
+                {"TaskName": "LenovoCompanionAppAddinDailyScheduleTask","Triggers": [
+                    {"Type": "Daily", "TriggerTime": "2019-11-07T08:00:00", "RandomDelay": "10:00:00","DaysIntervals": 1},
+                ]}
+            ]}
+          ]]></SubscriptionArgsJson>
+    </EventSubscription>
+    <EventSubscription event="AppxDeploymentEvent">
+      <SubscriptionArgsJson><![CDATA[
+            {"Apps":[
+                {"FriendlyName":"VantageUWP","AppxPfn":"E046963F.LenovoCompanion_k1h2ywk1493x8","Triggers":["Uninstall"]},
+                {"FriendlyName":"VantageBetaUWP","AppxPfn":"E046963F.LenovoCompanionBeta_k1h2ywk1493x8","Triggers":["Uninstall"]},
+            ]}
+          ]]></SubscriptionArgsJson>
+    </EventSubscription>
+    <EventSubscription event="LenovoCompanionAppAddin_MessagingNotification">
+      <SubscriptionArgsJson><![CDATA[]]></SubscriptionArgsJson>
+    </EventSubscription>
+  </EventSubscriptions>
+  <Settings>
+    <Setting key="LenovoCompanionAppAddin.AutoLaunchVantage.IsEnabled">false</Setting>
+    <Setting key="LenovoCompanionAppAddin.AutoLaunchVantage.ChancePercentage">0</Setting>
+    <Setting key="LenovoCompanionAppAddin.AutoLaunchVantage.ExcludedLanguages">zh-hans</Setting>
+    <Setting key="LenovoCompanionAppAddin.AutoLaunchVantage.ExcludedCountries">cn</Setting>
+    <Setting key="LenovoCompanionAppAddin.AutoLaunchVantage.TargetedThemes">Consumer</Setting>
+    <Setting key="LenovoCompanionAppAddin.AutoLaunchVantage.TimeToShow">5</Setting>
+    <Setting key="LenovoCompanionAppAddin.AutoLaunchVantage.NewWindowsMinVersion">10.0.21000.0000</Setting>
+    <Setting key="LenovoCompanionAppAddin.AutoLaunchVantage.SpecialDaysToShow">2000-01-01</Setting>
+    <Setting key="LenovoCompanionAppAddin.Notifications.TryHardwareScan.IsEnabled">true</Setting>
+    <Setting key="LenovoCompanionAppAddin.Notifications.CheckWhatsNew.IsEnabled">true</Setting>
+    <Setting key="LenovoCompanionAppAddin.Notifications.CheckForSystemUpdates.IsEnabled">true</Setting>
+    <Setting key="LenovoCompanionAppAddin.Notifications.CheckArticles.IsEnabled">true</Setting>
+    <Setting key="LenovoCompanionAppAddin.Notifications.DeviceRefresh.IsEnabled">true</Setting>
+    <Setting key="LenovoCompanionAppAddin.Notifications.LenovoID.IsEnabled">true</Setting>
+    <Setting key="LenovoCompanionAppAddin.Notifications.Sweepstakes.IsEnabled">true</Setting>
+    <Setting key="LenovoCompanionAppAddin.Notifications.Warranty.Intervals">5,30,90</Setting>
+    <Setting key="LenovoCompanionAppAddin.Notifications.AlexaMessageFrequency">2</Setting>
+    <Setting key="LenovoCompanionAppAddin.Notifications.AlexaToastMessageGapInDays">7</Setting>
+    <Setting key="LenovoCompanionAppAddin.Notifications.AlexaSupportedOSVersion">6.3.17133</Setting>
+    <Setting key="LenovoCompanionAppAddin.Notifications.AlexaTargetedSystems"><![CDATA[{"Systems":[
+      {
+      "FamilyName": "IdeaPad S74014IIL",
+      "Driver": {"drivers":[{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0285&SUBSYS_17AA3813","version":"6.0.8726.1"},{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_34C8&VEN_8086&DEV_0222&SUBSYS_381017AA","version":"10.24.0.2709"}]},
+      "BiosNumber": "BYCN26WW",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "Yoga S74014IIL",
+      "Driver": {"drivers":[{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0285&SUBSYS_17AA3813","version":"6.0.8726.1"},{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_34C8&VEN_8086&DEV_0222&SUBSYS_381017AA","version":"10.24.0.2709"}]},
+      "BiosNumber": "BYCN26WW",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "ThinkPad L13",
+      "Driver": {"drivers":[{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_14F1&DEV_1F86&SUBSYS_17AA5078&REV_1001","version":"9.0.266.0"},{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_02C8&VEN_8086&DEV_0222&SUBSYS_507817AA","version":"10.23.0.2672"}]},
+      "BiosNumber": "R15ET14W",
+      "supportLauguages":"en,de,ja",
+      "supportCountrys":"us,gb,de,jp"
+      },
+      {
+      "FamilyName": "ThinkPad L13 Yoga",
+      "Driver": {"drivers":[{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_14F1&DEV_1F86&SUBSYS_17AA0019&REV_1001","version":"9.0.266.0"},{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_02C8&VEN_8086&DEV_0222&SUBSYS_507817AA","version":"10.23.0.2672"}]},
+      "BiosNumber": "R15ET14W",
+      "supportLauguages":"en,de,ja",
+      "supportCountrys":"us,gb,de,jp"
+      },
+      {
+      "FamilyName": "Lenovo ideapad 730S13IML",
+      "Driver": {"drivers":[{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0298&SUBSYS_17AA381A","version":"6.0.8716.1"},{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_02C8&VEN_8086&DEV_0222&SUBSYS_380117AA","version":"10.23.0.2672"}]},
+      "BiosNumber": "BRCN15WW",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "Lenovo Yoga S73013IML",
+      "Driver": {"drivers":[{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0298&SUBSYS_17AA381A","version":"6.0.8716.1"},{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_02C8&VEN_8086&DEV_0222&SUBSYS_380117AA","version":"10.23.0.2672"}]},
+      "BiosNumber": "BRCN15WW",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "ThinkPad E15",
+      "Driver": {"drivers":[{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_14F1&DEV_1F86&SUBSYS_17AA507A","version":"9.0.276.0"},{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_02C8&VEN_8086&DEV_0222&SUBSYS_507917AA","version":"10.23.0.2764"}]},
+      "BiosNumber": "R16ET16W",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "Yoga C94015IRH",
+      "Driver": {"drivers":[{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0298&SUBSYS_17AA381B","version":"6.0.8734.1"},{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_A348&VEN_8086&DEV_0222&SUBSYS_380217AA","version":"10.23.2725.2"}]},
+      "BiosNumber": "BSCN18WW",
+      "supportLauguages":"en,de,ja",
+      "supportCountrys":"us,gb,de,jp"
+      },
+      {
+      "FamilyName": "IdeaPad S54015IML",
+      "Driver": {"drivers":[{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0257&SUBSYS_17AA3831","version":"6.0.8734.1"},{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_02C8&VEN_8086&DEV_0222&SUBSYS_381E17AA","version":"10.23.0.2672"}]},
+      "BiosNumber": "CNCN08WW",
+      "supportLauguages":"en,de,ja",
+      "supportCountrys":"us,gb,de,jp"
+      },
+      {
+      "FamilyName": "ThinkPad X390",
+      "Driver": {"drivers":[{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_02C8&VEN_8086&DEV_0222&SUBSYS_22AC17AA","version":"10.23.0.2427"},{"deviceName":"Audio Driver","hardwareId":"NTELAUDIO\\FUNC_01&VEN_10EC&DEV_0257&SUBSYS_17AA22AC","version":"6.0.8734.1"}]},
+      "BiosNumber": "N2SET04W",
+      "supportLauguages":"en,de,ja",
+      "supportCountrys":"us,gb,de,jp"
+      },
+      {
+      "FamilyName": "Thinkpad X1 Carbon 7th",
+      "Driver": {"drivers":[{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0285&SUBSYS_17AA2293","version":"6.0.8699.1"},{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_9DC8&VEN_8086&DEV_0222&SUBSYS_229217AA","version":"10.23.2618.03"}]},
+      "BiosNumber": "N2QET06W",
+      "supportLauguages":"en,de,ja",
+      "supportCountrys":"us,gb,de,jp"
+      },
+      {
+      "FamilyName": "Thinkpad P1 Gen2",
+      "Driver": {"drivers":[{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_14F1&DEV_1F86&SUBSYS_17AA229F, INTELAUDIO\\FUNC_01&VEN_14F1&DEV_1F86&SUBSYS_17AA229E,INTELAUDIO\\FUNC_01&VEN_14F1&DEV_1F86&SUBSYS_17AA22A0,INTELAUDIO\\FUNC_01&VEN_14F1&DEV_1F86&SUBSYS_17AA22A1","version":"9.0.266.0"},{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_A348&VEN_8086&DEV_0222&SUBSYS_229F17AA,INTELAUDIO\\DSP_CTLR_DEV_A348&VEN_8086&DEV_0222&SUBSYS_229E17AA,INTELAUDIO\\DSP_CTLR_DEV_A348&VEN_8086&DEV_0222&SUBSYS_22A017AA,INTELAUDIO\\DSP_CTLR_DEV_A348&VEN_8086&DEV_0222&SUBSYS_22A117AA","version":"10.23.0.2672"}]},
+      "BiosNumber": "N2OET16W",
+      "supportLauguages":"en,de,ja",
+      "supportCountrys":"us,gb,de,jp"
+      },
+      {
+      "FamilyName": "Thinkpad X1 Extreme 2nd",
+      "Driver": {"drivers":[{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_14F1&DEV_1F86&SUBSYS_17AA229F, INTELAUDIO\\FUNC_01&VEN_14F1&DEV_1F86&SUBSYS_17AA229E,INTELAUDIO\\FUNC_01&VEN_14F1&DEV_1F86&SUBSYS_17AA22A0,INTELAUDIO\\FUNC_01&VEN_14F1&DEV_1F86&SUBSYS_17AA22A1","version":"9.0.266.0"},{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_A348&VEN_8086&DEV_0222&SUBSYS_229F17AA,INTELAUDIO\\DSP_CTLR_DEV_A348&VEN_8086&DEV_0222&SUBSYS_229E17AA,INTELAUDIO\\DSP_CTLR_DEV_A348&VEN_8086&DEV_0222&SUBSYS_22A017AA,INTELAUDIO\\DSP_CTLR_DEV_A348&VEN_8086&DEV_0222&SUBSYS_22A117AA","version":"10.23.0.2672"}]},
+      "BiosNumber": "N2OET16W",
+      "supportLauguages":"en,de,ja",
+      "supportCountrys":"us,gb,de,jp"
+      },
+      {
+      "FamilyName": "ThinkPad T490",
+      "Driver": {"drivers":[{"deviceName":"Audio Driver","hardwareId":"NTELAUDIO\\FUNC_01&VEN_10EC&DEV_0257&SUBSYS_17AA22AA","version":"6.0.8757.1"},{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_02C8&VEN_8086&DEV_0222&SUBSYS_22AA17AA","version":"10.23.00.2764"}]},
+      "BiosNumber": "N2RET04W",
+      "supportLauguages":"en,de,ja",
+      "supportCountrys":"us,gb,de,jp"
+      },
+      {
+      "FamilyName": "Yoga C94015IRH",
+      "Driver": {"drivers":[{"deviceName":"Intel Audio Controller","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_A348&VEN_8086&DEV_0222&SUBSYS_380217AA","version":"10.23.2725.2"},{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0298&SUBSYS_17AA381B","version":"6.0.8734.1"}]},
+      "BiosNumber": "BSCN18WW",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "ThinkPad E14",
+      "Driver": {"drivers":[{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_14F1&DEV_1F86&SUBSYS_17AA5079","version":"9.0.276.0"},{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_02C8&VEN_8086&DEV_0222&SUBSYS_507917AA","version":"10.23.0.2764"}]},
+      "BiosNumber": "R16ET16W",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "IdeaPad FLEX14IWL",
+      "Driver": {"drivers":[{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_14F1&DEV_1F86&SUBSYS_17AA3810","version":"9.0.237.0"},{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_9DC8&VEN_8086&DEV_0222&SUBSYS_381417AA","version":"10.23.0.2353"}]},
+      "BiosNumber": "AHCN26WW",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "IdeaPad C34014IWL",
+      "Driver": {"drivers":[{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_14F1&DEV_1F86&SUBSYS_17AA3810","version":"9.0.237.0"},{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_9DC8&VEN_8086&DEV_0222&SUBSYS_381417AA","version":"10.23.0.2353"}]},
+      "BiosNumber": "AHCN26WW",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "IdeaPad S54015IML",
+      "Driver": {"drivers":[{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0257&SUBSYS_17AA3831","version":"6.0.8734.1"},{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_02C8&VEN_8086&DEV_0222&SUBSYS_381E17AA","version":"10.23.0.2672"}]},
+      "BiosNumber": "CNCN08WW",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "ThinkPad P73",
+      "Driver": {"drivers":[{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_14F1&DEV_1F86&SUBSYS_17AA229B","version":"9.0.256.0"},{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_A348&VEN_8086&DEV_0222&SUBSYS_229B17AA","version":"10.23.0.2618"}]},
+      "BiosNumber": "N2NET11W",
+      "supportLauguages":"en,de,ja",
+      "supportCountrys":"us,gb,de,jp"
+      },
+      {
+      "FamilyName": "ThinkPad P53",
+      "Driver": {"drivers":[{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_14F1&DEV_1F86&SUBSYS_17AA2297","version":"9.0.254.0"},{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_A348&VEN_8086&DEV_0222&SUBSYS_229717AA","version":"10.23.0.2490"}]},
+      "BiosNumber": "N2NET11W",
+      "supportLauguages":"en,de,ja",
+      "supportCountrys":"us,gb,de,jp"
+      },
+      {
+      "FamilyName": "ThinkPad E490s",
+      "Driver": {"drivers":[{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_14F1&DEV_1F86&SUBSYS_17AA5074&REV_1001","version":"9.0.243.0"},{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_9DC8&VEN_8086&DEV_0222&SUBSYS_507217AA","version":"10.23.0.2353"}]},
+      "BiosNumber": "R0YET14W",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "Thinkpad T490s",
+      "Driver": {"drivers":[{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0257&SUBSYS_17AA2286","version":"6.0.1.8639"},{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_9DC8&VEN_8086&DEV_0222&SUBSYS_228617AA","version":"10.23.0.2427"}]},
+      "BiosNumber": "N2JET17W",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "Thinkpad L390",
+      "Driver": {"drivers":[{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0257&SUBSYS_17AA5077","version":"6.0.8716.1"},{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_9DC8&VEN_8086&DEV_0222&SUBSYS_507717AA","version":"10.23.0.2672"}]},
+      "BiosNumber": "R10ET25W",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "Thinkpad L390 Yoga",
+      "Driver": {"drivers":[{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0257&SUBSYS_17AA5077","version":"6.0.8716.1"},{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_9DC8&VEN_8086&DEV_0222&SUBSYS_507717AA","version":"10.23.0.2672"}]},
+      "BiosNumber": "R10ET25W",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "Thinkpad X1 Carbon 7th",
+      "Driver": {"drivers":[{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0285&SUBSYS_17AA2293","version":"6.0.8699.1"},{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_9DC8&VEN_8086&DEV_0222&SUBSYS_229217AA","version":"10.23.2618.03"}]},
+      "BiosNumber": "N2HET20W",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },      {
+      "FamilyName": "Thinkpad X1 Yoga 4th",
+      "Driver": {"drivers":[{"deviceName":"Audio Driver","hardwareId":" INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0285&SUBSYS_17AA2292","version":"6.0.8699.1"},{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_9DC8&VEN_8086&DEV_0222&SUBSYS_229217AA","version":"10.23.2618.03"}]},
+      "BiosNumber": "N2QET06W",
+      "supportLauguages":"en,de,ja",
+      "supportCountrys":"us,gb,de,jp"
+      },
+      {
+      "FamilyName": "Thinkpad X1 Yoga 4th",
+      "Driver": {"drivers":[{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0285&SUBSYS_17AA2292","version":"6.0.8699.1"},{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_9DC8&VEN_8086&DEV_0222&SUBSYS_229217AA","version":"10.23.2618.03"}]},
+      "BiosNumber": "N2HET20W",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "Thinkpad X1 Extreme",
+      "Driver": {"drivers":[{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0285&SUBSYS_17AA2266,INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0285&SUBSYS_17AA2267,INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0285&SUBSYS_17AA2276","version":"6.0.1.8648"},{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_A348&VEN_8086&DEV_0222&SUBSYS_226717AA","version":"10.23.0.2618"}]},
+      "BiosNumber": "N2EET36W",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "Thinkpad P1",
+      "Driver": {"drivers":[{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0285&SUBSYS_17AA2266,INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0285&SUBSYS_17AA2267,INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0285&SUBSYS_17AA2276","version":"6.0.1.8648"},{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_A348&VEN_8086&DEV_0222&SUBSYS_226717AA","version":"10.23.0.2618"}]},
+      "BiosNumber": "N2EET36W",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "Thinkpad X1 Extreme 2nd",
+      "Driver": {"drivers":[{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_14F1&DEV_1F86&SUBSYS_17AA229F","version":"9.0.259.0"},{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_A348&VEN_8086&DEV_0222&SUBSYS_229F17AA","version":"10.23.0.2618"}]},
+      "BiosNumber": "N2OET16W",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "Thinkpad P1 Gen2",
+      "Driver": {"drivers":[{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_14F1&DEV_1F86&SUBSYS_17AA229F","version":"9.0.259.0"},{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_A348&VEN_8086&DEV_0222&SUBSYS_229F17AA","version":"10.23.0.2618"}]},
+      "BiosNumber": "N2OET16W",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "ThinkPad P43s",
+      "Driver": {"drivers":[{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0257&SUBSYS_17AA22A2","version":"6.0.1.8673"},{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_9DC8&VEN_8086&DEV_0222&SUBSYS_227917AA","version":"10.23.0.2427"}]},
+      "BiosNumber": "N2IET64W",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "Ideapad S54015IWL GTX",
+      "Driver": {"drivers":[{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_9DC8&VEN_8086&DEV_0222&SUBSYS_380C17AA","version":"10.23.0.2618"},{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0257&SUBSYS_17AA382E","version":"6.0.1.8644"}]},
+      "BiosNumber": "BWCN10WW",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "Yoga S94014IWL",
+      "Driver": {"drivers":[{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0298&SUBSYS_17AA3816","version":"6.0.1.8668"},{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_9DC8&VEN_8086&DEV_0222&SUBSYS_380F17AA","version":"10.23.0.1980"}]},
+      "BiosNumber": "AKCN06WW",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "IdeaPad S94014IWL",
+      "Driver": {"drivers":[{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0298&SUBSYS_17AA3816","version":"6.0.1.8668"},{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_9DC8&VEN_8086&DEV_0222&SUBSYS_380F17AA","version":"10.23.0.1980"}]},
+      "BiosNumber": "AKCN06WW",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "ThinkPad X390 Yoga",
+      "Driver": {"drivers":[{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0257&SUBSYS_17AA2294","version":"6.0.1.8619"},{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_9DC8&VEN_8086&DEV_0222&SUBSYS_229417AA","version":"10.23.0.2427"}]},
+      "BiosNumber": "N2LET58W",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "ThinkPad T490",
+      "Driver": {"drivers":[{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0257&SUBSYS_17AA2279","version":"6.0.1.8544"},{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_9DC8&VEN_8086&DEV_0222&SUBSYS_227917AA","version":"10.23.0.2077"}]},
+      "BiosNumber": "N2IET17W",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "ThinkPad L590",
+      "Driver": {"drivers":[{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0257&SUBSYS_17AA5076","version":"6.0.1.8639"},{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_9DC8&VEN_8086&DEV_0222&SUBSYS_507517AA","version":"10.23.0.2427"}]},
+      "BiosNumber": "R0ZET20W",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "ThinkPad L490",
+      "Driver": {"drivers":[{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0257&SUBSYS_17AA5075","version":"6.0.1.8639"},{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_9DC8&VEN_8086&DEV_0222&SUBSYS_507517AA","version":"10.23.0.2427"}]},
+      "BiosNumber": "R0ZET20W",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "IdeaPad S54014IWL Touch",
+      "Driver": {"drivers":[{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_14F1&DEV_1F86&SUBSYS_17AA3811","version":"9.0.210.130"},{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_9DC8&VEN_8086&DEV_0222&SUBSYS_381417AA","version":"10.23.0.1878"}]},
+      "BiosNumber": "AHCN08WW",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "IdeaPad S54014IWL",
+      "Driver": {"drivers":[{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_14F1&DEV_1F86&SUBSYS_17AA3811","version":"9.0.210.130"},{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_9DC8&VEN_8086&DEV_0222&SUBSYS_381417AA","version":"10.23.0.1878"}]},
+      "BiosNumber": "AHCN08WW",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "ThinkPad E490",
+      "Driver": {"drivers":[{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_14F1&DEV_1F86&SUBSYS_17AA5072&REV_1001","version":"9.0.243.0"},{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_9DC8&VEN_8086&DEV_0222&SUBSYS_507217AA","version":"10.23.0.2353"}]},
+      "BiosNumber": "R0YET14W",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "ThinkPad E590",
+      "Driver": {"drivers":[{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_14F1&DEV_1F86&SUBSYS_17AA5073&REV_1001","version":"9.0.243.0"},{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_9DC8&VEN_8086&DEV_0222&SUBSYS_507217AA","version":"10.23.0.2353"}]},
+      "BiosNumber": "R0YET14W",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "ThinkPad P53s",
+      "Driver": {"drivers":[{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0257&SUBSYS_17AA2281","version":"6.0.1.8544"},{"deviceName":"Intel SST Audio Controller","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_9DC8&VEN_8086&DEV_0222&SUBSYS_227917AA","version":"10.23.0.2077"}]},
+      "BiosNumber": "N2IET17W",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "IdeaPad S54015IWL",
+      "Driver": {"drivers":[{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0257&SUBSYS_17AA3812","version":"6.0.1.8606"},{"deviceName":"Intel SST Audio Controller","hardwareId":"PCI\\VEN_8086&DEV_9DC8&SUBSYS_380917AA&REV_30","version":"10.23.0.2214"}]},
+      "BiosNumber": "APCN21WW",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "ThinkPad T590",
+      "Driver": {"drivers":[{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0257&SUBSYS_17AA2284","version":"6.0.1.8544"},{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_9DC8&VEN_8086&DEV_0222&SUBSYS_227917AA","version":"10.23.0.2077"}]},
+      "BiosNumber": "N2IET17W",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "ThinkCentre M920z",
+      "Driver": {"drivers":[{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0235&SUBSYS_17AA3122","version":"6.0.1.8519"},{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_A348&VEN_8086&DEV_0222&SUBSYS_312217AA","version":"10.23.0.1685"}]},
+      "BiosNumber": "M1MKT33A",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "Yoga A94027ICB",
+      "Driver": {"drivers":[{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0274&SUBSYS_17AA36F9","version":"6.0.1.8612"},{"deviceName":"Intel SST Audio Driver","hardwareId":"PCI\\VEN_8086&DEV_A348&SUBSYS_36F917AA","version":"10.23.0.2353"}]},
+      "BiosNumber": "O43KT21A",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "ideacentre AIO 52024IKU",
+      "Driver": {"drivers":[{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0274&SUBSYS_17AA36DC","version":"6.0.1.8475"},{"deviceName":"Intel SST Audio Controller","hardwareId":"PCI\\VEN_8086&DEV_9D71&SUBSYS_36DC17AA,PCI\\VEN_8086&DEV_9D70&SUBSYS_36DC17AA","version":"9.21.0.3523"}]},
+      "BiosNumber": "O3DKT30A",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "ideacentre AIO 52022ICB",
+      "Driver": {"drivers":[{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0274&SUBSYS_17AA36F2","version":"6.0.1.8519"},{"deviceName":"Intel SST Audio Controller","hardwareId":"PCI\\VEN_8086&DEV_A348&SUBSYS_36F217AA","version":"10.23.0.1520"}]},
+      "BiosNumber": "O3XKT31A",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "V54024IWL AIO",
+      "Driver": {"drivers":[{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0235&SUBSYS_17AA3145","version":"6.0.1.8581"},{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_9DC8&VEN_8086&DEV_0222&SUBSYS_314517AA","version":"10.23.0.2672"}]},
+      "BiosNumber": "M29KT17A",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "ideacentre AIO 730S24IKB",
+      "Driver": {"drivers":[{"deviceName":"Intel SST Audio Controller","hardwareId":"PCI\\VEN_8086&DEV_9D71&SUBSYS_36F117AA","version":"9.21.0.3523"},{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0235&SUBSYS_17AA36F1","version":"6.0.1.8558"}]},
+      "BiosNumber": "O3WKT14A",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "ideacentre AIO 52024ICB",
+      "Driver": {"drivers":[{"deviceName":"Intel SST Audio Controller","hardwareId":"PCI\\VEN_8086&DEV_A348&SUBSYS_36F317AA","version":"10.23.0.1520"},{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0274&SUBSYS_17AA36F3","version":"6.0.1.8519"}]},
+      "BiosNumber": "O3XKT31A",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "ThinkPad X390",
+      "Driver": {"drivers":[{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_9DC8&VEN_8086&DEV_0222&SUBSYS_228617AA","version":"10.23.0.2077"},{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0257&SUBSYS_17AA2288","version":"6.0.1.8544"}]},
+      "BiosNumber": "N2JET17W",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "Yoga 73015IWL",
+      "Driver": {"drivers":[{"deviceName":"Intel SST Audio Controller","hardwareId":"PCI\\VEN_8086&DEV_9DC8&SUBSYS_381017AA","version":"10.23.0.1878"},{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0236&SUBSYS_17AA391D","version":"6.0.1.8534"}]},
+      "BiosNumber": "9MCN19WW",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "Yoga 73013IWL",
+      "Driver": {"drivers":[{"deviceName":"Intel SST Audio Controller","hardwareId":"PCI\\VEN_8086&DEV_9DC8&SUBSYS_381D17AA","version":"10.23.0.1878"},{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0236&SUBSYS_17AA391E","version":"6.0.1.8534"}]},
+      "BiosNumber": "9NCN15WW",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "ThinkCentre M820z",
+      "Driver": {"drivers":[{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_A348&VEN_8086&DEV_0222&SUBSYS_312317AA&REV_0010","version":"10.23.0.1520"},{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0235&SUBSYS_17AA3123&REV_1000","version":"6.0.1.8485"}]},
+      "BiosNumber": "M1NKT36A",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "IdeaCentre A54024ICB",
+      "Driver": {"drivers":[{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_A348&VEN_8086&DEV_0222&SUBSYS_370217AA","version":"10.23.0.2672"},{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0274&SUBSYS_17AA3702","version":"6.0.8738.1"}]},
+      "BiosNumber": "O49KT30A",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "IdeaCentre A54027ICB",
+      "Driver": {"drivers":[{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_A348&VEN_8086&DEV_0222&SUBSYS_370117AA","version":"10.23.0.2672"},{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_14F1&DEV_20D0&SUBSYS_17AA3701","version":"9.0.267.0"}]},
+      "BiosNumber": "O48KT24A",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "IdeaPad C34015IWL",
+      "Driver": {"drivers":[{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_9DC8&VEN_8086&DEV_0222&SUBSYS_381617AA","version":"10.23.0.2672"},{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0257&SUBSYS_17AA3805","version":"6.0.1.8627"}]},
+      "BiosNumber": "ALCN27WW",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "IdeaPad FLEX15IWL",
+      "Driver": {"drivers":[{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_9DC8&VEN_8086&DEV_0222&SUBSYS_381617AA","version":"10.23.0.2672"},{"deviceName":"Audio Driver","hardwareId":"INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0257&SUBSYS_17AA3805","version":"6.0.1.8627"}]},
+      "BiosNumber": "ALCN27WW",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "ThinkPad X1 Carbon 6th",
+      "Driver": {"drivers":[{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0285&*,INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0295&*","version":"9.21.0.3523"},{"deviceName":"Realtek High Definition Audio","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_9D71&VEN_8086&DEV_0222*","version":"6.0.1.8444"}]},
+      "BiosNumber": "N23ET48W",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "ThinkPad X1 Yoga 3rd",
+      "Driver": {"drivers":[{"deviceName":"Intel SST OED","hardwareId":" INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0285&*,INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0295&*","version":"9.21.0.3523"},{"deviceName":"Realtek High Definition Audio","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_9D71&VEN_8086&DEV_0222*","version":"6.0.1.8422"}]},
+      "BiosNumber": "N25ET33W",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "ThinkPad X1 Tablet Gen 3",
+      "Driver": {"drivers":[{"deviceName":"Intel SST OED","hardwareId":"INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0285&*,INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0295&*","version":"9.21.0.3523"},{"deviceName":"Realtek High Definition Audio","hardwareId":"INTELAUDIO\\DSP_CTLR_DEV_9D71&VEN_8086&DEV_0222*","version":"6.0.1.8422"}]},
+      "BiosNumber": "N1ZET63W",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "YOGA C93013IKB",
+      "Driver": {"drivers":[{"deviceName":"Intel SST Audio Controller","hardwareId":"PCI\\VEN_8086&DEV_9D71&SUBSYS_383117AA","version":"9.21.0.3690"},{"deviceName":"Realtek High Definition Audio","hardwareId":"INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0298&SUBSYS_17AA3812","version":"6.0.1.8504"}]},
+      "BiosNumber": "8GCN30WW",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "YOGA C93013IKB Glass",
+      "Driver": {"drivers":[{"deviceName":"Intel SST Audio Controller","hardwareId":"PCI\\VEN_8086&DEV_9D71&SUBSYS_383117AA","version":"9.21.0.3690"},{"deviceName":"Realtek High Definition Audio","hardwareId":"INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0298&SUBSYS_17AA3812","version":"6.0.1.8504"}]},
+      "BiosNumber": "8GCN30WW",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "ideapad 730S13IWL",
+      "Driver": {"drivers":[{"deviceName":"Intel SST Audio Controller","hardwareId":"PCI\\VEN_8086&DEV_9DC8&SUBSYS_380117AA","version":"10.23.0.1789"},{"deviceName":"Realtek High Definition Audio","hardwareId":"INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0298&SUBSYS_17AA3814","version":"6.0.1.8536"}]},
+      "BiosNumber": "8HCN23WW",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "Yoga S73013IWL",
+      "Driver": {"drivers":[{"deviceName":"Intel SST Audio Controller","hardwareId":"PCI\\VEN_8086&DEV_9DC8&SUBSYS_380117AA","version":"10.23.0.2427"},{"deviceName":"Realtek High Definition Audio","hardwareId":"INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0298&SUBSYS_17AA3814","version":"6.0.8694.1"}]},
+      "BiosNumber": "8HCN23WW",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "YOGA 73013IKB",
+      "Driver": {"drivers":[{"deviceName":"Intel SST Audio Controller","hardwareId":"PCI\\VEN_8086&DEV_9D71&SUBSYS_382817AA","version":"9.21.0.4104"},{"deviceName":"Realtek High Definition Audio","hardwareId":"INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0236&SUBSYS_17AA38FE","version":"6.0.1.8492"}]},
+      "BiosNumber": "7LCN24WW",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      },
+      {
+      "FamilyName": "ideacentre AIO 52022IKU",
+      "Driver": {"drivers":[{"deviceName":"Intel SST Audio Controller","hardwareId":"PCI\\VEN_8086&DEV_9D71&SUBSYS_36DF17AA,PCI\\VEN_8086&DEV_9D70&SUBSYS_36DF17AA","version":"9.21.0.3523"},{"deviceName":"Realtek High Definition Audio","hardwareId":"INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0274&SUBSYS_17AA36DF","version":"6.0.1.8475"}]},
+      "BiosNumber": "O3DKT30A",
+      "supportLauguages":"en",
+      "supportCountrys":"us"
+      }
+      ]}]]></Setting>
+  </Settings><Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+	<SignedInfo xmlns="http://www.w3.org/2000/09/xmldsig#">
+		<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+		<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+		<Reference URI="">
+			<Transforms>
+				<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+			</Transforms>
+			<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+			<DigestValue>v1AOOWA3u9suYsZt6eYmgQ9sUSOEx2dPTtrd/C7zN7I=</DigestValue>
+		</Reference>
+	</SignedInfo>
+	<SignatureValue>
+Na0VJK6qSnrFnbGqeKk+jqpF+L9Z60HmdIaa3146OolB79TpDHGjhf6wV9czC5/X
+xlqvnuVZcHxRLjbkXjuyGS+JmXNFV/1AKXyARgLkCfXITG/UJ/eR4TvMiPnScQ4M
+cKhI5HbVpLmc5F8gx5ZRefPhKbOWnuSxgQD/t7S4Ie45N/3aKwLyESfKqQBeAnsL
+THvKNBHvYlr4L21tyBDgc6rzmSDzZXsMO5AWoLkiuaI3W77jUA9Ziu9C7mR2dfRO
+mBOxW4GaNe6govwLdd7JfqlrOogRJMx0bKO2CNiAphsyijXcjLcU8/Sj5T5y/9QN
+6jpvD7L0A29R0FMSzATs7UTeYHsJ/E1G9aY0mN9aoh+PEqfKn65SS5cRJsAAKf2r
+/jKB6RSxreiD2KxWSOFwimpyKGo5W62spwnRMD2t2+0oEXXByYYrUCOOUbOyn/X3
+OSoRjaxMH4rX4RLjLe7G5wQgaW/0UuFjrwLZnc5CUKNif6kiw+clmdxOdBeiFAFq
+AqDF5exZjU3LI3YmnTp2R3edsKpYfK2hOd2T7QR1NPXe1sYY6OgcsABwIXEE3FTW
+BgmH3BZfOpVa5awvpe1lwf7NOhIoNNozIE5ZGjadeMbCPV8W5lVwUryAcHpcdIYw
+QsoDfRc6oMVSTiECAmLDEMsD/bUpUJrMCx1K+wzP6Co=
+	</SignatureValue>
+	<KeyInfo>
+		<KeyValue>
+			<RSAKeyValue>
+				<Modulus>
+wh+fVk/xCA7OxavhBAXyThzGbX2np+er2HLgqo4PkhAzT4rwen8KcFVgIdD2/SOr
+n3yBEtbIH+Jx5AkJ+0qP5Rub9bZU5AGo+dTogCDJy769qxu/HfqxoJRoVVwZj45N
+GXZENBMT1PqnZ1kWZfWOUXz+SMISHF1dO+sGP+kWKlHFtXXIxwEPrOwIrKGM7uv/
+HOk6nrMDzK+/iznfdUbC/Zv2wM0hsQEhumxSFmpvk5VyjvbMZtfeIU6PMaFFM22Q
+MyKL/KMS8o1dnNjLM9aJrunSppSMQxcHA9IyALbx6owG7VZ6DqCDibgbGkkWxaH3
+Rz6KFaGPpBOfLoZXKyi9rhBwPqOhspksGuLiucC/fltHb2GaTRnuiWUeDaoAZqx7
+2cliKcMb+tvLw19jClo/0PxhQgQ0HvyqidBihmArHdctIvJTrxe+olafDwwf0o5X
+DOFTLYqyyknPVqXOkYefzpVqu+DwnQqqUteYodhEu+TDBjhXXrHW8Q/xWlXkII34
+F53LI4TnCnCqalYduynFfWEepHhsulnvqxGCYr0lKF/oyEHSZlIfskZUbL/zwiqe
+0J1We95cONSV+Pi+qcLuQrkIv/r0J69VDoaalRZvLU1KreN1uXoheu/OPbqCV54l
+d0qlhQvlz3Q0fAjmuRYjJaHqV7+EYyijgSKj6zizrKU=
+				</Modulus>
+				<Exponent>AQAB</Exponent>
+			</RSAKeyValue>
+		</KeyValue>
+		<X509Data>
+			<X509IssuerSerial>
+				<X509IssuerName>CN=DigiCert Trusted G4 Code Signing RSA4096 SHA384 2021 CA1, O=DigiCert\, Inc., C=US</X509IssuerName>
+				<X509SerialNumber>14706073888503137188103110362569110662</X509SerialNumber>
+			</X509IssuerSerial>
+			<X509SubjectName>CN=Lenovo, OU=G08, O=Lenovo, L=Morrisville, ST=North Carolina, C=US</X509SubjectName>
+			<X509Certificate>
+MIIHZzCCBU+gAwIBAgIQCxBJbCiuHFJkq5OTfaf0hjANBgkqhkiG9w0BAQsFADBp
+MQswCQYDVQQGEwJVUzEXMBUGA1UEChMORGlnaUNlcnQsIEluYy4xQTA/BgNVBAMT
+OERpZ2lDZXJ0IFRydXN0ZWQgRzQgQ29kZSBTaWduaW5nIFJTQTQwOTYgU0hBMzg0
+IDIwMjEgQ0ExMB4XDTIyMDYyOTAwMDAwMFoXDTIzMDkxNDIzNTk1OVowbDELMAkG
+A1UEBhMCVVMxFzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQHEwtNb3Jy
+aXN2aWxsZTEPMA0GA1UEChMGTGVub3ZvMQwwCgYDVQQLEwNHMDgxDzANBgNVBAMT
+Bkxlbm92bzCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBAMIfn1ZP8QgO
+zsWr4QQF8k4cxm19p6fnq9hy4KqOD5IQM0+K8Hp/CnBVYCHQ9v0jq598gRLWyB/i
+ceQJCftKj+Ubm/W2VOQBqPnU6IAgycu+vasbvx36saCUaFVcGY+OTRl2RDQTE9T6
+p2dZFmX1jlF8/kjCEhxdXTvrBj/pFipRxbV1yMcBD6zsCKyhjO7r/xzpOp6zA8yv
+v4s533VGwv2b9sDNIbEBIbpsUhZqb5OVco72zGbX3iFOjzGhRTNtkDMii/yjEvKN
+XZzYyzPWia7p0qaUjEMXBwPSMgC28eqMBu1Weg6gg4m4GxpJFsWh90c+ihWhj6QT
+ny6GVysova4QcD6jobKZLBri4rnAv35bR29hmk0Z7ollHg2qAGase9nJYinDG/rb
+y8NfYwpaP9D8YUIENB78qonQYoZgKx3XLSLyU68XvqJWnw8MH9KOVwzhUy2KsspJ
+z1alzpGHn86Varvg8J0KqlLXmKHYRLvkwwY4V16x1vEP8VpV5CCN+BedyyOE5wpw
+qmpWHbspxX1hHqR4bLpZ76sRgmK9JShf6MhB0mZSH7JGVGy/88IqntCdVnveXDjU
+lfj4vqnC7kK5CL/69CevVQ6GmpUWby1NSq3jdbl6IXrvzj26gleeJXdKpYUL5c90
+NHwI5rkWIyWh6le/hGMoo4Eio+s4s6ylAgMBAAGjggIGMIICAjAfBgNVHSMEGDAW
+gBRoN+Drtjv4XxGG+/5hewiIZfROQjAdBgNVHQ4EFgQUPuopdNU5jXiVDqjn/I4b
+5uf7kHMwDgYDVR0PAQH/BAQDAgeAMBMGA1UdJQQMMAoGCCsGAQUFBwMDMIG1BgNV
+HR8Ega0wgaowU6BRoE+GTWh0dHA6Ly9jcmwzLmRpZ2ljZXJ0LmNvbS9EaWdpQ2Vy
+dFRydXN0ZWRHNENvZGVTaWduaW5nUlNBNDA5NlNIQTM4NDIwMjFDQTEuY3JsMFOg
+UaBPhk1odHRwOi8vY3JsNC5kaWdpY2VydC5jb20vRGlnaUNlcnRUcnVzdGVkRzRD
+b2RlU2lnbmluZ1JTQTQwOTZTSEEzODQyMDIxQ0ExLmNybDA+BgNVHSAENzA1MDMG
+BmeBDAEEATApMCcGCCsGAQUFBwIBFhtodHRwOi8vd3d3LmRpZ2ljZXJ0LmNvbS9D
+UFMwgZQGCCsGAQUFBwEBBIGHMIGEMCQGCCsGAQUFBzABhhhodHRwOi8vb2NzcC5k
+aWdpY2VydC5jb20wXAYIKwYBBQUHMAKGUGh0dHA6Ly9jYWNlcnRzLmRpZ2ljZXJ0
+LmNvbS9EaWdpQ2VydFRydXN0ZWRHNENvZGVTaWduaW5nUlNBNDA5NlNIQTM4NDIw
+MjFDQTEuY3J0MAwGA1UdEwEB/wQCMAAwDQYJKoZIhvcNAQELBQADggIBAHA/dZKS
+zfrU6TgfuRZ2mni++fQRJ5LpcS/6/idgIcsSgOIQF1ork9RX7mMKexh0plVdBxr+
+ZgYa4M5kcBoB5LNq8Ymi4Vvy0A1NvBaGBzoJDF5X+aRkOJIbqnfYN35BdUxl4JlP
+1KkatpxFJP8NpwbCSmHrD0sXXcvdeqMss1iW/vU/aie2DxQOyLxZ2xL3CEP7u3Sa
+9DyvcwmVE1RtQG2vKNzODvYczugrZqrKhcdzVjyAXj+zt/n04FGDb58Xh7ePhea1
+kChVhMrrOZg20oLTKihXXH0rnaiHP8oenkjfHHTY6N3pXhGwTVW8s9Lpzu1lRm3I
+2hAsV7+KdITuNqnG243SAZS+RAvyoNa40eoz3aP/K48Toz8JL/bSgXlU+bevZraY
+/9wCSFRQsiM+NclnUc1VwlTAwoCcUXvKTSTqaXwQE1YGKk3ENAyXhO1tNLJwRhRz
+dTb3wL46uW+NJaFBog6YWiuftwy5HKfvNkp+OCBd9kqVfsJ6uCNWNb8IHTQ5VjtC
+I7qYZvJBxiONUMa8jtQzsAfAAKiKNaguUwZ1VhtDVs9w45bzIusZ2scVplyQch5i
+qcZzrDK5xNce+ZILmCkJw0Ya9bca6cYbpdJao2oeSwSMxWAcEoIaVzioATetaXPg
+iAOGzsbv49uJ4tR9qPcO56w10IBS0Lh2uawi
+			</X509Certificate>
+		</X509Data>
+	</KeyInfo>
+	<Object>
+		<SignatureProperties>
+			<SignatureProperty Target="#"><issuerCertificate xmlns="namespaceURI">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</issuerCertificate>
+			</SignatureProperty>
+		</SignatureProperties>
+	</Object>
+</Signature>
+</Addin>

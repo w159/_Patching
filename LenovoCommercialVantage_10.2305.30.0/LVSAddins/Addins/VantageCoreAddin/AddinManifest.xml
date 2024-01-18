@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Addin name="VantageCoreAddin" version="1.0.0.36" runas="system" interactive="false">
+  <Contracts>
+    <Contract name="Lenovo.Vantage.RegistryEvent"/>
+    <Contract name="CustomerInfo.SelfSelect"/>
+    <Contract name="SystemUtilities.Registry-Get-KeyChildren"/>
+    <Contract name="Lenovo.Vantage.AddinSetting"/>
+    <Contract name="VantageService.DeviceInfo"/>
+    <Contract name="VantageService.OOBE"/>
+    <Contract name="Lenovo.Vantage.ConfigInfo"/>
+  </Contracts>
+  <EventSubscriptions>
+    <EventSubscription event="SessionChangeEvent">
+      <SubscriptionArgsJson><![CDATA[
+            {"Triggers":[
+                "SessionLogon","SessionUnlock"
+            ]}
+          ]]></SubscriptionArgsJson>
+    </EventSubscription>
+  </EventSubscriptions>
+  <Settings>
+    <Setting key="QuietPeriodMinutes">60</Setting>
+    <Setting key="OobeTimeCountIntervalMinutes">1</Setting>
+    <Setting key="NewWindowsMinVersion">10.0.21000.0000</Setting>
+  </Settings><Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+	<SignedInfo xmlns="http://www.w3.org/2000/09/xmldsig#">
+		<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+		<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+		<Reference URI="">
+			<Transforms>
+				<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+			</Transforms>
+			<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+			<DigestValue>kZ1lEpKDT87XZvsPGgB/jwY+jsezs9+FYW38f72HkF8=</DigestValue>
+		</Reference>
+	</SignedInfo>
+	<SignatureValue>
+1WYTP5VdSBteBI9XJwdsi/YvMbaYySFuQ167tnJecshkmJJ2thfJ2zdrJt7C4hKG
+LKaphVQ9KccR2XPAptjiyjH/K8DOe4lbC+gE5OHwyEBJ8AZoPet5Q4f7z3zvqOVX
+BiROn8BIzt1hNE3M9Z0qZPN2QEhZfE2vcDZTSNIhdK3bPYFb9r2ATy/mZliehGCd
+HqVfqEx/+fI61yWbGm0NuySx1nc8S8z2vh/2CZ+FvUANtZqifjWdqXGZuFIsqDgL
+t8p5LlWmnmPx31j1MxgJ/V5/c0MEYt6BUpt5GvaCypvgP6N53Nz/OmohL0keTjK6
+V0HHMaWCqM4DPH0HSQ0FSw9NOGLjO0G1eGqdOH0z1bCE+SHcJZLwwT8V3qjHR8A8
+8LCnp2JYjxET6t4PK9X4IxnNHG0Fq8nTk1pQn8NZNVjLURozBAEuL6/g8hTL+HyE
+ehu8j9jZ1cOHTozOO1hzYD2+RRPlb/F3bCga5DllLn7zI/vKqFxDU2RfopnKX7L0
+5d58Dese8oBnrL+f0Bi1Imgou7CRy1WS3RSemN4s+PotOPSTWuIfA9GEaOmDDA4G
+kqIG1w/wgOW+j6eljjVH+XyMrovYxcftTdJdJ46JblKkQhCYqUxjipKHLuYVinkS
+aTUnvBI9anK/PVHg9E+p19aNp+NPM7DMB1nfOkfcyyU=
+	</SignatureValue>
+	<KeyInfo>
+		<KeyValue>
+			<RSAKeyValue>
+				<Modulus>
+6mNHkyVOWMu3d3aLvrgGjbMo7WjCOv8MPSIkAHbhUaBS0+kEZHWL0YQKos+ZuRNr
+ldErfZgZgBG0fMCxUPVHibavS0bjvke4P5Gh7XqMJ34ROdq2uLTLuFghhVbQUrea
+aQHpr3HifnXrRUn3+HjkYM/VRh8WmXjkMnLlGtq//44Qeay2zkWS+ZPmJQP4L9lY
+1TNd8j0Y7dqcAqM0EY7pip07cZB9cy1kmi2LSluvjBT5oU9u4fCrbQmc2/iZYYix
+eR3Ma/YiIvqbQy9zNlv7+2c7F0HwJ6E5MDxIBZEmLiPk4XyWEeU+I0Kg7XBXDUFE
+y7C2YpR5vxia0r4WRcXSI9LzG2Xkmj99ypuWwkMMKZmKzyKBiMeBhV2pwKdWtz53
+20WNTP24rFdY+XsiLqFCIH2xDvKTRCuSMd8WRtU2m5/IVAXieTV1PvD7N5cau7Ji
+CFd4srSO2D9LuCrlZekU86bzTi9+mB1pdvC/aFeRGULQRqF0XGk6DrQJzQYlUSJu
+UBel/bLlAxb+0u1fNQ7Nbdi/2cnxusTgOH+BOa5n0ZHoL/WqPlmUSEsnOuBHGAKh
+X15+jgQWNXsaG7sqxWPZZkBkUeFgp+RgR4eEAxFGOMVsU8K0X4Jch9hqwqlodDq8
+kzs4DFxkZvyld+0yeVf95lr6UPrQM29+TD5QDWB6HAk=
+				</Modulus>
+				<Exponent>AQAB</Exponent>
+			</RSAKeyValue>
+		</KeyValue>
+		<X509Data>
+			<X509IssuerSerial>
+				<X509IssuerName>CN=DigiCert Trusted G4 Code Signing RSA4096 SHA384 2021 CA1, O=DigiCert\, Inc., C=US</X509IssuerName>
+				<X509SerialNumber>5473021574676036775556483212753251580</X509SerialNumber>
+			</X509IssuerSerial>
+			<X509SubjectName>CN=Lenovo, OU=G08, O=Lenovo, L=Morrisville, ST=North Carolina, C=US</X509SubjectName>
+			<X509Certificate>
+MIIHZzCCBU+gAwIBAgIQBB4QzA8gdc+ERhFKPdws/DANBgkqhkiG9w0BAQsFADBp
+MQswCQYDVQQGEwJVUzEXMBUGA1UEChMORGlnaUNlcnQsIEluYy4xQTA/BgNVBAMT
+OERpZ2lDZXJ0IFRydXN0ZWQgRzQgQ29kZSBTaWduaW5nIFJTQTQwOTYgU0hBMzg0
+IDIwMjEgQ0ExMB4XDTIxMDkxMzAwMDAwMFoXDTIyMDkxMzIzNTk1OVowbDELMAkG
+A1UEBhMCVVMxFzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQHEwtNb3Jy
+aXN2aWxsZTEPMA0GA1UEChMGTGVub3ZvMQwwCgYDVQQLEwNHMDgxDzANBgNVBAMT
+Bkxlbm92bzCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBAOpjR5MlTljL
+t3d2i764Bo2zKO1owjr/DD0iJAB24VGgUtPpBGR1i9GECqLPmbkTa5XRK32YGYAR
+tHzAsVD1R4m2r0tG475HuD+Roe16jCd+ETnatri0y7hYIYVW0FK3mmkB6a9x4n51
+60VJ9/h45GDP1UYfFpl45DJy5Rrav/+OEHmsts5FkvmT5iUD+C/ZWNUzXfI9GO3a
+nAKjNBGO6YqdO3GQfXMtZJoti0pbr4wU+aFPbuHwq20JnNv4mWGIsXkdzGv2IiL6
+m0MvczZb+/tnOxdB8CehOTA8SAWRJi4j5OF8lhHlPiNCoO1wVw1BRMuwtmKUeb8Y
+mtK+FkXF0iPS8xtl5Jo/fcqblsJDDCmZis8igYjHgYVdqcCnVrc+d9tFjUz9uKxX
+WPl7Ii6hQiB9sQ7yk0QrkjHfFkbVNpufyFQF4nk1dT7w+zeXGruyYghXeLK0jtg/
+S7gq5WXpFPOm804vfpgdaXbwv2hXkRlC0EahdFxpOg60Cc0GJVEiblAXpf2y5QMW
+/tLtXzUOzW3Yv9nJ8brE4Dh/gTmuZ9GR6C/1qj5ZlEhLJzrgRxgCoV9efo4EFjV7
+Ghu7KsVj2WZAZFHhYKfkYEeHhAMRRjjFbFPCtF+CXIfYasKpaHQ6vJM7OAxcZGb8
+pXftMnlX/eZa+lD60DNvfkw+UA1gehwJAgMBAAGjggIGMIICAjAfBgNVHSMEGDAW
+gBRoN+Drtjv4XxGG+/5hewiIZfROQjAdBgNVHQ4EFgQUIajcW9OOJkOr5gI9MJZF
+CuFd0GMwDgYDVR0PAQH/BAQDAgeAMBMGA1UdJQQMMAoGCCsGAQUFBwMDMIG1BgNV
+HR8Ega0wgaowU6BRoE+GTWh0dHA6Ly9jcmwzLmRpZ2ljZXJ0LmNvbS9EaWdpQ2Vy
+dFRydXN0ZWRHNENvZGVTaWduaW5nUlNBNDA5NlNIQTM4NDIwMjFDQTEuY3JsMFOg
+UaBPhk1odHRwOi8vY3JsNC5kaWdpY2VydC5jb20vRGlnaUNlcnRUcnVzdGVkRzRD
+b2RlU2lnbmluZ1JTQTQwOTZTSEEzODQyMDIxQ0ExLmNybDA+BgNVHSAENzA1MDMG
+BmeBDAEEATApMCcGCCsGAQUFBwIBFhtodHRwOi8vd3d3LmRpZ2ljZXJ0LmNvbS9D
+UFMwgZQGCCsGAQUFBwEBBIGHMIGEMCQGCCsGAQUFBzABhhhodHRwOi8vb2NzcC5k
+aWdpY2VydC5jb20wXAYIKwYBBQUHMAKGUGh0dHA6Ly9jYWNlcnRzLmRpZ2ljZXJ0
+LmNvbS9EaWdpQ2VydFRydXN0ZWRHNENvZGVTaWduaW5nUlNBNDA5NlNIQTM4NDIw
+MjFDQTEuY3J0MAwGA1UdEwEB/wQCMAAwDQYJKoZIhvcNAQELBQADggIBABVRqdHp
+y2FFChQpODeMywx+URlAp4clj1XDg+6Aw1cG4fIqRd/MYD6eHgbWTNOikxZbuaPK
+D2slOZW713EMTsfavQFKi85c7ShYd1ZFeFG957lmyaVKF2h9J7ODphdeqrbvX6gB
+qeXeSWkBQjdJ+ACUQUFMxP01WYHNfwlhyN7cgwCar5+L3ZYrCyWL+vj47h/b9qXF
+Efc8kJBuvEIP9F8f2zSbHwEB+4fh3d72v2znpL/0+Sh/fBHtnGrfWPD/ZaSjXQSx
+SBKC4wY5hw3EmcVR+Y+LCtxWpVlWWAr5uaAXxPudZFmaahqqrvYdYYJr1gLQmQKB
+b9+5PdFSvq6DHwGVbqjm0dsNJ47EVHo/ZFRX/vHXAH1FAUmC+HWJ2F0WP6dOpTd5
+coTkH0q3isjbBXSwmwPgAdOehZr++T27mE1w7a23JBp2DTySaxD4nEcofDbwYQNI
+YHkL7ob0TBLQKmMQzt6g/TumKhrz3lucR9Xrong43giq6GrcWANj2iuSk2R1myGy
+R6pOiZPdBI99VwipTz4eFG4Njw51lEZ8U3A12u5mxW05JqU1naW7MgBkqJKhbOya
+bcWKgiK2NS+wAn3MeolUiz0yNI71nTRFuDgQIcib5ytN/Leu8945OdycG/PY34Uk
+IK6lw+cfHY5IWN3wi4OZ33ExlAAcCzKxESz9
+			</X509Certificate>
+		</X509Data>
+	</KeyInfo>
+	<Object>
+		<SignatureProperties>
+			<SignatureProperty Target="#"><issuerCertificate xmlns="namespaceURI">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</issuerCertificate>
+			</SignatureProperty>
+		</SignatureProperties>
+	</Object>
+</Signature>
+</Addin>

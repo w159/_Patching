@@ -1,0 +1,30 @@
+CRITICAL_UPDATE_TOAST_TEXT=Sisteminiz için bir veya daha fazla kritik güncelleştirme var.
+CRITICAL_UPDATE_MESSAGE1_TEXT=Sisteminiz için kritik güncelleştirmeler var. Lenovo, bilgisayarınızı iyileştirmek için bunları şimdi yüklemenizi önerir. Paketlerden biri veya daha fazlası sisteminizi yeniden başlatabilir, bu nedenle devam etmeden önce lütfen varsa beklemedeki işlerinizi kaydedin.
+CRITICAL_UPDATE_MESSAGE2_TEXT=Bu kritik güncelleştirmelerin şimdi yüklenmesi için hazır mısınız?
+RESTART_UPDATE_MESSAGE1_TEXT =Sisteminiz için güncelleştirmeler var. Lenovo, bilgisayarınızı iyileştirmek için bunları şimdi yüklemenizi önerir. Paketlerden biri veya daha fazlası sisteminizi yeniden başlatabilir, bu nedenle devam etmeden önce lütfen varsa beklemedeki işlerinizi kaydedin.
+RESTART_UPDATE_MESSAGE2_TEXT =Bu güncelleştirmelerin şimdi yüklenmesi için hazır mısınız?
+NOTIFY_UPDATE_INSTALLED_TEXT=Güncellemeler yüklendi
+NOTIFY_LEARN_MORE_TEXT=Daha fazla bilgi için bu iletiyi seçin.
+SHUTDOWN_UPDATE_MESSAGE_TEXT=Sisteminiz için güncelleştirmeler var. Lenovo, bilgisayarınızı iyileştirmek için bunları şimdi yüklemenizi önerir. Paketlerden biri veya daha fazlası sisteminizi kapatabilir, bu nedenle devam etmeden önce lütfen varsa beklemedeki işlerinizi kaydedin.
+NEW_NOTIFY_UPDATE_INSTALLED_TEXT= Lenovo Companion sizin için güncellemeleri yükledi! 
+NEW_NOTIFY_LEARN_MORE_TEXT= Ek bilgi için burayı tıklayın.
+
+
+#Lenovo scheduled task critical popup MessageBox
+CRITICAL_MESSAGEBOX_TITLE=Birden çok kez yeniden başlatma gerekebilir
+CRITICAL_MESSAGEBOX_CONTENT2=Lenovo, bilgisayarınızı iyileştirmek için bu güncellemeleri yüklemenizi önerir. Aşağıdaki güncellemeler nedeniyle sisteminizin birden çok kez {0} gerekebilir. Sistemi kapatmaya hazırlanmak üzere çalışmanızı kaydetmenizi öneririz.
+CRITICAL_MESSAGEBOX_CONTENT3=Lenovo, bilgisayarınızı iyileştirmek için bu güncellemeleri yüklemenizi önerir. Aşağıdaki güncellemelerin sisteminizi birden çok kez yeniden başlatmanızı gerektirebileceğini unutmayın. Güncellemelerin yüklenmesi sırasında lütfen sisteminizi kapatmayın ve güç kaynağını veya aksesuarları çıkarmayın. Sisteminizi kapatmaya hazırlık için çalışmanızı kaydetmenizi öneririz. Ayrıca tüm güncellemeler tamamlandığında sisteminizin otomatik olarak yeniden başlatılacağını unutmayın.
+Force_RebootSystem_WithMinutes = Sisteminiz {0} dakika içinde yeniden başlatılacak
+Force_RebootSystem_MessageBox_Content = Yüklü güncellemeler sisteminizi yeniden başlatacaktır. Çalışmanızı zaten kaydettiyseniz “Evet”e tıkladığınızda sisteminiz hemen yeniden başlatılır. Aksi halde, bu iletiyi kapatıp sisteminizi yeniden başlatmadan önce çalışmanızı kaydetmek için “Hayır”a tıklamalısınız.
+
+DontSuspendReminderText=ÖNEMLİ: Bilgisayarınızı uyku veya hazırda bekleme kipine geçirmeyin ya da bilgisayarın kapağını kapatmayın; aksi takdirde, güncellemeler bozulabilir ve sisteminiz zarar görebilir. 
+
+S_REBOOT=yeniden yüklenmesini
+S_SHUTDOWN=kapatılmasını
+
+reboot_warning = UYARI: “Tamam” düğmesine basıldığında kurulum başlar ve sisteminizin yeniden başlatılması gerekebilir.
+reboot_warning_defer_time=UYARI: “EVET” düğmesine basıldığında kurulum başlar ve sisteminizin yeniden başlatılması gerekebilir. “HAYIR” düğmesine basıldığında güncelleme {0} dakika ertelenir.
+reboot_warning_defer_limit=Yöneticiniz yalnızca {0} kez ertelemenize izin veriyor.
+reboot_warning_defer_attempts={0} hakkınız kaldı.
+reboot_warning_defer_confirmation=Devam etmeye hazır mısınız?
+reboot_warning_defer_force_reboot = UYARI: “Tamam” düğmesine basıldığında veya pencere kapatıldığında kurulum başlar ve sisteminizin yeniden başlatılması gerekebilir.

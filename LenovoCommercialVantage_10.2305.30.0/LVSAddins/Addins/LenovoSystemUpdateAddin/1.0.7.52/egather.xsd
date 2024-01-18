@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="GATHERED_DATA">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="GATHERER_VERSION"/>
+        <xs:element maxOccurs="unbounded" ref="SECTION"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GATHERER_VERSION" type="xs:NMTOKEN"/>
+  <xs:element name="SECTION">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="TABLE"/>
+        <xs:element ref="CHK"/>
+      </xs:sequence>
+      <xs:attribute name="ID" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TABLE">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="COLS"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ROW"/>
+        <xs:element minOccurs="1" ref="ROWS"/>
+        <xs:element ref="CHK"/>
+      </xs:sequence>
+      <xs:attribute name="ID" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="COLS" type="xs:integer"/>
+  <xs:element name="ROW">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice maxOccurs="unbounded">
+          <xs:element ref="ASC"/>
+          <xs:element ref="DEC"/>
+          <xs:element ref="HEX"/>
+          <xs:element ref="STR"/>
+        </xs:choice>
+        <xs:element ref="CHK"/>
+      </xs:sequence>
+      <xs:attribute name="ID"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ASC">
+    <xs:complexType mixed="true">
+      <xs:attribute name="ID" use="required" type="xs:anyURI"/>
+      <xs:attribute name="W" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DEC">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:integer">
+          <xs:attribute name="ID" use="required"/>
+          <xs:attribute name="W" type="xs:integer"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="HEX">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:NMTOKEN">
+          <xs:attribute name="ID" use="required"/>
+          <xs:attribute name="W" type="xs:integer"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="STR">
+    <xs:complexType mixed="true">
+      <xs:attribute name="ID" use="required"/>
+      <xs:attribute name="W" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BOOL">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:boolean">
+          <xs:attribute name="ID" use="required"/>
+          <xs:attribute name="W" type="xs:integer"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ROWS" type="xs:integer"/>
+  <xs:element name="CHK" type="xs:NMTOKEN"/>
+</xs:schema>

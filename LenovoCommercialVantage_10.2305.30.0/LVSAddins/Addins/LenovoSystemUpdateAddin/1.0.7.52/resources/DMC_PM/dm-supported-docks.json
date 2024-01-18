@@ -1,0 +1,72 @@
+[
+  {
+    "device_name": "ThinkPad Thunderbolt 3 Essential Dock",
+    "dock_identifier": "VID_17EF&PID_3082",
+    "audio_identifier": "VID_17EF&PID_3092",
+    "machine_type": "40AV"
+  },
+  {
+    "device_name": "ThinkPad Thunderbolt 3 Workstation Dock / ThinkPad Thunderbolt 3 Dock Gen 2",
+    "dock_identifier": "VID_17EF&PID_3082",
+    "audio_identifier": "VID_17EF&PID_3083",
+    "machine_type": "40AN"
+  },
+  {
+    "device_name": "ThinkPad Thunderbolt 3 Dock",
+    "dock_identifier": "VID_17EF&PID_3069",
+    "audio_identifier": "VID_17EF&PID_306A",
+    "machine_type": "40AC"
+  },
+  {
+    "device_name": "ThinkPad Hybrid USB-C with USB-A Dock",
+    "dock_identifier": "VID_17EF&PID_A359",
+    "audio_identifier": "VID_17EF&PID_6015",
+    "machine_type": "40AF"
+  },
+  {
+    "device_name": "ThinkPad USB-C Dock Gen 2",
+    "dock_identifier": "VID_17EF&PID_A387",
+    "audio_identifier": "VID_17EF&PID_A396",
+    "machine_type": "40AS"
+  },
+  {
+    "device_name": "ThinkPad USB-C Dock",
+    "dock_identifier": "VID_17EF&PID_3062",
+    "audio_identifier": "VID_17EF&PID_3063",
+    "machine_type": "40A9"
+  },
+  {
+    "device_name": "ThinkPad Basic/Pro/Ultra Docking Station",
+    "dock_identifier": "VID_17EF&PID_306F",
+    "audio_identifier": "VID_17EF&PID_3063",
+    "machine_type": "40AG/40AH/40AJ"
+  },
+  {
+    "device_name": "USB-C dock",
+    "dock_identifier": "",
+    "audio_identifier": "",
+    "machine_type": "40AY",
+    "query_way": 1
+  },
+  {
+    "device_name": "USB-C dock smart dock",
+    "dock_identifier": "",
+    "audio_identifier": "",
+    "machine_type": "40B2",
+    "query_way": 1
+  },
+  {
+    "device_name": "TBT4 dock",
+    "dock_identifier": "",
+    "audio_identifier": "",
+    "machine_type": "40B0",
+    "query_way": 1
+  },
+  {
+    "device_name": "TBT4 smart dock",
+    "dock_identifier": "",
+    "audio_identifier": "",
+    "machine_type": "40B1",
+    "query_way": 1
+  }
+]

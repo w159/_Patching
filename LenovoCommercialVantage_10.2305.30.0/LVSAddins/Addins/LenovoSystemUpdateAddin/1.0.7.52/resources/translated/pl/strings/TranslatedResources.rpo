@@ -1,0 +1,30 @@
+CRITICAL_UPDATE_TOAST_TEXT=Dla Twojego komputera jest dostępna co najmniej jedna krytyczna aktualizacja.
+CRITICAL_UPDATE_MESSAGE1_TEXT=Dla Twojego komputera są dostępne krytyczne aktualizacje. Lenovo zaleca zainstalowanie ich w tej chwili, aby zoptymalizować działanie komputera. Co najmniej jeden pakiet może spowodować ponowne uruchomienie komputera, dlatego przed kontynuowaniem zapisz swoją całą pracę.
+CRITICAL_UPDATE_MESSAGE2_TEXT=Czy możemy rozpoczynać instalowanie tych krytycznych aktualizacji?
+RESTART_UPDATE_MESSAGE1_TEXT =Dla Twojego urządzenia są dostępne aktualizacje. Lenovo zaleca zainstalowanie ich w tej chwili, aby zoptymalizować działanie komputera. Co najmniej jeden pakiet może spowodować ponowne uruchomienie komputera, dlatego przed kontynuowaniem zapisz swoją całą pracę.
+RESTART_UPDATE_MESSAGE2_TEXT =Czy możemy rozpoczynać instalowanie tych aktualizacji?
+NOTIFY_UPDATE_INSTALLED_TEXT=Zainstalowano aktualizacje
+NOTIFY_LEARN_MORE_TEXT=Kliknij ten komunikat, aby dowiedzieć się więcej.
+SHUTDOWN_UPDATE_MESSAGE_TEXT=Dla Twojego systemu są dostępne aktualizacje. Lenovo zaleca zainstalowanie ich w tej chwili, aby zoptymalizować działanie komputera. Co najmniej jeden pakiet może spowodować zamknięcie systemu, dlatego przed kontynuowaniem zapisz swoją całą pracę.
+NEW_NOTIFY_UPDATE_INSTALLED_TEXT= Program Lenovo Companion zainstalował aktualizacje! 
+NEW_NOTIFY_LEARN_MORE_TEXT= Kliknij tutaj, aby dowiedzieć się więcej.
+
+
+#Lenovo scheduled task critical popup MessageBox
+CRITICAL_MESSAGEBOX_TITLE=Możliwość wielokrotnego ponownego uruchomienia
+CRITICAL_MESSAGEBOX_CONTENT2=Lenovo zaleca zainstalowanie ich w celu optymalizacji działania komputera. Instalowanie poniższych aktualizacji może wymagać kilkakrotnego {0} komputera. Zalecamy zapisanie pracy w celu przygotowania się do zamknięcia systemu.
+CRITICAL_MESSAGEBOX_CONTENT3=Lenovo zaleca zainstalowanie ich w celu optymalizacji działania komputera. Instalowanie poniższych aktualizacji może wymagać kilkakrotnego uruchomienia komputera ponownie. Podczas instalowania aktualizacji nie wyłączaj systemu i nie odłączaj zasilania ani akcesoriów. Zalecamy zapisanie pracy w celu przygotowania się do wyłączenia systemu. Po zakończeniu wszystkich aktualizacji system zostanie automatycznie uruchomiony ponownie.
+Force_RebootSystem_WithMinutes = System zostanie ponownie uruchomiony za {0} min
+Force_RebootSystem_MessageBox_Content = Zainstalowanie aktualizacji spowoduje ponowne uruchomienie systemu. Jeśli praca została już zapisana, możesz kliknąć przycisk „Tak”, aby od razu uruchomić system ponownie. W przeciwnym razie kliknij przycisk „Nie”, aby zamknąć ten komunikat i zapisz swoją pracę przed ponownym uruchomieniem systemu.
+
+DontSuspendReminderText=BELANGRIJK: Zet de computer niet in de slaap- of sluimerstand en klap de computer niet dicht. Dit kan de updates beschadigen en zorgen voor schade in uw systeem. 
+
+S_REBOOT=ponownie uruchomiony
+S_SHUTDOWN=zamknięty
+
+reboot_warning = OSTRZEŻENIE: Naciśnięcie przycisku „OK” spowoduje rozpoczęcie instalacji, co może wiązać się z koniecznością ponownego uruchomienia systemu.
+reboot_warning_defer_time=OSTRZEŻENIE: Naciśnięcie przycisku „TAK” spowoduje rozpoczęcie instalacji, co może wiązać się z koniecznością ponownego uruchomienia systemu. Naciśnięcie przycisku „NIE” odłożenie aktualizacji o {0} minut(y).
+reboot_warning_defer_limit=Twój administrator zezwala na odłożenie aktualizacji tylko {0} raz(y).
+reboot_warning_defer_attempts=Pozostało: {0} raz(y).
+reboot_warning_defer_confirmation=Czy chcesz kontynuować?
+reboot_warning_defer_force_reboot = OSTRZEŻENIE: Naciśnięcie przycisku „OK” lub zamknięcie okna spowoduje spowoduje rozpoczęcie instalacji, co może wiązać się z koniecznością ponownego uruchomienia systemu.

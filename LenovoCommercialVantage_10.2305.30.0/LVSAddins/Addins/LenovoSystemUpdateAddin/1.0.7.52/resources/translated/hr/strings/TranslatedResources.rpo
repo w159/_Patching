@@ -1,0 +1,30 @@
+CRITICAL_UPDATE_TOAST_TEXT=Za sustav je dostupno jedno ili više kritičnih ažuriranja.
+CRITICAL_UPDATE_MESSAGE1_TEXT=Za sustav su dostupna kritična ažuriranja. Lenovo preporučuje da ih instalirate odmah da biste optimizirali računalo. Jedan ili više paketa mogao bi ponovno pokrenuti sustav pa prije nastavka spremite sav rad u tijeku.
+CRITICAL_UPDATE_MESSAGE2_TEXT=Jeste li spremni za instaliranje kritičnih ažuriranja odmah?
+RESTART_UPDATE_MESSAGE1_TEXT =Dostupna su ažuriranja za vaš sustav. Lenovo preporučuje da ih instalirate odmah da biste optimizirali računalo. Jedan ili više paketa mogao bi ponovno pokrenuti sustav pa prije nastavka spremite sav rad u tijeku.
+RESTART_UPDATE_MESSAGE2_TEXT =Jeste li spremni za instaliranje tih ažuriranja odmah?
+NOTIFY_UPDATE_INSTALLED_TEXT=Ažuriranja su instalirana
+NOTIFY_LEARN_MORE_TEXT=Odaberite ovu poruku da biste saznali više.
+SHUTDOWN_UPDATE_MESSAGE_TEXT=Dostupna su vam ažuriranja za sustav. Lenovo preporučuje da ih instalirate odmah da biste optimizirali računalo. Jedan ili više paketa mogao bi isključiti sustav, stoga prije nastavka spremite sav rad u tijeku.
+NEW_NOTIFY_UPDATE_INSTALLED_TEXT= Lenovo Companion instalirao je ažuriranja umjesto vas! 
+NEW_NOTIFY_LEARN_MORE_TEXT= Kliknite ovdje da biste saznali više.
+
+
+#Lenovo scheduled task critical popup MessageBox
+CRITICAL_MESSAGEBOX_TITLE=Mogućnost više ponovnih pokretanja
+CRITICAL_MESSAGEBOX_CONTENT2=Lenovo preporučuje da instalirate ta ažuriranja da biste optimizirali računalo. Imajte na umu da će za sljedeća ažuriranja možda biti potrebno višekratno {0}. Preporučujemo da prije isključivanja sustava spremite sve na čemu radite.
+CRITICAL_MESSAGEBOX_CONTENT3=Lenovo preporučuje da instalirate ta ažuriranja da biste optimizirali računalo. Napominjemo da će prilikom instalacije ažuriranja u nastavku možda biti potrebno više puta ponovno pokrenuti sustav. Tijekom instaliranja ažuriranja ne isključujte sustav i ne uklanjajte izvor napajanja ili pomagala. Preporučujemo da prilikom pripreme za gašenje sustava spremite sve na čemu radite i napominjemo da će se sustav automatski ponovno pokrenuti po dovršetku svih ažuriranja.
+Force_RebootSystem_WithMinutes = Sustav će se ponovno pokrenuti za {0} minuta
+Force_RebootSystem_MessageBox_Content = Instalirana ažuriranja ponovno će pokrenuti vaš sustav. Ako ste već spremili svoj rad, možete kliknuti "U redu" i sustav će se odmah ponovno pokrenuti. U suprotnom trebate kliknuti "Ne" da biste zatvorili ovu poruku i početi spremati sve na čemu radite prije ponovnog pokretanja sustava.
+
+DontSuspendReminderText=VAŽNO: Ne stavljajte računalo u stanje mirovanja ili hibernacije i ne zatvarajte poklopac računala jer to može oštetiti ažuriranja i vaš sustav. 
+
+S_REBOOT=ponovno pokrenuti
+S_SHUTDOWN=isključiti
+
+reboot_warning = UPOZORENJE: Pritiskom na 'U redu' započet će instalacija i možda će biti potrebno ponovno pokretanje sustava.
+reboot_warning_defer_time=UPOZORENJE: Pritiskom na "DA" započet će instalacija i možda će biti potrebno ponovno pokretanje sustava. Pritiskom na "NE" ažuriranje će se odgoditi za minuta: {0}.
+reboot_warning_defer_limit=Vaš administrator dopušta odgoda samo: {0}.
+reboot_warning_defer_attempts=Preostalo vam je: {0}.
+reboot_warning_defer_confirmation=Jeste li spremni nastaviti?
+reboot_warning_defer_force_reboot = UPOZORENJE: Pritiskom na 'U redu' ili zatvaranjem prozora započet će instalacija i možda će biti potrebno ponovno pokretanje sustava.
