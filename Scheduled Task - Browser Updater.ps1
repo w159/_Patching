@@ -10,20 +10,21 @@ These scripts are currently working for Chrome, Edge, FireFox, and Brave as of 5
 
 #>
 
-Get-ScheduledTask | Where-Object TaskName -EQ "Chromium Browser Updates" | Unregister-ScheduledTask -Confirm:$false -ErrorAction SilentlyContinue
-Get-ScheduledTask | Where-Object TaskName -EQ "- Browser Updater" | Unregister-ScheduledTask -Confirm:$false -ErrorAction SilentlyContinue
-Get-ScheduledTask | Where-Object TaskName -EQ "S5 - Browser Updater" | Unregister-ScheduledTask -Confirm:$false -ErrorAction SilentlyContinue
+Get-ScheduledTask | Where-Object TaskName -EQ 'Chromium Browser Updates' | Unregister-ScheduledTask -Confirm:$false -ErrorAction SilentlyContinue
+Get-ScheduledTask | Where-Object TaskName -EQ '- Browser Updater' | Unregister-ScheduledTask -Confirm:$false -ErrorAction SilentlyContinue
+Get-ScheduledTask | Where-Object TaskName -EQ 'S5 - Browser *' | Unregister-ScheduledTask -Confirm:$false -ErrorAction SilentlyContinue
 
 $ProgressPreference = 'SilentlyContinue'
 $PowerShellVersion = (Get-Host).Version.Major
 [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
 
-If ($PowerShellVersion -lt "5") {
+If ($PowerShellVersion -lt '5')
+{
   Invoke-WebRequest -UseBasicParsing 'https://github.com/PowerShell/PowerShell/releases/download/v7.3.3/PowerShell-7.3.3-win-x64.msi' -OutFile 'C:\Utils\PowerShell.msi' -Wait
   Start-Process -FilePath 'C:\Utils\PowerShell.msi' -ArgumentList '/qn'
 }
 
-New-Item -Path "C:\Windows" -Name Utils -ItemType Directory -Force -ErrorAction SilentlyContinue
+New-Item -Path 'C:\Windows' -Name Utils -ItemType Directory -Force -ErrorAction SilentlyContinue
 
 $ChromeBrowserUpdatesScript = @"
 `$ProgressPreference = 'SilentlyContinue'
@@ -119,25 +120,25 @@ if (`$installedVersions.Count -eq 0) {
 }
 "@
 
-New-Item -Path "C:\Windows\Utils" -Name ChromeBrowserUpdates.ps1 -ItemType File -Value $ChromeBrowserUpdatesScript -Force
-New-Item -Path "C:\Windows\Utils" -Name EdgeBrowserUpdates.ps1 -ItemType File -Value $EdgeBrowserUpdatesScript -Force
-New-Item -Path "C:\Windows\Utils" -Name FirefoxBrowserUpdates.ps1 -ItemType File -Value $FirefoxBrowserUpdatesScript -Force
+New-Item -Path 'C:\Windows\Utils' -Name ChromeBrowserUpdates.ps1 -ItemType File -Value $ChromeBrowserUpdatesScript -Force
+New-Item -Path 'C:\Windows\Utils' -Name EdgeBrowserUpdates.ps1 -ItemType File -Value $EdgeBrowserUpdatesScript -Force
+New-Item -Path 'C:\Windows\Utils' -Name FirefoxBrowserUpdates.ps1 -ItemType File -Value $FirefoxBrowserUpdatesScript -Force
 
 $Hours = 1, 2, 3, 4, 5, 5, 21, 22, 23 | Get-Random -Count 1
 $Minutes = Get-Random -Minimum 00 -Maximum 59
 $Time = Get-Date -Hour $Hours -Minute $Minutes -UFormat %r
 $Trigger = (New-ScheduledTaskTrigger -Daily -At $Time)
-$User = "NT AUTHORITY\SYSTEM"
+$User = 'NT AUTHORITY\SYSTEM'
 
-$Action = (New-ScheduledTaskAction -Execute "POWERSHELL" -Argument '-ExecutionPolicy Bypass -File "C:\Windows\Utils\ChromeBrowserUpdates.ps1"'),
-          (New-ScheduledTaskAction -Execute "POWERSHELL" -Argument '-ExecutionPolicy Bypass -File "C:\Windows\Utils\EdgeBrowserUpdates.ps1"'),
-          (New-ScheduledTaskAction -Execute "POWERSHELL" -Argument '-ExecutionPolicy Bypass -File "C:\Windows\Utils\FirefoxBrowserUpdates.ps1"'),
-          (New-ScheduledTaskAction -Execute "C:\Program Files (x86)\BraveSoftware\Update\BraveUpdate.exe" -Argument "/ua /installsource scheduler"),
-          (New-ScheduledTaskAction -Execute "C:\Program Files\BraveSoftware\Update\BraveUpdate.exe" -Argument "/ua /installsource scheduler")
+$Action = (New-ScheduledTaskAction -Execute 'POWERSHELL' -Argument '-ExecutionPolicy Bypass -File "C:\Windows\Utils\ChromeBrowserUpdates.ps1"'),
+          (New-ScheduledTaskAction -Execute 'POWERSHELL' -Argument '-ExecutionPolicy Bypass -File "C:\Windows\Utils\EdgeBrowserUpdates.ps1"'),
+          (New-ScheduledTaskAction -Execute 'POWERSHELL' -Argument '-ExecutionPolicy Bypass -File "C:\Windows\Utils\FirefoxBrowserUpdates.ps1"'),
+          (New-ScheduledTaskAction -Execute 'C:\Program Files (x86)\BraveSoftware\Update\BraveUpdate.exe' -Argument '/ua /installsource scheduler'),
+          (New-ScheduledTaskAction -Execute 'C:\Program Files\BraveSoftware\Update\BraveUpdate.exe' -Argument '/ua /installsource scheduler')
 
 $Settings = New-ScheduledTaskSettingsSet -RunOnlyIfNetworkAvailable -WakeToRun -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -StartWhenAvailable
 
-$TaskName = "S5 - Browser Updater v5.31.23"
-$Description = "This task should ensure that the popular web browsers are updated to the latest version available according to the browser developer. Created by JM; Last updated 5-31-23"
+$TaskName = 'Browser Updater v3.12.24'
+$Description = 'This task should ensure that the popular web browsers are updated to the latest version available according to the browser developer. Created by JM; Last updated 5-31-23'
 
 Register-ScheduledTask -TaskName $TaskName -Trigger $Trigger -User $User -Action $Action -Settings $Settings -RunLevel Highest -Force -Description $Description

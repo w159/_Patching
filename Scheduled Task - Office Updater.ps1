@@ -1,5 +1,5 @@
 
-
+Get-ScheduledTask | Where-Object TaskName -EQ 'S5 - Office *' | Unregister-ScheduledTask -Confirm:$false -ErrorAction SilentlyContinue
 New-Item -Path 'C:\Windows' -Name Utils -ItemType Directory -Force -ErrorAction SilentlyContinue
 
 $OfficeUpdatesScript = @"
@@ -35,5 +35,5 @@ $User = 'NT AUTHORITY\SYSTEM'
 $Action = (New-ScheduledTaskAction -Execute 'POWERSHELL' -Argument '-ExecutionPolicy Bypass -File "C:\Windows\Utils\OfficeUpdates.ps1"')
 $Settings = New-ScheduledTaskSettingsSet -RunOnlyIfNetworkAvailable -WakeToRun -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries
 
-Register-ScheduledTask -TaskName 'S5 - Office Updater' -Trigger $Trigger, $TriggerLogon -User $User -Action $Action -Settings $Settings -RunLevel Highest -Force -Description 'This task should update x32 and x64 versions of Microsoft Office apps. Created by JM Last updated 7-17-23'
+Register-ScheduledTask -TaskName 'Office Updater' -Trigger $Trigger, $TriggerLogon -User $User -Action $Action -Settings $Settings -RunLevel Highest -Force -Description 'This task should update x32 and x64 versions of Microsoft Office apps. Created by JM Last updated 7-17-23'
 
