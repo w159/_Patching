@@ -2,7 +2,7 @@ function Configure-SNMP
 {
 
     <#
-    EX - Configure-SNMP -h localhost -communityName public -snmpType 4 -permittedHost DeviceName
+       EX - Configure-SNMP -h localhost -communityName public -snmpType 4 -permittedHost DeviceName
     #>
 
     param (
