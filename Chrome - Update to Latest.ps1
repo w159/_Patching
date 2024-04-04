@@ -1,8 +1,9 @@
 $ProgressPreference = 'SilentlyContinue'
 [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
-$ChromiumTeamGitAPI = Invoke-RestMethod -UseBasicParsing 'https://omahaproxy.appspot.com/json'
+$ChromiumTeamGitAPI = Invoke-RestMethod -UseBasicParsing 'https://versionhistory.googleapis.com/v1/chrome/platforms/all/channels/all/versions/'
+$ChromeCurrentVersion = $ChromiumTeamGitAPI.Versions | Where-Object { $_.name -like 'chrome/platforms/win64/channels/stable/versions/*' } | Sort-Object -Descending | Select-Object -First 1 | Select-Object -ExpandProperty version
 $ChromeMSI = 'C:\Utils\googlechromestandaloneenterprise.msi'
-$ChromeCurrentVersion = $ChromiumTeamGitAPI.Versions | Where-Object { $_.OS -like 'win' -and $_.Channel -eq 'Stable' } | Select-Object -ExpandProperty current_version
+
 $ChromeDownloadMSILink_x64 = 'https://dl.google.com/dl/chrome/install/googlechromestandaloneenterprise64.msi'
 $InstallArgs = '/qn /norestart /L*V C:\Utils\ChromeUpdater.log'
 $ChromeVersion = Get-WmiObject win32_product | Where-Object Name -Like *Chrome* | Select-Object -ExpandProperty Version -ErrorAction SilentlyContinue
