@@ -13,6 +13,7 @@ These scripts are currently working for Chrome, Edge, FireFox, and Brave as of 4
 Get-ScheduledTask | Where-Object TaskName -EQ 'Chromium Browser Updates' | Unregister-ScheduledTask -Confirm:$false -ErrorAction SilentlyContinue
 Get-ScheduledTask | Where-Object TaskName -EQ '- Browser Updater' | Unregister-ScheduledTask -Confirm:$false -ErrorAction SilentlyContinue
 Get-ScheduledTask | Where-Object TaskName -EQ 'S5 - Browser *' | Unregister-ScheduledTask -Confirm:$false -ErrorAction SilentlyContinue
+Get-ScheduledTask | Where-Object TaskName -EQ 'Browser Updater v3.12.24' | Unregister-ScheduledTask -Confirm:$false -ErrorAction SilentlyContinue
 
 $ProgressPreference = 'SilentlyContinue'
 $PowerShellVersion = (Get-Host).Version.Major
@@ -138,7 +139,7 @@ $Action = (New-ScheduledTaskAction -Execute 'POWERSHELL' -Argument '-ExecutionPo
 
 $Settings = New-ScheduledTaskSettingsSet -RunOnlyIfNetworkAvailable -WakeToRun -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -StartWhenAvailable
 
-$TaskName = 'Browser Updater v3.12.24'
-$Description = 'This task should ensure that the popular web browsers are updated to the latest version available according to the browser developer. Created by JM; Last updated 5-31-23'
+$TaskName = 'Browser Updater v4.4.24'
+$Description = 'This task should ensure that the popular web browsers are updated to the latest version available according to the browser developer. Created by JM; Last updated 4.4.24'
 
 Register-ScheduledTask -TaskName $TaskName -Trigger $Trigger -User $User -Action $Action -Settings $Settings -RunLevel Highest -Force -Description $Description
