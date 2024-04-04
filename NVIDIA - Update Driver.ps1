@@ -7,6 +7,7 @@ The NVIDIA download site is used to compare the current and latest versions
 
 Get-ScheduledTask | Where-Object TaskName -EQ 'Nvidia-Updater' | Unregister-ScheduledTask -Confirm:$false -ErrorAction SilentlyContinue
 Get-ScheduledTask | Where-Object TaskName -EQ 'S5 - NVIDIA Updater' | Unregister-ScheduledTask -Confirm:$false -ErrorAction SilentlyContinue
+Get-ScheduledTask | Where-Object TaskName -EQ 'S5 - NVIDIA Driver Updater' | Unregister-ScheduledTask -Confirm:$false -ErrorAction SilentlyContinue
 
 $VideoController = (Get-WmiObject -ClassName Win32_VideoController | Where-Object Name -Match 'NVIDIA').VideoProcessor
 
@@ -195,7 +196,7 @@ Remove-Item `$nvidiaTempFolder -Recurse -Force -ErrorAction SilentlyContinue
 
     New-Item -Path 'C:\Windows\Utils' -Name NVIDIAUpdater.ps1 -ItemType File -Value $NVIDIAUpdatesScript -Force -ErrorAction SilentlyContinue
 
-    $Hours = 1, 2, 3, 4, 5, 5, 21, 22, 23 | Get-Random -Count 1
+    $Hours = 1, 2, 3, 4, 5, 21, 22, 23 | Get-Random -Count 1
     $Minutes = Get-Random -Minimum 00 -Maximum 59
     $Time = Get-Date -Hour $Hours -Minute $Minutes -UFormat %r
     $Trigger = (New-ScheduledTaskTrigger -Daily -At $Time)
@@ -205,7 +206,7 @@ Remove-Item `$nvidiaTempFolder -Recurse -Force -ErrorAction SilentlyContinue
 
     $Settings = New-ScheduledTaskSettingsSet -RunOnlyIfNetworkAvailable -WakeToRun -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -StartWhenAvailable
 
-    Register-ScheduledTask -TaskName 'S5 - NVIDIA Driver Updater' -Trigger $Trigger -User $User -Action $Action -Settings $Settings -RunLevel Highest -Force -Description 'This task updates the Nvidia Geforce software and drivers if installed. S5-JM last updated 5-3-23'
+    Register-ScheduledTask -TaskName 'NVIDIA Driver Updater v4.4.24' -Trigger $Trigger -User $User -Action $Action -Settings $Settings -RunLevel Highest -Force -Description 'This task updates the Nvidia Geforce software and drivers if installed. S5-JM last updated 4.4.24'
 
 }
 

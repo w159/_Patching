@@ -1,5 +1,7 @@
 ﻿Get-ScheduledTask | Where-Object TaskName -EQ 'S5 - Intune *' | Unregister-ScheduledTask -Confirm:$false -ErrorAction SilentlyContinue
 Get-ScheduledTask | Where-Object TaskName -EQ 'Intune Hourly Sync' | Unregister-ScheduledTask -Confirm:$false -ErrorAction SilentlyContinue
+Get-ScheduledTask | Where-Object TaskName -EQ 'Intune App Sync' | Unregister-ScheduledTask -Confirm:$false -ErrorAction SilentlyContinue
+Get-ScheduledTask | Where-Object TaskName -EQ 'Intune Compliance Sync' | Unregister-ScheduledTask -Confirm:$false -ErrorAction SilentlyContinue
 
 
 $Trigger = (New-ScheduledTaskTrigger -At (Get-Date) -RepetitionInterval (New-TimeSpan -Minutes 60) -Once)
@@ -14,11 +16,11 @@ $Settings = New-ScheduledTaskSettingsSet -RunOnlyIfNetworkAvailable -WakeToRun -
 
 $User = 'NT AUTHORITY\SYSTEM'
 
-$TaskName_AppSync = 'Intune App Sync'
-$Description_AppSync = 'This executes an IME action to initiate a sync for Intune data. Created by JM with S5 Logic - Last updated 5-15-23'
+$TaskName_AppSync = 'Intune App Sync v4.4.24'
+$Description_AppSync = 'This executes an IME action to initiate a sync for Intune data. Created by JM - Last updated 4.4.24'
 
-$TaskName_CompSync = 'Intune Compliance Sync'
-$Description_CompSync = 'This executes IME action initiate a sync for Intune compliance. Created by JM with S5 Logic - Last updated 5-15-23'
+$TaskName_CompSync = 'Intune Compliance Sync v4.4.24'
+$Description_CompSync = 'This executes IME action initiate a sync for Intune compliance. Created by JM - Last updated 4.4.24'
 
 Register-ScheduledTask -TaskName $TaskName_AppSync -Trigger $Trigger -Action $SyncIMEAction -User $User -Settings $Settings -RunLevel Highest -Force -Description $Description_AppSync
 Register-ScheduledTask -TaskName $TaskName_CompSync -Trigger $15MinuteTrigger -Action $SyncComplianceAction -User $User -Settings $Settings -RunLevel Highest -Force -Description $Description_CompSync
