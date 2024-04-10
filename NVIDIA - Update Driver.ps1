@@ -208,6 +208,4 @@ Remove-Item `$nvidiaTempFolder -Recurse -Force -ErrorAction SilentlyContinue
 
     Register-ScheduledTask -TaskName 'NVIDIA Driver Updater v4.4.24' -Trigger $Trigger -User $User -Action $Action -Settings $Settings -RunLevel Highest -Force -Description 'This task updates the Nvidia Geforce software and drivers if installed. S5-JM last updated 4.4.24'
 
-}
-
-else { 'NOT NVIDIA - No actions taken' }
+} else { 'NOT NVIDIA - No actions taken' }
