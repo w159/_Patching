@@ -1,3 +1,4 @@
+
 <#
 .Description
 This script is used to extend the WinRE partition size by shrinking the OS partition.
@@ -283,7 +284,7 @@ function Resize-WinREPartition
 		else
 		{
 			$shrinkSize = [Math]::Ceiling((250MB - $UnallocatedSpace) / 1MB) * 1MB
-			if ($shrinkSize > 250MB)
+			if ($shrinkSize -gt 250MB)
 			{
 				$shrinkSize = 250MB
 			}
@@ -524,6 +525,7 @@ function Resize-WinREPartition
 		Start-Sleep 2
 		LogMessage('Formating the partition...')
 		$result = Format-Volume -Partition $partition -FileSystem NTFS -Confirm:$false
+		$result
 		if ($Error.Count -gt 0)
 		{
 			LogMessage('Error: Format-Volume encountered errors: ' + $Error[0].Exception.Message)
@@ -609,6 +611,7 @@ set id=27
 	LogMessage('WinRE Partition Index: ' + $WinREPartitionIndex)
 	$WinREPartition = Get-Partition -DiskNumber $OSDiskIndex -PartitionNumber $WinREPartitionIndex
 	$WinREPartitionSizeInfoAfter = DisplayPartitionInfo($WinREPartition.AccessPaths)
+	$WinREPartitionSizeInfoAfter
 	LogMessage('')
 	LogMessage('OS Information:')
 	$OSPartition = Get-Partition -DriveLetter $OSDrive
