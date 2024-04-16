@@ -6,7 +6,7 @@ This script creates additional PowerShell scripts that are used in a new Schedul
 
 To mitigate unintended elevation attempts, the scripts are placed in C:\Windows\Utils
 
-These scripts are currently working for Chrome, Edge, FireFox, and Brave as of 4-4-24
+These scripts are currently working for Chrome, Edge, FireFox, and Brave as of 4-16-24
 
 #>
 
@@ -14,6 +14,7 @@ Get-ScheduledTask | Where-Object TaskName -EQ 'Chromium Browser Updates' | Unreg
 Get-ScheduledTask | Where-Object TaskName -EQ '- Browser Updater' | Unregister-ScheduledTask -Confirm:$false -ErrorAction SilentlyContinue
 Get-ScheduledTask | Where-Object TaskName -EQ 'S5 - Browser *' | Unregister-ScheduledTask -Confirm:$false -ErrorAction SilentlyContinue
 Get-ScheduledTask | Where-Object TaskName -EQ 'Browser Updater v3.12.24' | Unregister-ScheduledTask -Confirm:$false -ErrorAction SilentlyContinue
+Get-ScheduledTask | Where-Object TaskName -EQ 'Browser Updater v4.4.24' | Unregister-ScheduledTask -Confirm:$false -ErrorAction SilentlyContinue
 
 $ProgressPreference = 'SilentlyContinue'
 $PowerShellVersion = (Get-Host).Version.Major
@@ -137,9 +138,9 @@ $Action = (New-ScheduledTaskAction -Execute 'POWERSHELL' -Argument '-ExecutionPo
           (New-ScheduledTaskAction -Execute 'C:\Program Files (x86)\BraveSoftware\Update\BraveUpdate.exe' -Argument '/ua /installsource scheduler'),
           (New-ScheduledTaskAction -Execute 'C:\Program Files\BraveSoftware\Update\BraveUpdate.exe' -Argument '/ua /installsource scheduler')
 
-$Settings = New-ScheduledTaskSettingsSet -RunOnlyIfNetworkAvailable -WakeToRun -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -StartWhenAvailable
+$Settings = New-ScheduledTaskSettingsSet -RunOnlyIfNetworkAvailable -WakeToRun -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -RunOnlyIfIdle -IdleWaitTimeout 01:00:00
 
-$TaskName = 'Browser Updater v4.4.24'
-$Description = 'This task should ensure that the popular web browsers are updated to the latest version available according to the browser developer. Created by JM; Last updated 4.4.24'
+$TaskName = 'Browser Updater v4.16.24'
+$Description = 'This task should ensure that the popular web browsers are updated to the latest version available according to the browser developer. Created by JM; Last updated 4.16.24'
 
 Register-ScheduledTask -TaskName $TaskName -Trigger $Trigger -User $User -Action $Action -Settings $Settings -RunLevel Highest -Force -Description $Description

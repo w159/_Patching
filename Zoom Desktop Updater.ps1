@@ -14,14 +14,16 @@ $ZoomDownload = $WebRequest.Headers.Location
 
 $RegEx = '(?<=prod/)[0-9.]+'
 $ZoomLatestVersion = [regex]::Matches($ZoomDownload, $RegEx) | ForEach-Object { $_.Value }
-$ZoomApp = Get-WmiObject win32_product | Where-Object Name -Like 'Zoom(64bit)' | Select-Object -ExpandProperty Name
+$ZoomApp = Get-WmiObject win32_product | Where-Object Name -Like 'Zoom*' | Select-Object -ExpandProperty Name
 $ZoomCurrentVersion = Get-WmiObject win32_product | Where-Object Name -Like 'Zoom(64bit)' | Select-Object -ExpandProperty Version
 $ZoomEXE = Test-Path -Path 'C:\Program Files\Zoom\bin\Zoom.exe'
+$ZoomUserInstall = Get-ChildItem -Recurse -Path 'C:\Users' | Where-Object Name -Like 'Zoom.exe' | Sort-Object LastWriteTime -Descending | Select-Object -First 1
+$ZoomUserExe = $ZoomUserInstall.FullName
 $ZoomMSI = 'C:\Utils\ZoomInstallerFull.msi'
 $InstallArgs = '/norestart /qn ZoomAutoUpdate=1 MSIRestartManagerControl=Disable zNoDesktopShortCut=True zSilentStart=1 /lex "C:\Utils\ZoomUpdater.log" zConfig="AU2_EnableAutoUpdate=1;AU2_UpdateChannelCandidates=1;AU2_SetUpdateChannel=1;AU2_EnableManualUpdate=0;AU2_EnableUpdateSuccessNotification=0;AU2_EnableUpdateAvailableBanner=0;AU2_EnableShowZoomUpdates=0;AutoStartAfterReboot=0;Min2Tray=1"'
 
 
-if ( ($ZoomApp -eq 'Zoom(64bit)') -or ($ZoomEXE -eq $true) -and ($ZoomCurrentVersion -ne $ZoomLatestVersion) )
+if ( ($ZoomApp -eq 'Zoom*') -or ($ZoomEXE -eq $true) -and ($ZoomCurrentVersion -ne $ZoomLatestVersion) )
 {
 
     Write-Host "Zoom found, updating to $ZoomLatestVersion"
