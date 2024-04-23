@@ -56,3 +56,18 @@ foreach ($key in $registryKeys.Keys)
           Set-ItemProperty -Path $registryPath -Name $key -Value $registryKeys[$key]
      }
 }
+
+<#
+
+Below is used after install to gather the Lenovo warranty information
+
+$WarrantyEndDate = (Get-CimInstance -Namespace root/Lenovo -ClassName Lenovo_WarrantyInformation).EndDate
+$WarrantyStartDate = (Get-CimInstance -Namespace root/Lenovo -ClassName Lenovo_WarrantyInformation).StartDate
+$WarrantyLastUpdated = (Get-CimInstance -Namespace root/Lenovo -ClassName Lenovo_WarrantyInformation).LastUpdateTime
+$WarrantyProduct = (Get-CimInstance -Namespace root/Lenovo -ClassName Lenovo_WarrantyInformation).Product
+$WarrantySerialNumber = (Get-CimInstance -Namespace root/Lenovo -ClassName Lenovo_WarrantyInformation).SerialNumber
+
+#>
+
+
+
