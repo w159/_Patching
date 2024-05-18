@@ -40,7 +40,7 @@ $registryKeys = @{
      'TurnOffToastMessage'                                                    = '1'
      'page.wifiSecurity'                                                      = '1'
      'wmi.warranty'                                                           = '1'
-     'feature.warranty'                                                       = '0'
+     'feature.warranty'                                                       = '1'
      'feature.giveFeedback'                                                   = '1'
 }
 
