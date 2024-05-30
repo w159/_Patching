@@ -20,11 +20,10 @@ $ZoomEXE = Test-Path -Path 'C:\Program Files\Zoom\bin\Zoom.exe'
 $ZoomUserInstall = Get-ChildItem -Recurse -Path 'C:\Users' | Where-Object Name -Like 'Zoom.exe' | Sort-Object LastWriteTime -Descending | Select-Object -First 1
 $ZoomUserExe = $ZoomUserInstall.FullName
 $ZoomMSI = 'C:\Utils\ZoomInstallerFull.msi'
-$InstallArgs = '/norestart /qn ZoomAutoUpdate=1 MSIRestartManagerControl=Disable zNoDesktopShortCut=True zSilentStart=1 /lex "C:\Utils\ZoomUpdater.log" zConfig="AU2_EnableAutoUpdate=1;AU2_UpdateChannelCandidates=1;AU2_SetUpdateChannel=1;AU2_EnableManualUpdate=0;AU2_EnableUpdateSuccessNotification=0;AU2_EnableUpdateAvailableBanner=0;AU2_EnableShowZoomUpdates=0;AutoStartAfterReboot=0;Min2Tray=1"'
+$InstallArgs = '/quiet /qn /norestart ZoomAutoUpdate=1 MSIRestartManagerControl=Disable zNoDesktopShortCut=True zSilentStart=1 /lex "C:\Utils\ZoomUpdater.log" zConfig="AU2_EnableAutoUpdate=1;AU2_UpdateChannelCandidates=1;AU2_SetUpdateChannel=1;AU2_EnableManualUpdate=0;AU2_EnableUpdateSuccessNotification=0;AU2_EnableUpdateAvailableBanner=0;AU2_EnableShowZoomUpdates=0;AutoStartAfterReboot=0;Min2Tray=1"'
 
 
-if ( ($ZoomApp -eq 'Zoom*') -or ($ZoomEXE -eq $true) -and ($ZoomCurrentVersion -ne $ZoomLatestVersion) )
-{
+if ( ($ZoomApp -eq 'Zoom*') -or ($ZoomEXE -eq $true) -and ($ZoomCurrentVersion -ne $ZoomLatestVersion) ) {
 
     Write-Host "Zoom found, updating to $ZoomLatestVersion"
     Invoke-WebRequest -UseBasicParsing 'https://zoom.us/client/latest/ZoomInstallerFull.msi?archType=x64' -OutFile 'C:\Utils\ZoomInstallerFull.msi' -UserAgent $UserAgent
@@ -41,8 +40,7 @@ if ( ($ZoomApp -eq 'Zoom*') -or ($ZoomEXE -eq $true) -and ($ZoomCurrentVersion -
     New-PSDrive -PSProvider 'Registry' -Name 'HKU' -Root 'HKEY_USERS' -ErrorAction SilentlyContinue
     $users = Get-ChildItem 'HKU:\'
 
-    foreach ($user in $users)
-    {
+    foreach ($user in $users) {
 
         $LocalUser = $user.name
         New-Item -Path "HKU:\$LocalUser\SOFTWARE\ZoomUMX" -Force -ErrorAction SilentlyContinue
@@ -51,8 +49,11 @@ if ( ($ZoomApp -eq 'Zoom*') -or ($ZoomEXE -eq $true) -and ($ZoomCurrentVersion -
         New-ItemProperty -Path "HKU:\$LocalUser\SOFTWARE\ZoomUMX" -Name 'silentstart' -Value 'true' -PropertyType String -Force -ErrorAction SilentlyContinue
 
     }
+} else {
+    Write-Host 'Zoom not found, installing'
+    Invoke-WebRequest -UseBasicParsing 'https://zoom.us/client/latest/ZoomInstallerFull.msi?archType=x64' -OutFile 'C:\Utils\ZoomInstallerFull.msi' -UserAgent $UserAgent
+    Unblock-File $ZoomMSI
+    Start-Process -FilePath $ZoomMSI -ArgumentList $InstallArgs -Wait
 }
-else
-{
-    Write-Host 'Zoom not found, taking no action'
-}
+
+
