@@ -285,7 +285,6 @@ RemoveApps $appsList
 
 Write-Output ''
 
-
 Write-Output '> Removing gaming related apps...'
 
 $appsList = 'Microsoft.GamingApp', 'Microsoft.XboxGameOverlay', 'Microsoft.XboxGamingOverlay'
