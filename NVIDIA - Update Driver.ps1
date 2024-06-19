@@ -8,11 +8,11 @@ The NVIDIA download site is used to compare the current and latest versions
 Get-ScheduledTask | Where-Object TaskName -EQ 'Nvidia-Updater' | Unregister-ScheduledTask -Confirm:$false -ErrorAction SilentlyContinue
 Get-ScheduledTask | Where-Object TaskName -EQ 'S5 - NVIDIA Updater' | Unregister-ScheduledTask -Confirm:$false -ErrorAction SilentlyContinue
 Get-ScheduledTask | Where-Object TaskName -EQ 'S5 - NVIDIA Driver Updater' | Unregister-ScheduledTask -Confirm:$false -ErrorAction SilentlyContinue
+Get-ScheduledTask | Where-Object TaskName -EQ 'NVIDIA Driver Updater v4.4.24' | Unregister-ScheduledTask -Confirm:$false -ErrorAction SilentlyContinue
 
 $VideoController = (Get-WmiObject -ClassName Win32_VideoController | Where-Object Name -Match 'NVIDIA').VideoProcessor
 
-if ($VideoController -notcontains 'NVIDIA')
-{
+if ($VideoController -like '*NVIDIA*') {
     Write-Host 'IS NVIDIA - Building script to verify up to date'
 
     [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
@@ -206,6 +206,10 @@ Remove-Item `$nvidiaTempFolder -Recurse -Force -ErrorAction SilentlyContinue
 
     $Settings = New-ScheduledTaskSettingsSet -RunOnlyIfNetworkAvailable -WakeToRun -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -StartWhenAvailable
 
-    Register-ScheduledTask -TaskName 'NVIDIA Driver Updater v4.4.24' -Trigger $Trigger -User $User -Action $Action -Settings $Settings -RunLevel Highest -Force -Description 'This task updates the Nvidia Geforce software and drivers if installed. S5-JM last updated 4.4.24'
+    Register-ScheduledTask -TaskName 'NVIDIA Driver Updater v6.19.24' -Trigger $Trigger -User $User -Action $Action -Settings $Settings -RunLevel Highest -Force -Description 'This task updates the Nvidia Geforce software and drivers if installed. JM last updated 6.19.24'
 
-} else { 'NOT NVIDIA - No actions taken' }
+}
+else {
+    Get-ScheduledTask | Where-Object TaskName -Contains 'Nvidia' | Unregister-ScheduledTask -Confirm:$false -ErrorAction SilentlyContinue
+    'NOT NVIDIA - No actions taken'
+}
