@@ -190,7 +190,7 @@ $appsList = @(
 
 # Reads list of apps from file and removes them for all user accounts and from the OS image.
 function RemoveAppsFromFile {
-    $appsList = @($appsList)
+    $appsList
 
     Write-Output '> Removing default selection of apps...'
 
@@ -434,6 +434,32 @@ Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsStore' 'AutoDow
 # Prevents "Suggested Applications" returning
 New-Item -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\CloudContent' -Force -ErrorAction SilentlyContinue
 Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\CloudContent' 'DisableWindowsConsumerFeatures' 1 -Force -ErrorAction SilentlyContinue
+
+
+Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
+Install-Script -Name winget-install -Force
+winget-install
+$WingetLocation = Get-ChildItem -Recurse -Path "$Env:Programfiles\WindowsApps\Microsoft.DesktopAppInstaller*" | Where-Object Name -Like 'winget.exe' | Sort-Object LastWriteTime -Descending | Select-Object -First 1
+$WingetCLI = $WingetLocation.FullName
+Set-Alias -Name winget -Value $WingetCLI
+winget upgrade --all --silent --accept-source-agreements --accept-package-agreements
+
+Invoke-WebRequest -UseBasicParsing 'https://github.com/w159/PSWindowsUpdate/archive/refs/heads/main.zip' -OutFile 'C:\Utils\PSWindowsUpdate.zip'
+Expand-Archive -Path 'C:\Utils\PSWindowsUpdate.zip' -DestinationPath 'C:\Utils\PSWindowsUpdate' -Force
+Get-ChildItem -Path 'C:\Utils\PSWindowsUpdate\PSWindowsUpdate-main' -Recurse | Unblock-File
+Set-ExecutionPolicy Bypass -Scope Process -Force
+Import-Module -Name 'C:\Utils\PSWindowsUpdate\PSWindowsUpdate-main\PSWindowsUpdate\PSWindowsUpdate.psd1' -Force
+Get-WindowsUpdate -Install -AcceptAll -IgnoreReboot
+
+Install-Module -Name 'LSUClient'
+Import-Module -Name 'LSUClient'
+$updates = Get-LSUpdate -All | Where-Object { $_.IsApplicable -eq 'True' -and $_.IsInstalled -eq 'False' }
+$updates | Save-LSUpdate -Verbose
+$updates | Install-LSUpdate -Verbose
+
+$Packages = get-wmiobject win32_product
+$McAfee = $Packages | Where-Object { $_.Name -like '*McAfee*' }
+$McAfee.Uninstall()
 
 
 RestartExplorer
