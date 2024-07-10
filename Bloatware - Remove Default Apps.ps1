@@ -41,6 +41,7 @@ param (
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $ProgressPreference = 'SilentlyContinue'
 New-Item -Path 'C:\Windows\Utils' -ItemType Directory -Force
+Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
 
 # Set specified parameters to always run
 $Silent = $true
@@ -457,7 +458,7 @@ $updates = Get-LSUpdate -All | Where-Object { $_.IsApplicable -eq 'True' -and $_
 $updates | Save-LSUpdate -Verbose
 $updates | Install-LSUpdate -Verbose
 
-$Packages = get-wmiobject win32_product
+$Packages = Get-WmiObject win32_product
 $McAfee = $Packages | Where-Object { $_.Name -like '*McAfee*' }
 $McAfee.Uninstall()
 
