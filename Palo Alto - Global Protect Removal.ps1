@@ -7,7 +7,7 @@ if ($PaloAltoGlobalProtect) {
 # Remove GlobalProtect installer log file
 $PAGlobalProtectLog = Test-Path 'C:\Utils\PAGlobalProtectInstaller.log'
 if ($PAGlobalProtectLog) {
-     Remove-Item -Path 'C:\Utils\PAGlobalProtectInstaller.log' -Force
+     Remove-Item -Path 'C:\Utils\PAGlobalProtectInstaller.log' -Force -Recurse
 }
 
 # Remove registry entries for Palo Alto Networks from all user profiles
@@ -17,7 +17,7 @@ foreach ($user in $users) {
      $LocalUser = $user.PSChildName
      $registryPath = "HKU:\$LocalUser\Software\Palo Alto Networks"
      if (Test-Path -Path $registryPath) {
-          Remove-Item -Path $registryPath -Force
+          Remove-Item -Path $registryPath -Force -Recurse
      }
 }
 
@@ -27,7 +27,7 @@ foreach ($UserFolder in $UserFolders) {
      $LocalUser = $UserFolder.Name
      $GlobalProtectUserFolder = "C:\Users\$LocalUser\AppData\Local\Palo Alto Networks"
      if (Test-Path -Path $GlobalProtectUserFolder) {
-          Remove-Item -Path $GlobalProtectUserFolder -Force
+          Remove-Item -Path $GlobalProtectUserFolder -Force -Recurse
      }
 }
 
