@@ -1,0 +1,65 @@
+
+
+
+#!ps
+#maxlength=500000
+#timeout=90000000
+[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
+$ProgressPreference = 'SilentlyContinue'
+Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
+Set-ExecutionPolicy Bypass -Scope Process -Force
+$WingetLocation = Get-ChildItem -Recurse -Path "$Env:Programfiles\WindowsApps\Microsoft.DesktopAppInstaller*" | Where-Object Name -Like 'winget.exe' | Sort-Object LastWriteTime -Descending | Select-Object -First 1
+if ($null -eq $WingetLocation) {
+     Install-Script -Name winget-install -Force
+     winget-install
+     $WingetLocation = Get-ChildItem -Recurse -Path "$Env:Programfiles\WindowsApps\Microsoft.DesktopAppInstaller*" | Where-Object Name -Like 'winget.exe' | Sort-Object LastWriteTime -Descending | Select-Object -First 1
+     $WingetCLI = $WingetLocation.FullName
+     Set-Alias -Name winget -Value $WingetCLI
+     winget-install -CheckForUpdate
+} else {
+     $WingetCLI = $WingetLocation.FullName
+     Set-Alias -Name winget -Value $WingetCLI
+     Write-Output "winget.exe found at: $WingetCLI"
+}
+Stop-Service -Name wuauserv -Force
+Stop-Service -Name bits -Force
+if (Test-Path -Path 'C:\Windows\SoftwareDistribution.bak') {
+     Remove-Item -Path 'C:\Windows\SoftwareDistribution.bak' -Force
+}
+Rename-Item -Path 'C:\Windows\SoftwareDistribution' -NewName 'SoftwareDistribution.bak' -Force
+Start-Service -Name wuauserv
+Start-Service -Name bits
+Stop-Service -Name cryptsvc -Force
+New-Item -ItemType Directory -Path "$env:SystemRoot\system32\catroot2.old" -Force
+Copy-Item -Path "$env:SystemRoot\system32\catroot2" -Destination "$env:SystemRoot\system32\catroot2.old" -Recurse -Force
+Start-Service -Name cryptsvc
+Invoke-Command -ScriptBlock { sfc /scannow }
+Invoke-Command -ScriptBlock { DISM /Online /Cleanup-Image /RestoreHealth }
+
+# Check for and uninstall applications using WMI
+$Names = @('Teams', 'McAfee')
+$InstalledProducts = Get-WmiObject -Class Win32_Product | Select-Object -ExpandProperty Name
+foreach ($Name in $Names) {
+     if ($InstalledProducts -contains $Name) {
+          $Name.Uninstall()
+          Write-Output "Uninstalling: $Name"
+     } else {
+          Write-Output "No matching application found: $Name"
+     }
+}
+
+foreach ($Name in $Names) {
+     $ConfirmUninstall = Get-WmiObject -Class Win32_Product | Where-Object { $_.Name -eq $Name }
+     if (!$ConfirmUninstall) {
+          Write-Output "Confirmed: $Name has been uninstalled"
+     } else {
+          Write-Output "Failed to uninstall: $Name"
+     }
+}
+
+# Check for and uninstall applications using winget
+$Names = @('Teams Machine-Wide Installer', 'McAfee', 'Microsoft.OutlookForWindows')
+foreach ($Name in $Names) {
+     winget uninstall $Name --silent
+     Write-Output "Uninstalling: $Name"
+}
