@@ -36,6 +36,12 @@ Start-Service -Name cryptsvc
 Invoke-Command -ScriptBlock { sfc /scannow }
 Invoke-Command -ScriptBlock { DISM /Online /Cleanup-Image /RestoreHealth }
 
+Install-Module -Name 'LSUClient'
+Import-Module -Name 'LSUClient'
+$updates = Get-LSUpdate -All | Where-Object { $_.IsApplicable -eq 'True' -and $_.IsInstalled -eq 'False' }
+$updates | Save-LSUpdate -Verbose
+$updates | Install-LSUpdate -Verbose
+
 # Check for and uninstall applications using WMI
 $Names = @('Teams', 'McAfee')
 $InstalledProducts = Get-WmiObject -Class Win32_Product | Select-Object -ExpandProperty Name
@@ -63,3 +69,26 @@ foreach ($Name in $Names) {
      winget uninstall $Name --silent
      Write-Output "Uninstalling: $Name"
 }
+
+
+$namespaceName = 'root\cimv2\mdm\dmmap'
+$className = 'MDM_EnterpriseModernAppManagement_AppManagement01'
+$wmiObj = Get-WmiObject -Namespace $namespaceName -Class $className
+$result = $wmiObj.UpdateScanMethod()
+$result
+
+
+foreach ($RequiredModule in $RequiredModules) {
+     if (-not (Get-Module $RequiredModule -ListAvailable)) {
+          "Installing $RequiredModule now, please wait...."
+          Install-Module $RequiredModule -Scope AllUsers -Force
+     }
+}
+
+foreach ($RequiredModule in $RequiredModules) {
+     "Importing $RequiredModule now, please wait...."
+     Import-Module $RequiredModule
+}
+
+Install-WindowsUpdate -AcceptAll -Install -IgnoreReboot
+
