@@ -26,7 +26,9 @@ Stop-Service -Name bits -Force
 if (Test-Path -Path 'C:\Windows\SoftwareDistribution.bak') {
      Remove-Item -Path 'C:\Windows\SoftwareDistribution.bak' -Force
 }
-Rename-Item -Path 'C:\Windows\SoftwareDistribution' -NewName 'SoftwareDistribution.bak' -Force
+if (Test-Path -Path 'C:\Windows\SoftwareDistribution') {
+     Rename-Item -Path 'C:\Windows\SoftwareDistribution' -NewName 'SoftwareDistribution.bak' -Force
+}
 Start-Service -Name wuauserv
 Start-Service -Name bits
 Stop-Service -Name cryptsvc -Force
@@ -70,14 +72,17 @@ foreach ($Name in $Names) {
      Write-Output "Uninstalling: $Name"
 }
 
-
+# Update Microsoft Store Apps
 $namespaceName = 'root\cimv2\mdm\dmmap'
 $className = 'MDM_EnterpriseModernAppManagement_AppManagement01'
 $wmiObj = Get-WmiObject -Namespace $namespaceName -Class $className
 $result = $wmiObj.UpdateScanMethod()
 $result
 
+# Update Office Apps
+Start-Process -FilePath 'C:\Program Files\Common Files\Microsoft Shared\ClickToRun\OfficeC2RClient.exe' -ArgumentList '/update user displaylevel=false forceappshutdown=true Updatepromptuser=true' -Wait -NoNewWindow
 
+# Install required modules
 foreach ($RequiredModule in $RequiredModules) {
      if (-not (Get-Module $RequiredModule -ListAvailable)) {
           "Installing $RequiredModule now, please wait...."
