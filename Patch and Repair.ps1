@@ -24,9 +24,8 @@ if ($null -eq $WingetLocation) {
 Stop-Service -Name wuauserv -Force
 Stop-Service -Name bits -Force
 if (Test-Path -Path 'C:\Windows\SoftwareDistribution.bak') {
-     Remove-Item -Path 'C:\Windows\SoftwareDistribution.bak' -Force
-}
-if (Test-Path -Path 'C:\Windows\SoftwareDistribution') {
+     Remove-Item -Path 'C:\Windows\SoftwareDistribution.bak' -Recurse -Force
+} else {
      Rename-Item -Path 'C:\Windows\SoftwareDistribution' -NewName 'SoftwareDistribution.bak' -Force
 }
 Start-Service -Name wuauserv
