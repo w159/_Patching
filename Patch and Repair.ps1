@@ -1,6 +1,3 @@
-
-
-
 #!ps
 #maxlength=500000
 #timeout=90000000
@@ -21,12 +18,15 @@ if ($null -eq $WingetLocation) {
      Set-Alias -Name winget -Value $WingetCLI
      Write-Output "winget.exe found at: $WingetCLI"
 }
+winget upgrade --all --silent --accept-source-agreements --accept-package-agreements
+
 Stop-Service -Name wuauserv -Force
 Stop-Service -Name bits -Force
 if (Test-Path -Path 'C:\Windows\SoftwareDistribution.bak') {
      Remove-Item -Path 'C:\Windows\SoftwareDistribution.bak' -Recurse -Force
-} else {
-     Rename-Item -Path 'C:\Windows\SoftwareDistribution' -NewName 'SoftwareDistribution.bak' -Force
+}
+if (Test-Path -Path 'C:\Windows\SoftwareDistribution') {
+     Rename-Item -Path 'C:\Windows\SoftwareDistribution' -NewName 'SoftwareDistribution.bak' -Recurse -Force
 }
 Start-Service -Name wuauserv
 Start-Service -Name bits
@@ -95,4 +95,3 @@ foreach ($RequiredModule in $RequiredModules) {
 }
 
 Install-WindowsUpdate -AcceptAll -Install -IgnoreReboot
-
