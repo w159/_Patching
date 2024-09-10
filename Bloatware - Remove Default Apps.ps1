@@ -43,6 +43,8 @@ $ProgressPreference = 'SilentlyContinue'
 New-Item -Path 'C:\Windows\Utils' -ItemType Directory -Force
 Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
 
+Get-TimeZone -ListAvailable | Where-Object Id -Like 'Eastern Standard Time' | Set-TimeZone
+
 # Set specified parameters to always run
 $Silent = $true
 $RemoveAppsCustom = $true
@@ -470,3 +472,59 @@ Write-Output ''
 Write-Output ''
 Write-Output 'Script completed successfully!'
 Write-Output 'Please restart your PC to apply all changes.'
+
+
+
+$session = New-Object Microsoft.PowerShell.Commands.WebRequestSession
+$session.UserAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36 Edg/128.0.0.0'
+Invoke-WebRequest -UseBasicParsing -Uri 'https://origin.pfultd.com/downloads/ss/sshinst/w-2220/WinSSHOfflineInstaller_2_22_0.exe' `
+    -WebSession $session `
+    -Headers @{
+    'Accept'                    = 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7'
+    'Accept-Encoding'           = 'gzip, deflate, br, zstd'
+    'Accept-Language'           = 'en-US,en;q=0.9,de-CH;q=0.8,de;q=0.7'
+    'DNT'                       = '1'
+    'Referer'                   = 'https://www.pfu.ricoh.com/'
+    'Sec-Fetch-Dest'            = 'document'
+    'Sec-Fetch-Mode'            = 'navigate'
+    'Sec-Fetch-Site'            = 'cross-site'
+    'Sec-Fetch-User'            = '?1'
+    'Upgrade-Insecure-Requests' = '1'
+    'sec-ch-ua'                 = "`"Chromium`";v=`"128`", `"Not;A=Brand`";v=`"24`", `"Microsoft Edge`";v=`"128`""
+    'sec-ch-ua-mobile'          = '?0'
+    'sec-ch-ua-platform'        = "`"Windows`""
+} `
+    -OutFile 'C:\Windows\Utils\WinSSHOfflineInstaller_2_22_0.exe'
+Start-Process 'C:\Windows\Utils\WinSSHOfflineInstaller_2_22_0.exe' -ArgumentList '/Silent'
+
+
+
+# Initialize Variables and Functions
+$UtilsPath = 'C:\Windows\Utils'
+$OutputPath = Join-Path -Path $UtilsPath -ChildPath 'InstalledApps'
+$CSVFile = "$OutputPath\$FileDate-InstalledApps.csv"
+$JSONFile = "$OutputPath\*-InstalledApps.json"
+$WingetLocation = Get-ChildItem -Recurse -Path "$Env:Programfiles\WindowsApps\Microsoft.DesktopAppInstaller*" | Where-Object Name -Like 'winget.exe' | Sort-Object LastWriteTime -Descending | Select-Object -First 1
+New-Item -Path $OutputPath -ItemType Directory -Force
+
+
+# Get Installed Applications with WinGet
+[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
+$ProgressPreference = 'SilentlyContinue'
+Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
+Set-ExecutionPolicy Bypass -Scope Process -Force
+
+if ($null -eq $WingetLocation) {
+    Install-Script -Name winget-install -Force
+    winget-install
+    $WingetLocation = Get-ChildItem -Recurse -Path "$Env:Programfiles\WindowsApps\Microsoft.DesktopAppInstaller*" | Where-Object Name -Like 'winget.exe' | Sort-Object LastWriteTime -Descending | Select-Object -First 1
+    $WingetCLI = $WingetLocation.FullName
+    Set-Alias -Name winget -Value $WingetCLI
+    winget-install -CheckForUpdate
+} else {
+    $WingetCLI = $WingetLocation.FullName
+    Set-Alias -Name winget -Value $WingetCLI
+    Write-Output "winget.exe found at: $WingetCLI"
+}
+
+winget import --import-file $JSONFile
