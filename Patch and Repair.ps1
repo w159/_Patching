@@ -5,7 +5,10 @@
 $ProgressPreference = 'SilentlyContinue'
 Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
 Set-ExecutionPolicy Bypass -Scope Process -Force
+
 $WingetLocation = Get-ChildItem -Recurse -Path "$Env:Programfiles\WindowsApps\Microsoft.DesktopAppInstaller*" | Where-Object Name -Like 'winget.exe' | Sort-Object LastWriteTime -Descending | Select-Object -First 1
+
+
 if ($null -eq $WingetLocation) {
      Install-Script -Name winget-install -Force
      winget-install
@@ -28,12 +31,15 @@ if (Test-Path -Path 'C:\Windows\SoftwareDistribution.bak') {
 if (Test-Path -Path 'C:\Windows\SoftwareDistribution') {
      Rename-Item -Path 'C:\Windows\SoftwareDistribution' -NewName 'SoftwareDistribution.bak' -Recurse -Force
 }
+
 Start-Service -Name wuauserv
 Start-Service -Name bits
 Stop-Service -Name cryptsvc -Force
 New-Item -ItemType Directory -Path "$env:SystemRoot\system32\catroot2.old" -Force
 Copy-Item -Path "$env:SystemRoot\system32\catroot2" -Destination "$env:SystemRoot\system32\catroot2.old" -Recurse -Force
 Start-Service -Name cryptsvc
+
+
 Invoke-Command -ScriptBlock { sfc /scannow }
 Invoke-Command -ScriptBlock { DISM /Online /Cleanup-Image /RestoreHealth }
 
