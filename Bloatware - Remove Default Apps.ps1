@@ -408,7 +408,6 @@ Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer
 #Expand-Archive 'C:\Windows\Utils\MCPR.exe' -DestinationPath 'C:\Windows\Utils' -Force
 #Start-Process -FilePath 'C:\Windows\Utils\McAfee Consumer Product Removal Tool.exe' -ArgumentList '/q' -Wait
 
-
 # Prevents Apps from re-installing
 $cdm = @(
     'ContentDeliveryAllowed'
@@ -438,7 +437,6 @@ Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsStore' 'AutoDow
 New-Item -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\CloudContent' -Force -ErrorAction SilentlyContinue
 Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\CloudContent' 'DisableWindowsConsumerFeatures' 1 -Force -ErrorAction SilentlyContinue
 
-
 Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
 Install-Script -Name winget-install -Force
 winget-install
@@ -464,7 +462,6 @@ $Packages = Get-WmiObject win32_product
 $McAfee = $Packages | Where-Object { $_.Name -like '*McAfee*' }
 $McAfee.Uninstall()
 
-
 RestartExplorer
 
 Write-Output ''
@@ -472,8 +469,6 @@ Write-Output ''
 Write-Output ''
 Write-Output 'Script completed successfully!'
 Write-Output 'Please restart your PC to apply all changes.'
-
-
 
 $session = New-Object Microsoft.PowerShell.Commands.WebRequestSession
 $session.UserAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36 Edg/128.0.0.0'
@@ -496,8 +491,6 @@ Invoke-WebRequest -UseBasicParsing -Uri 'https://origin.pfultd.com/downloads/ss/
 } `
     -OutFile 'C:\Windows\Utils\WinSSHOfflineInstaller_2_22_0.exe'
 Start-Process 'C:\Windows\Utils\WinSSHOfflineInstaller_2_22_0.exe' -ArgumentList '/Silent'
-
-
 
 # Initialize Variables and Functions
 $UtilsPath = 'C:\Windows\Utils'
