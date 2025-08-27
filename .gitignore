@@ -1,0 +1,62 @@
+# PowerShell script artifacts
+*.log
+*.tmp
+*.temp
+
+# Downloaded installers and packages
+*.msi
+*.exe
+*.cab
+*.msu
+*.zip
+
+# Temporary directories
+/temp/
+/tmp/
+**/Downloads/
+**/HPIA/
+**/WinRE_Mount/
+
+# Windows Update cache
+SoftwareDistribution/
+catroot2/
+
+# Visual Studio Code
+.vscode/
+
+# PowerShell module cache
+PSGetModuleInfo.xml
+
+# System files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Logs and temporary files specific to patching operations
+**/PatchingLogs/
+**/HPDriverUpdate/
+**/ChromeUpdate/
+**/WinREPatch/
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# Package files that shouldn't be committed
+windows10.0-kb*.cab
+googlechromestandaloneenterprise*.msi
+HPImageAssistant.exe
+HPIA.exe
+
+# Test artifacts
+TestResults/
+*.coverage
